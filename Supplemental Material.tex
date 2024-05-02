@@ -1,0 +1,892 @@
+\documentclass[]{article}
+\usepackage{amsthm}
+%%%%% PLACE YOUR OWN MACROS HERE %%%%%
+
+\usepackage{verbatim,color,amssymb}
+\usepackage{amsmath}					
+\usepackage{amsthm}					
+\usepackage{algorithm,algorithmic}
+\usepackage[round]{natbib} %[round,sort,comma,authoryear]
+\usepackage{setspace}
+\usepackage{array}
+\usepackage[mathscr]{euscript}
+\usepackage{fancyhdr}
+\usepackage{multicol}
+\usepackage{enumitem}
+\usepackage{graphicx}
+\usepackage{geometry}
+\usepackage{lineno}
+\usepackage[compact]{titlesec}
+\usepackage{listings}
+\usepackage{rotating}
+\usepackage{subfig,subfloat}
+%\usepackage{pgffor}
+%\usepackage{multirow}
+%\usepackage{lineno}
+\usepackage{booktabs}
+\def\rot{\rotatebox}
+\usepackage{mathtools}
+\usepackage{subfig}
+\usepackage{caption}
+\captionsetup[subfigure]{labelformat=parens,
+	labelsep=space,
+	font=small,
+	margin=0em
+}
+\usepackage{float}
+\newsubfloat{figure}% Allow sub-figures
+\usepackage{tikz}
+\usetikzlibrary{arrows,chains,backgrounds,fit}
+\usepackage{multirow}
+\usepackage{lineno}
+
+\def\pdfshellescape{1}
+
+\setlength{\textheight}{9in}
+\setlength{\textwidth}{6in}
+\setlength{\topmargin}{-36pt}
+\setlength{\oddsidemargin}{15pt}
+\setlength{\evensidemargin}{0pt}
+\tolerance=500
+\renewcommand{\baselinestretch}{1.5}
+
+
+
+%%%%%%%%%%%%%%%
+% Begin New Definitions  %%
+%%%%%%%%%%%%%%%
+
+
+\newtheorem{Th}{\underline{\bf Theorem}}
+\newtheorem{Assmp}{{\bf Assumption}}
+\newtheorem{Cond}{\underline{\bf Conditions}}
+\newtheorem{Proof}{Proof}
+\newtheorem*{Proof*}{Proof}
+\newtheorem{Mth}{Main Theorem}
+\newtheorem{Def}{Definition}
+\newtheorem{Rem}{\underline{\bf Remark}}
+\newtheorem{Qes}{Question}
+\newtheorem{Prop}{Proposition}
+\newtheorem{Lem}{\underline{\bf Lemma}}
+\newtheorem{Cor}{\underline{\bf Corollary}}
+\newtheorem{Exa}{Example}
+\newtheorem{Eq}{Equation}
+
+\newcommand{\ubold}[1]{\fontseries{b}\selectfont#1}
+\newcommand{\MyProof}{\noindent\textbf{Proof. }}
+\def\bzero{{\mathbf 0}}
+\newcommand{\uzero}            {\mbox{\boldmath$0$}}
+\newcommand{\uone}               {\mbox{\boldmath$1$}}
+\def\etal{\emph{et al.}}
+
+\def\nN{\mathbb{N}}
+\def\rR{\mathbb{R}}
+\def\eE{\mathbb{E}}
+
+\def\L{{\cal L}}
+\def\B{{\cal B}}
+\def\C{{\cal C}}
+\def\D{{\cal D}}
+\def\E{{\cal E}}
+\def\F{{\cal F}}
+\def\G{{\cal G}}
+\def\K{{\cal K}}
+\def\M{{\cal M}}
+\def\N{{\cal N}}
+\def\calP{{\cal P}}
+\def\S{{\cal S}}
+\def\T{{\cal T}}
+\def\U{{\cal U}}
+\def\W{{\cal W}}
+\def\V{{\cal V}}
+\def\X{{\cal X}}
+\def\Z{{\cal Z}}
+\def\Y{{\cal Y}}
+\def\sumi{\sum_{i=1}^n}
+
+\def\scrC{{\mathscr{C}}}
+
+
+\def\diag{\hbox{diag}}
+\def\Ind{\hbox{I}}
+\def\wh{\widehat}
+\def\wt{\widetilde}
+\def\wb{\breve}
+\def\AIC{\hbox{AIC}}
+\def\BIC{\hbox{BIC}}
+\def\diag{\hbox{diag}}
+\def\log{\hbox{log}}
+\def\bias{\hbox{bias}}
+\def\Siuu{\boldSigma_{i,uu}}
+\def\whT{\widehat{\Theta}}
+\def\var{\hbox{var}}
+\def\cov{\hbox{cov}}
+\def\corr{\hbox{corr}}
+\def\sign{\hbox{sign}}
+\def\trace{\hbox{trace}}
+\def\naive{\hbox{naive}}
+\def\vect{\hbox{vec}}
+
+
+\def\Beta{\hbox{Beta}}
+\def\DE{\hbox{DE}}
+\def\Dir{\hbox{Dirch}}
+\def\Exp{\hbox{Exp}}
+\def\gIGs{\hbox{g-Inv-Gs}}
+\def\Ga{\hbox{Ga}}
+\def\IGs{\hbox{Inv-Gs}}
+\def\IG{\hbox{Inv-Ga}}
+\def\IW{\hbox{IW}}
+\def\MVN{\hbox{MVN}}
+\def\MVL{\hbox{MVL}}
+\def\MVT{\hbox{MVT}}
+\def\Normal{\hbox{Normal}}
+\def\TN{\hbox{TN}}
+\def\Unif{\hbox{Unif}}
+\def\Mult{\hbox{Mult}}
+\def\Wish{\hbox{W}}
+
+
+\def\wt{\widetilde}
+\def\sumi{\sum_{i=1}^n}
+\def\diag{\hbox{diag}}
+\def\wh{\widehat}
+\def\AIC{\hbox{AIC}}
+\def\BIC{\hbox{BIC}}
+\def\diag{\hbox{diag}}
+\def\log{\hbox{log}}
+\def\bias{\hbox{bias}}
+\def\Siuu{\boldSigma_{i,uu}}
+\def\dfrac#1#2{{\displaystyle{#1\over#2}}}
+\def\VS{{\vskip 3mm\noindent}}
+\def\refhg{\hangindent=20pt\hangafter=1}
+\def\refmark{\par\vskip 2mm\noindent\refhg}
+\def\naive{\hbox{naive}}
+\def\itemitem{\par\indent \hangindent2\parindent \textindent}
+\def\var{\hbox{var}}
+\def\cov{\hbox{cov}}
+\def\corr{\hbox{corr}}
+\def\trace{\hbox{trace}}
+\def\refhg{\hangindent=20pt\hangafter=1}
+\def\refmark{\par\vskip 2mm\noindent\refhg}
+\def\Normal{\hbox{Normal}}
+\def\Poisson{\hbox{Poisson}}
+\def\Wishart{\hbox{Wishart}}
+\def\Invwish{\hbox{Inv-Wishart}}
+\def\Beta{\hbox{Beta}}
+
+
+\def\ANNALS{{\it Annals of Statistics}}
+\def\ANNALSP{{\it Annals of Probability}}
+\def\ANNALSMS{{\it Annals of Mathematical Statistics}}
+\def\ANNALSAS{{\it Annals of Applied Statistics}}
+\def\ANNALSISM{{\it Annals of the Institute of Statistical Mathematics}}
+\def\AJE{{\it American Journal of Epidemiology}}
+\def\ANIPS{{\it Advances in Neural Information Processing Systems}}
+\def\APLS{{\it Applied Statistics}}
+\def\BA{{\it Bayesian Analysis}}
+\def\BRNL{{\it Bernoulli}}
+\def\BIOK{{\it Biometrika}}
+\def\BIOS{{\it Biostatistics}}
+\def\BMCS{{\it Biometrics}}
+\def\BMCMIDM{{\it BMC Medical Informatics and Decision Making}}
+\def\BIOINF{{\it Bioinformatics}}
+\def\CANADAJS{{\it Canadian Journal of Statistics}}
+\def\CG{{\it Current Genomics}}
+\def\CDA{{\it Computational Statistics \& Data Analysis}}
+\def\COMMS{{\it Communications in Statistics, Series A}}
+\def\COMMS{{\it Communications in Statistics, Theory \& Methods}}
+\def\COMMSS{{\it Communications in Statistics - Simulation}}
+\def\COMMSSC{{\it Communications in Statistics - Simulation and Computation}}
+\def\EJS{{\it Electronic Journal of Statistics}}
+\def\ECMK{{\it Econometrica}}
+\def\ECTH{{\it Econometric Theory}}
+\def\GENEP{{\it Genetic Epidemiology}}
+\def\JASA{{\it Journal of the American Statistical Association}}
+\def\JRSSB{{\it Journal of the Royal Statistical Society, Series B}}
+\def\JRSSC{{\it Journal of the Royal Statistical Society, Series C}}
+\def\JQT{{\it Journal of Quality Technology}}
+\def\JCGS{{\it Journal of Computational and Graphical Statistics}}
+\def\JCB{{\it Journal of Computational Biology}}
+\def\JAMA{{\it Journal of the American Medical Association}}
+\def\JNUTR{{\it Journal of Nutrition}}
+\def\JABES{{\it Journal of Agricultural, Biological and Environmental Statistics}}
+\def\JBES{{\it Journal of Business and Economic Statistics}}
+\def\JSPI{{\it Journal of Statistical Planning \& Inference}}
+\def\JMA{{\it Journal of Multivariate Analysis}}
+\def\JNS{{\it Journal of Nonparametric Statistics}}
+\def\JSS{{\it Journal of Statistical Software}}
+\def\JECM{{\it Journal of Econometrics}}
+\def\IEEE{{\it IEEE}}
+\def\IEEESPL{{\it IEEE Signal Processing Letters}}
+\def\IEEETIT{{\it IEEE Transactions on Information Theory}}
+\def\LETTERS{{\it Letters in Probability and Statistics}}
+\def\ML{{\it Machine Learning}}
+\def\P_25_ICML{{\it Proceedings of the 25th international conference on Machine learning}}
+\def\PLoSCB{{\it PloS Computational Biology}}
+\def\STIM{{\it Statistics in Medicine}}
+\def\SCAN{{\it Scandinavian Journal of Statistics}}
+\def\SMMR{{\it Statistical Methods in Medical Research}}
+\def\SNKH{{\it Sankhy\={a}: The Indian Journal of Statistics}}
+\def\STIM{{\it Statistics in Medicine}}
+\def\STATMED{{\it Statistics in Medicine}}
+\def\STATSCI{{\it Statistical Science}}
+\def\SSNC{{\it Statistica Sinica}}
+\def\SaC{{\it Statistics and Computing}}
+\def\STATSCI{{\it Statistical Science}}
+\def\TECH{{\it Technometrics}}
+
+
+\def\dfrac#1#2{{\displaystyle{#1\over#2}}}
+\def\VS{{\vskip 3mm\noindent}}
+\def\refhg{\hangindent=20pt\hangafter=1}
+\def\refmark{\par\vskip 2mm\noindent\refhg}
+\def\itemitem{\par\indent \hangindent2\parindent \textindent}
+\def\refhg{\hangindent=20pt\hangafter=1}
+\def\refmark{\par\vskip 2mm\noindent\refhg}
+\def\povr{\buildrel p\over\longrightarrow}
+\def\ccdot{{\bullet}}
+\def\bse{\begin{eqnarray*}}
+\def\ese{\end{eqnarray*}}
+\def\be{\begin{eqnarray}}
+\def\ee{\end{eqnarray}}
+\def\bq{\begin{equation}}
+\def\eq{\end{equation}}
+\def\pr{\hbox{pr}}
+\def\wh{\widehat}
+
+
+\def\boldalpha{{\mbox{\boldmath $\alpha$}}}
+\def\boldAlpha{{\mbox{\boldmath $\Alpha$}}}
+\def\boldbeta{{\mbox{\boldmath $\beta$}}}
+\def\boldBeta{{\mbox{\boldmath $\beta$}}}
+\def\bolddelta{{\mbox{\boldmath $\delta$}}}
+\def\boldDelta{{\mbox{\boldmath $\Delta$}}}
+\def\boldeta{{\mbox{\boldmath $\eta$}}}
+\def\boldEta{{\mbox{\boldmath $\Eta$}}}
+\def\boldgamma{{\mbox{\boldmath $\gamma$}}}
+\def\boldGamma{{\mbox{\boldmath $\Gamma$}}}
+\def\boldlambda{{\mbox{\boldmath $\lambda$}}}
+\def\boldLambda{{\mbox{\boldmath $\Lambda$}}}
+\def\boldmu{{\mbox{\boldmath $\mu$}}}
+\def\boldMu{{\mbox{\boldmath $\Mu$}}}
+\def\boldnu{{\mbox{\boldmath $\nu$}}}
+\def\boldNu{{\mbox{\boldmath $\Nu$}}}
+\def\boldomega{{\mbox{\boldmath $\omega$}}}
+\def\boldOmega{{\mbox{\boldmath $\Omega$}}}
+\def\boldpsi{{\mbox{\boldmath $\psi$}}}
+\def\boldPsi{{\mbox{\boldmath $\Psi$}}}
+\def\boldsigma{{\mbox{\boldmath $\sigma$}}}
+\def\boldSigma{{\mbox{\boldmath $\Sigma$}}}
+\def\boldpi{{\mbox{\boldmath $\pi$}}}
+\def\boldPi{{\mbox{\boldmath $\Pi$}}}
+\def\boldphi{{\mbox{\boldmath $\phi$}}}
+\def\boldepsilon{{\mbox{\boldmath $\epsilon$}}}
+\def\boldtheta{{\mbox{\boldmath $\theta$}}}
+\def\boldTheta{{\mbox{\boldmath $\Theta$}}}
+\def\boldve{{\mbox{\boldmath $\ve$}}}
+\def\boldVe{{\mbox{\boldmath $\Epsilon$}}}
+\def\boldxi{{\mbox{\boldmath $\xi$}}}
+\def\boldXi{{\mbox{\boldmath $\Omega$}}}
+\def\boldzeta{{\mbox{\boldmath $\zeta$}}}
+\def\boldZeta{{\mbox{\boldmath $\Zeta$}}}
+\def\boldvarrho{{\mbox{\boldmath $\varrho$}}}
+\def\boldVarrho{{\mbox{\boldmath $\Varrho$}}}
+\def\boldtau{{\mbox{\boldmath $\tau$}}}
+\def\boldTau{{\mbox{\boldmath $\Tau$}}}
+\def\boldrho{{\mbox{\boldmath $\rho$}}}
+\def\boldRho{{\mbox{\boldmath $\Rho$}}}
+\def\boldvarsigma{{\mbox{\boldmath $\varsigma$}}}
+
+\def\trans{^{\rm T}}
+\def\myalpha{{\cal A}}
+\def\th{^{th}}
+\def\bone{{\mathbf 1}}
+
+\def\b1e{{\mathbf e}}
+\def\bA{{\mathbf A}}
+\def\ba{{\mathbf a}}
+\def\bB{{\mathbf B}}
+\def\bb{{\mathbf b}}
+\def\bc{{\mathbf c}}
+\def\bC{{\mathbf C}}
+\def\bd{{\mathbf d}}
+\def\bD{{\mathbf D}}
+\def\bG{{\mathbf G}}
+\def\bI{{\mathbf I}}
+\def\bk{{\mathbf k}}
+\def\bK{{\mathbf K}}
+\def\bM{{\mathbf M}}
+\def\bp{{\mathbf p}}
+\def\bP{{\mathbf P}}
+\def\bs{{\mathbf s}}
+\def\bS{{\mathbf S}}
+\def\bT{{\mathbf T}}
+\def\bt{{\mathbf t}}
+\def\bu{{\mathbf u}}
+\def\bU{{\mathbf U}}
+\def\bq{{\mathbf q}}
+\def\bQ{{\mathbf Q}}
+\def\bV{{\mathbf V}}
+\def\bw{{\mathbf w}}
+\def\bW{{\mathbf W}}
+\def\bx{{\mathbf x}}
+\def\bX{{\mathbf X}}
+\def\by{{\mathbf y}}
+\def\bY{{\mathbf Y}}
+\def\bz{{\mathbf z}}
+\def\bZ{{\mathbf Z}}
+\def\bS{{\mathbf S}}
+\def\bzero{{\mathbf 0}}
+
+\def\whT{\widehat{\Theta}}
+\def\te{\widetilde{e}}
+\def\te{\widetilde{\epsilon}}
+\def\tp{\widetilde{p}}
+\def\tv{\widetilde{v}}
+\def\tmu{\widetilde{\mu}}
+\def\tsigma{\widetilde{\sigma}}
+
+\newcommand{\etam}{\mbox{\boldmath $\eta$}}
+\newcommand{\bmu}{\mbox{\boldmath $\mu$}}
+\newcommand{\bDelta}{\mbox{\boldmath $\Delta$}}
+\newcommand{\bphi}{\mbox{\boldmath $\phi$}}
+\newcommand{\bpi}{\mbox{\boldmath $\pi$}}
+\newcommand{\bPi}{\mbox{\boldmath $\Pi$}}
+\newcommand{\bxi}{\mbox{\boldmath $\xi$}}
+\newcommand{\bepsilon}{\mbox{\boldmath $\epsilon$}}
+\newcommand{\btheta}{\mbox{\boldmath $\theta$}}
+\newcommand{\bbeta}{\mbox{\boldmath $\beta$}}
+\newcommand{\bgamma}{\mbox{\boldmath $\gamma_{j}$}}
+\newcommand{\bzeta}{\mbox{\boldmath $\zeta$}}
+\newcommand{\bsigma}{\mbox{\boldmath $\sigma$}}
+\newcommand{\bSigma}{\mbox{\boldmath $\Sigma$}}
+\newcommand{\balpha}{\mbox{\boldmath $\alpha$}}
+\newcommand{\bomega}{\mbox{\boldmath $\omega$}}
+\newcommand{\blambda}{\mbox{\boldmath $\lambda$}}
+\newcommand{\bLambda}{\mbox{\boldmath $\Lambda$}}
+\newcommand{\bOmega}{\mbox{\boldmath $\Omega$}}
+\newcommand{\bPsi}{\mbox{\boldmath $\Psi$}}
+\newcommand{\bpsi}{\mbox{\boldmath $\psi$}}
+\newcommand{\bGamma}{\mbox{\boldmath $\Gamma$}}
+\newcommand{\btau}{\mbox{\boldmath $\tau$}}
+
+\newcommand{\abs}[1]{\left\vert#1\right\vert}
+\newcommand{\norm}[1]{\left\Vert#1\right\Vert}
+
+\newcommand{\uA}       {\mbox{\boldmath$A$}}
+\newcommand{\ua}       {\mbox{\boldmath$a$}}
+\newcommand{\uB}       {\mbox{\boldmath$B$}}
+\newcommand{\ub}       {\mbox{\boldmath$b$}}
+\newcommand{\uC}       {\mbox{\boldmath$C$}}
+\newcommand{\uc}       {\mbox{\boldmath$c$}}
+\newcommand{\uD}       {\mbox{\boldmath$D$}}
+\newcommand{\ud}       {\mbox{\boldmath$d$}}
+\newcommand{\uE}       {\mbox{\boldmath$E$}}
+\newcommand{\ue}       {\mbox{\boldmath$e$}}
+\newcommand{\uF}       {\mbox{\boldmath$F$}}
+\newcommand{\uf}       {\mbox{\boldmath$f$}}
+\newcommand{\uG}       {\mbox{\boldmath$G$}}
+\newcommand{\ug}       {\mbox{\boldmath$g$}}
+
+%\newcommand{\uG}       {\mbox{\boldmath$G$}}
+
+%\newcommand{\ug}       {\mbox{\boldmath$g$}}
+\newcommand{\uH}       {\mbox{\boldmath$H$}}
+\newcommand{\uh}       {\mbox{\boldmath$h$}}
+\newcommand{\uI}       {\mbox{\boldmath$I$}}
+\newcommand{\ui}       {\mbox{\boldmath$i$}}
+\newcommand{\uJ}       {\mbox{\boldmath$J$}}
+\newcommand{\uj}       {\mbox{\boldmath$j$}}
+\newcommand{\uK}       {\mbox{\boldmath$K$}}
+\newcommand{\uk}       {\mbox{\boldmath$k$}}
+\newcommand{\uL}       {\mbox{\boldmath$L$}}
+\newcommand{\ul}       {\mbox{\boldmath$l$}}
+\newcommand{\uM}       {\mbox{\boldmath$M$}}
+\newcommand{\um}       {\mbox{\boldmath$m$}}
+\newcommand{\uN}       {\mbox{\boldmath$N$}}
+\newcommand{\un}       {\mbox{\boldmath$n$}}
+\newcommand{\uO}       {\mbox{\boldmath$O$}}
+%\newcommand{\uo}       {\mbox{\boldmath$o$}}
+\newcommand{\uP}       {\mbox{\boldmath$P$}}
+\newcommand{\up}       {\mbox{\boldmath$p$}}
+\newcommand{\uQ}       {\mbox{\boldmath$Q$}}
+\newcommand{\uq}       {\mbox{\boldmath$q$}}
+\newcommand{\uR}       {\mbox{\boldmath$R$}}
+\newcommand{\ur}       {\mbox{\boldmath$r$}}
+\newcommand{\uS}       {\mbox{\boldmath$S$}}
+\newcommand{\us}       {\mbox{\boldmath$s$}}
+\newcommand{\uT}       {\mbox{\boldmath$T$}}
+\newcommand{\ut}       {\mbox{\boldmath$t$}}
+\newcommand{\uU}       {\mbox{\boldmath$U$}}
+\newcommand{\uu}       {\mbox{\boldmath$u$}}
+\newcommand{\uV}       {\mbox{\boldmath$V$}}
+\newcommand{\uv}       {\mbox{\boldmath$v$}}
+\newcommand{\uW}       {\mbox{\boldmath$W$}}
+\newcommand{\uw}       {\mbox{\boldmath$w$}}
+\newcommand{\uX}       {\mbox{\boldmath$X$}}
+\newcommand{\ux}       {\mbox{\boldmath$x$}}
+\newcommand{\uY}       {\mbox{\boldmath$Y$}}
+\newcommand{\uy}       {\mbox{\boldmath$y$}}
+\newcommand{\uZ}       {\mbox{\boldmath$Z$}}
+\newcommand{\uz}       {\mbox{\boldmath$z$}}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\newcommand{\ualpha}            {\mbox{\boldmath$\alpha$}}
+\newcommand{\ubeta}             {\mbox{\boldmath$\beta$}}
+\newcommand{\ugamma}            {\mbox{\boldmath$\gamma$}}
+\newcommand{\udelta}            {\mbox{\boldmath$\delta$}}
+\newcommand{\uepsilon}          {\mbox{\boldmath$\epsilon$}}
+\newcommand{\uvarepsilon}       {\mbox{\boldmath$\varepsilon$}}
+\newcommand{\uzeta}             {\mbox{\boldmath$\zeta$}}
+\newcommand{\ueta}              {\mbox{\boldmath$\eta$}}
+\newcommand{\utheta}            {\mbox{\boldmath$\theta$}}
+\newcommand{\uvartheta}         {\mbox{\boldmath$\vartheta$}}
+\newcommand{\uiota}             {\mbox{\boldmath$\uiota$}}
+\newcommand{\ukappa}            {\mbox{\boldmath$\kappa$}}
+\newcommand{\ulambda}           {\mbox{\boldmath$\lambda$}}
+\newcommand{\umu}               {\mbox{\boldmath$\mu$}}
+\newcommand{\unu}               {\mbox{\boldmath$\nu$}}
+\newcommand{\uxi}               {\mbox{\boldmath$\xi$}}
+\newcommand{\uo}                {\mbox{\boldmath$\o$}}
+\newcommand{\upi}               {\mbox{\boldmath$\pi$}}
+\newcommand{\uvarpi}            {\mbox{\boldmath$\varpi$}}
+\newcommand{\urho}              {\mbox{\boldmath$\rho$}}
+\newcommand{\uvarrho}           {\mbox{\boldmath$\varrho$}}
+\newcommand{\usigma}            {\mbox{\boldmath$\sigma$}}
+\newcommand{\uvarsigma}         {\mbox{\boldmath$\varsigma$}}
+\newcommand{\utau}              {\mbox{\boldmath$\tau$}}
+\newcommand{\uupsilon}          {\mbox{\boldmath$\upsilon$}}
+\newcommand{\uphi}              {\mbox{\boldmath$\phi$}}
+\newcommand{\uvarphi}           {\mbox{\boldmath$\varphi$}}
+\newcommand{\uchi}              {\mbox{\boldmath$\chi$}}
+\newcommand{\upsi}              {\mbox{\boldmath$\psi$}}
+\newcommand{\uomega}            {\mbox{\boldmath$\omega$}}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\newcommand{\uGamma}            {\mbox{\boldmath$\Gamma$}}
+\newcommand{\uDelta}            {\mbox{\boldmath$\Delta$}}
+\newcommand{\uTheta}            {\mbox{\boldmath$\Theta$}}
+\newcommand{\uLambda}           {\mbox{\boldmath$\Lambda$}}
+\newcommand{\uXi}               {\mbox{\boldmath$\Xi$}}
+\newcommand{\uPi}                {\mbox{\boldmath$\Pi$}}
+\newcommand{\uSigma}            {\mbox{\boldmath$\Sigma$}}
+\newcommand{\uUpsilon}          {\mbox{\boldmath$\Upsilon$}}
+\newcommand{\uPhi}              {\mbox{\boldmath$\Phi$}}
+\newcommand{\uPsi}              {\mbox{\boldmath$\Psi$}}
+\newcommand{\uOmega}            {\mbox{\boldmath$\Omega$}}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\def\myx{T}
+\def\curr{_{\rm curr}}
+\def\Dobs{{\bf \cal D}_{\rm obs}}
+\def\Didobs{{\bf \cal D}_{id,\rm obs}}
+\def\Supp{{\bf Supplementary Material}}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%\graphicspath{{./Sim_output/Paper_plots/},{U:/juliaworkdir/Julia_random_output/Plot_summary/},{U:/juliaworkdir/Julia_random_output/Plot_summary_3/}}
+%\graphicspath{{Plots/}}
+
+\newcommand{\zsr}[1]{\textcolor{blue}{#1}}
+
+\graphicspath{{"G:/My Drive/FromBox/GFLR_ME/Rcode/Application_Plots/"}{"G:/My Drive/FromBox/GFLR_ME/elsarticle-template/Plots/"}}
+\DeclareGraphicsExtensions{.png,.png} %.pdf}
+
+\usepackage{xr}
+\externaldocument{BFMANOVA_REV070123}
+% \makeatletter
+% \newcommand*{\addFileDependency}[1]{% argument=file name and extension
+% \typeout{(#1)}% latexmk will find this if $recorder=0
+% % however, in that case, it will ignore #1 if it is a .aux or 
+% % .pdf file etc and it exists! If it doesn't exist, it will appear 
+% % in the list of dependents regardless)
+% %
+% % Write the following if you want it to appear in \listfiles 
+% % --- although not really necessary and latexmk doesn't use this
+% %
+% \@addtofilelist{#1}
+% %
+% % latexmk will find this message if #1 doesn't exist (yet)
+% \IfFileExists{#1}{}{\typeout{No file #1.}}
+% }\makeatother
+
+% \newcommand*{\myexternaldocument}[1]{%
+% \externaldocument{#1}%
+% \addFileDependency{#1.tex}%
+% \addFileDependency{#1.aux}%
+% }
+% \myexternaldocument{BFMANOVA_REV070123}
+
+\begin{document}
+%\clearpage\pagebreak\newpage
+\pagestyle{fancy}
+\fancyhf{}
+\rhead{\bfseries\thepage}
+\lhead{\bfseries SUPPLEMENTARY MATERIAL}
+
+\baselineskip 20pt
+\vspace{-0.5cm}
+\begin{center}
+{\LARGE{Supplementary Material for \\
+ \bf{An approximate Bayes factor-based high dimensional MANOVA using random projections}}}
+\end{center}
+
+
+\setcounter{equation}{0}
+\setcounter{page}{1}
+\setcounter{table}{0}
+\setcounter{figure}{0}
+\setcounter{section}{0}
+
+\renewcommand{\theequation}{S.\arabic{equation}}
+\renewcommand{\thesubsection}{S.\arabic{section}.\arabic{subsection}}
+\renewcommand{\thesection}{S.\arabic{section}}
+\renewcommand{\thepage}{S.\arabic{page}}
+\renewcommand{\thetable}{S.\arabic{table}}
+\renewcommand{\thefigure}{S.\arabic{figure}}
+\baselineskip=12pt
+\baselineskip=15pt
+\begin{center}
+Roger S. Zoh\\
+Department of Epidemiology \& Biostatistics\\
+	   Indiana University, Bloomington, IN 47405, USA\\
+rszoh@iu.edu\\
+Fangzheng Xie\\
+Department of Statistics\\
+	   Indiana University, Bloomington, IN 47408, USA\\
+fxie@iu.edu\\
+%\hskip 5mm \\
+
+
+% Raymond J. Carroll\\
+% Department of Statistics, Texas A\&M University,\\ 3143 TAMU, College Station, TX 77843-3143, USA\\
+% School of Mathematical Sciences, University of Technology,\\ Sydney, Broadway NSW 2007, Australia \\
+% carroll@stat.tamu.edu\\
+% \hskip 5mm \\
+% Bani K. Mallick\\
+% Department of Statistics, Texas A\&M University,\\ 3143 TAMU, College Station, TX 77843-3143, USA\\
+% bmallick@stat.tamu.edu\\
+\end{center}
+
+\baselineskip=16pt
+\vspace{1in}
+
+\begin{abstract}
+This is the Supplementary material submitted with the manuscript titled: An approximate Bayes factor based high dimensional MANOVA using random projections. This supplementary material includes additional Tables for the simulation results in Section 3.2 of the manuscript. 
+\end{abstract}
+% In \ref{sec:sec2}, we present additional Figures. Finally, in Section~\ref{sec:sec3} we provide the MCMC steps.
+%The Supplementary Materials are organized as follows. Section~\ref{sec:secS.10} contains additional tables summarizing power estimates from the 5 tests considered in the main manuscript (RMPBT, RAPTT, BS96, SD08, and CQ10). In Section~\ref{sec:secS.30} discusses the deterministic projection based test which obtains the projection matrix from a singular value decomposition (SVD) of the pooled sample covariance matrix.  Finally, in Section~\ref{sec:secS.20} we elaborate on  the properties of the test based on Bayes factor obtained assuming a proper joint \Normal-\Invwish~prior for the nuisance parameters, along with a power analysis between the derived test and our proposed test RMPBT.
+% \newpage
+
+\section{Additional derivation}
+
+\subsection{Choices of $m$, $\tau^{\star}_{ij}$, and $\gamma^{\star}_{ij}$ for the }
+
+Using a similar argument as in Section 2.2.2, we then have: 
+%{\color{blue}[Why are these notations with double-star superscripts?]}:
+
+\be
+    f^{\star}_{\;0}(\tau^{\star}_{ij},\gamma^{\star}_{ij}) &=&\frac{1+\eta^{\star}_{ij}}{\eta^{\star}_{ij}} \left\{ \frac{(n_i +n_j - m - 1)C^{\star}_{ij}}{m(1 - C^{\star}_{ij})} \right\},\nonumber \\
+    C^{\star}_{ij} &=& \frac{1+\eta^{\star}_{ij}}{\eta^{\star}_{ij}}\left\{ 1 - \{\gamma^{\star}_{ij}(1+\eta^{\star}_{ij})^{m/2} \}^{-2/(n_i+n_j-1)}  \right\} \nonumber \\
+    \eta^{\star}_{ij} &=& n_{0,ij}/\tau^{\star}_{ij}
+\ee
+for Bayes factor in Equation (8).
+Recalling that $\forall (l,k) \in \mathcal{P}$, $f^{\star}_{lk} \stackrel{id}{\sim} \uF_{m, n_l +n_k - m-1}$ when $H_0$ is true, we can select $f^{\star}_{\;0}(\tau^{\star}_{ij},\gamma^{\star}_{ij})$ so that our test has the same size as an equivalent frequentist test. Namely, for a significance level $\alpha \in (0, 0.5)$, we will select $f^{\star}_{\;0}(\tau^{\star}_{ij},\gamma^{\star}_{ij})$ so that 
+$Pr\{\max\{f^{\star}_{12}(\uPhi), f^{\star}_{13}(\uPhi), \cdots, f^{\star}_{(G-1)G}(\uPhi)\} > f^{\star}_{0}(\tau^{\star}_{ij},\gamma^{\star}_{ij}, \alpha)\} = \alpha$ when $H_{0}$ is true. However, obtaining the upper $\alpha$ percentile of the maximum of dependent F distributed variables is a difficult task. Using a Monte Carlo step would lead to a significant increase in computation. Under the assumption of common group covariance matrices when $H_0$ is true, we have that: 
+
+$$
+f^{\star}_{ij}(\tau^{\star}_{ij},\ugamma^{\star}_{ij}, \alpha) = \arg\max_{u} \left\{ \left(\prod_{1 \leq i < j \leq G} \uF^{-1}_{m, n_i+n_j-m-1}(u) \right) -(1-\alpha) \right\}  ,$$
+
+where $\uF_{a, b}(\theta)$ denotes the upper $\theta$ percentile of an $\uF$ distribution with $a$ and $b$ degrees-of-freedom and $\uF^{-1}_{a, b}$, its inverse function. We can minimize that function using any optimization routine in R. 
+To obtain a recommended value for $m$, denoted $m^{\star}$, we use the following approach. For each pair $(i, j)$ with $1 \leq i < j \leq G$, we find the value of $m$, denoted, $m_{ij}$ that minimizes $\uF_{m, n_i+n_j-m-1}(\alpha)$, the $\alpha$ upper percentile of a central F-distribution with degrees of freedom $m$ and $n_i+n_j-m-1$. We choose $m$, which we denote as $m^{\star}_{n}$, as: 
+$$
+m^{\star} = m^{\star}_{n}  = \min\left( m_{12}, m_{13}, \cdots, m_{(G-1)G} \right).
+$$
+With a choice of $m^{\star}$, we can obtain $\tau^{\star}_{lk}$, and $\gamma^{\star}_{lk}$ as
+$$
+\tau^{\star}_{lk} = \frac{n_{0,lk}}{f^{\star}_{ij}(\tau^{\star}_{ij},\ugamma^{\star}_{ij}, \alpha) - 1}, \mbox{and}\; 
+\ugamma^{\star}_{lk} = \left\{ 1 + \eta^{\star}_{lk}\right\}^{-m^{\star}/2}\left\{ 1 - \frac{\eta^{\star}_{lk}}{1 + \eta^{\star}_{lk} C^{\star}_{lk}} \right\}^{-(n_l+n_k -1)/2}, \nonumber
+$$
+for all $(l,k) \in \mathcal{P}$ and ${C^{\star}_{lk}}/{(1 - C^{\star}_{lk})} = { \eta^{\star}_{lk} m^{\star}}/\{(1+ \eta^{\star}_{lk})(n - m^{\star} -(G-1))\}=f^{\star}_{ij}(\tau^{\star}_{ij},\ugamma^{\star}_{ij}, \alpha).$ 
+
+
+%This approximation works well for small values of $\alpha$ which we will tend to be concerned with. We plot the exact and the estimated quantile for $f^{\star}_{ij}$ based on a single random projection with the case of independence (maximum of independent variables identically distributed according to a F-distribution) added for comparison (see Figure \ref{fig:fmaxquant}).
+
+\section{Additional Tables}	
+%\textcolor{red}{Here we provide additional results from the simulation. }
+%------------------------------------------------------------------------
+%---- case2 G= 3
+\begin{table}[H]
+\centering
+\caption{ Empirical estimates of the power for the tests $\widetilde{\psi}^{\star}$ and $\widetilde{\psi}^{\star}$ when data are simulated as in case 2 with $G = 3$. Note here $\uSigma_i$ refers to the true covariance matrix, $i = 1,\ldots,6$. }
+%Alternative 1 and Group 3, case1 (Pairwise BF)}
+\label{tab:table1}
+\resizebox{\columnwidth}{!}{%
+\begin{tabular}{|rr|rrrrrr|rrrlll|} \hline
+  &&\multicolumn{6}{c|}{ $\widetilde{\psi}^{\star}$} & \multicolumn{6}{c|}{ $\widetilde{\psi}^{\star}$} \\ \hline
+   & $\uSigma_i$ & $p_0 = 1$ & $p_0 = 0.99$ & $p_0 = 0.95$ & $p_0 = 0.8$ & $p_0 = 0.75$ & $p_0 = 0.5$ & $p_0 = 1$ & $p_0 = 0.99$ & $p_0 = 0.95$ & $p_0 = 0.8$ & $p_0 = 0.75$ & $p_0 = 0.5$ \\ 
+  \hline
+    \multirow{6}{*}{\rotatebox[origin=c]{90}{$n=50, p=200$}}
+  & $i = 1$ & 0.034 & 0.926 & 0.878 & 0.807 & 0.808 & 0.732 & 0.033 & 0.928 & 0.876 & 0.795 & 0.791 & 0.727 \\ 
+   & $i = 2$ & 0.031 & 0.996 & 0.969 & 0.952 & 0.935 & 0.867 & 0.034 & 0.995 & 0.974 & 0.925 & 0.931 & 0.878 \\ 
+   & $i = 3$  & 0.038 & 0.999 & 1.000 & 1.000 & 1.000 & 1.000 & 0.038 & 1.000 & 1.000 & 1.000 & 1.000 & 1.000 \\ 
+   & $i = 4$ & 0.049 & 0.980 & 0.948 & 0.901 & 0.904 & 0.839 & 0.049 & 0.984 & 0.953 & 0.887 & 0.911 & 0.831 \\ 
+   & $i = 5$ & 0.063 & 1.000 & 0.997 & 0.996 & 0.992 & 0.971 & 0.064 & 1.000 & 1.000 & 0.992 & 0.992 & 0.972 \\ 
+   & $i = 6$ & 0.056 & 0.997 & 0.993 & 0.988 & 0.979 & 0.949 & 0.073 & 0.998 & 0.991 & 0.977 & 0.986 & 0.946 \\ 
+  \cline{3-14} \\
+  \cline{3-14}
+     \multirow{6}{*}{\rotatebox[origin=c]{90}{$n=70,p=1000$}}  
+  & $i = 1$ & 0.044 & 0.996 & 0.985 & 0.986 & 0.973 & 0.950 & 0.041 & 0.996 & 0.993 & 0.971 & 0.979 & 0.943 \\ 
+   & $i = 2$ & 0.051 & 1.000 & 0.998 & 0.997 & 0.997 & 0.988 & 0.031 & 0.999 & 0.999 & 0.994 & 0.994 & 0.983 \\ 
+    & $i = 3$ & 0.065 & 1.000 & 1.000 & 1.000 & 1.000 & 1.000 & 0.062 & 1.000 & 1.000 & 1.000 & 1.000 & 1.000 \\ 
+    & $i = 4$ & 0.043 & 1.000 & 0.997 & 0.993 & 0.989 & 0.978 & 0.036 & 0.999 & 0.999 & 0.988 & 0.989 & 0.981 \\ 
+   & $i = 5$ & 0.065 & 1.000 & 1.000 & 1.000 & 0.999 & 0.995 & 0.065 & 1.000 & 1.000 & 1.000 & 0.999 & 0.999 \\ 
+    & $i = 6$ & 0.049 & 1.000 & 0.999 & 0.997 & 0.995 & 0.990 & 0.047 & 0.999 & 0.999 & 0.998 & 0.994 & 0.993 \\   
+   \hline
+\end{tabular}
+}
+\end{table}
+
+
+%---- case2 G = 5
+\begin{table}[H]
+\centering
+\caption{ Empirical estimates of the power for the tests $\widetilde{\psi}^{\star}$ and $\widetilde{\psi}^{\star}$ when data are simulated as in case 2 with $G = 5$. Note here $\uSigma_i$ refers to the true covariance matrix, $i = 1,\ldots,6$. }
+%Alternative 1 and Group 3, case1 (Pairwise BF)}
+\label{tab:table1}
+\resizebox{\columnwidth}{!}{%
+\begin{tabular}{|rr|rrrrrr|rrrlll|} \hline
+  &&\multicolumn{6}{c|}{ $\widetilde{\psi}^{\star}$} & \multicolumn{6}{c|}{ $\widetilde{\psi}^{\star}$} \\ \hline
+   & $\uSigma_i$ & $p_0 = 1$ & $p_0 = 0.99$ & $p_0 = 0.95$ & $p_0 = 0.8$ & $p_0 = 0.75$ & $p_0 = 0.5$ & $p_0 = 1$ & $p_0 = 0.99$ & $p_0 = 0.95$ & $p_0 = 0.8$ & $p_0 = 0.75$ & $p_0 = 0.5$ \\ 
+  \hline
+    \multirow{6}{*}{\rotatebox[origin=c]{90}{$n=50, p=200$}}
+   & $i = 1$ & 0.039 & 1.000 & 0.999 & 0.993 & 0.996 & 0.979 & 0.039 & 1.000 & 0.997 & 0.998 & 0.989 & 0.965 \\ 
+    & $i = 2$ & 0.046 & 1.000 & 1.000 & 1.000 & 1.000 & 0.999 & 0.040 & 1.000 & 0.999 & 1.000 & 0.999 & 0.993 \\ 
+    & $i = 3$ & 0.044 & 1.000 & 1.000 & 1.000 & 1.000 & 1.000 & 0.026 & 1.000 & 1.000 & 1.000 & 1.000 & 1.000 \\ 
+   & $i = 4$ & 0.051 & 1.000 & 1.000 & 1.000 & 0.999 & 0.997 & 0.049 & 1.000 & 1.000 & 1.000 & 0.998 & 0.990 \\ 
+   & $i = 5$ & 0.063 & 1.000 & 1.000 & 1.000 & 1.000 & 1.000 & 0.070 & 1.000 & 1.000 & 1.000 & 1.000 & 1.000 \\ 
+   & $i = 6$ & 0.064 & 1.000 & 1.000 & 1.000 & 1.000 & 1.000 & 0.055 & 1.000 & 1.000 & 1.000 & 1.000 & 0.999 \\ 
+  \cline{3-14} \\
+  \cline{3-14}
+     \multirow{6}{*}{\rotatebox[origin=c]{90}{$n=70,p=1000$}}  
+   & $i = 1$ & 0.43 & 1.000 & 1.000 & 1.000 & 1.000 & 1.000 & 0.042 & 1.000 & 1.000 & 1.000 & 1.000 & 1.000 \\ 
+   & $i = 2$ & 0.036 & 1.000 & 1.000 & 1.000 & 1.000 & 1.000 & 0.034 & 1.000 & 1.000 & 1.000 & 1.000 & 1.000 \\ 
+   & $i = 3$ & 0.066 & 1.000 & 1.000 & 1.000 & 1.000 & 1.000 & 0.061 & 1.000 & 1.000 & 1.000 & 1.000 & 1.000 \\ 
+    & $i = 4$ & 0.041 & 1.000 & 1.000 & 1.000 & 1.000 & 1.000 & 0.027 & 1.000 & 1.000 & 1.000 & 1.000 & 1.000 \\ 
+    & $i = 5$ & 0.068 & 1.000 & 1.000 & 1.000 & 1.000 & 1.000 & 0.062 & 1.000 & 1.000 & 1.000 & 1.000 & 1.000 \\ 
+    & $i = 6$ & 0.057 & 1.000 & 1.000 & 1.000 & 1.000 & 1.000 & 0.052 & 1.000 & 1.000 & 1.000 & 1.000 & 1.000 \\   
+   \hline
+\end{tabular}
+}
+\end{table}
+
+
+
+
+%------------------------------------------------------------------------
+%------------------------------------------------------------------------
+% \subsection{Alternative 1}
+
+% {\color{blue}[I am having trouble understanding what these Tables represent (Table S.3 -- Table S.8). Maybe we should add some explanations about the contexts of these tables?]}
+
+% % latex table generated in R 4.1.0 by xtable 1.8-4 package
+% % Sat Dec  4 22:31:35 2021
+% \begin{table}[ht]
+% \centering
+% \caption{Alternative 1 and Group 3, case2}
+% \label{tab:table2}
+% \resizebox{\columnwidth}{!}{%
+% \begin{tabular}{|rrr|rrrrrr|rrrllllll|} \hline
+%  & &\multicolumn{7}{c|}{ $R_1$} & \multicolumn{6}{|c}{ $R_2$} \\ \hline
+%  &  & cp &  1 & 0.99 & 0.95 & 0.8 & 0.75 & 0.5 & 1 & 0.99 & 0.95 & 0.8 & 0.75 & 0.5 \\ 
+%   \hline
+%    & \multirow{6}{*}{\rotatebox[origin=c]{90}{$n=50, p=200$}}
+%  & 1 &  0.033 & 0.998 & 0.985 & 0.961 & 0.967 & 0.938 &  0.033 & 0.998 & 0.985 & 0.961 & 0.967 & 0.938 \\ 
+% & & 2 & 0.034 & 0.996 & 0.979 & 0.968 & 0.962 & 0.961 &  0.034 & 0.996 & 0.979 & 0.968 & 0.962 & 0.961 \\ 
+%  & &3 &  0.038 & 0.996 & 0.976 & 0.930 & 0.935 & 0.906 &  0.038 & 0.996 & 0.976 & 0.930 & 0.935 & 0.906 \\ 
+%  && 4 &  0.049 & 0.879 & 0.809 & 0.754 & 0.774 & 0.759 &  0.049 & 0.879 & 0.809 & 0.754 & 0.774 & 0.759 \\ 
+% && 5 &  0.064 & 0.793 & 0.724 & 0.678 & 0.677 & 0.698 &  0.064 & 0.793 & 0.724 & 0.678 & 0.677 & 0.698 \\ 
+%  && 6 &  0.073 & 0.566 & 0.454 & 0.426 & 0.460 & 0.460 &  0.073 & 0.566 & 0.454 & 0.426 & 0.460 & 0.460 \\ 
+%   \cline{3-15} \\
+%   \cline{3-15}
+%     & \multirow{6}{*}{\rotatebox[origin=c]{90}{$n=70,p=1000$}} 
+%  & 1  & 0.021 & 0.810 & 0.741 & 0.732 & 0.713 & 0.599 &  0.021 & 0.810 & 0.741 & 0.732 & 0.713 & 0.599 \\ 
+%  && 2  & 0.031 & 0.687 & 0.636 & 0.673 & 0.690 & 0.648 &  0.031 & 0.687 & 0.636 & 0.673 & 0.690 & 0.648 \\ 
+%  && 3  & 0.062 & 0.572 & 0.553 & 0.502 & 0.514 & 0.432 &  0.062 & 0.572 & 0.553 & 0.502 & 0.514 & 0.432 \\ 
+%  && 4  & 0.036 & 0.416 & 0.373 & 0.370 & 0.416 & 0.349 &  0.036 & 0.416 & 0.373 & 0.370 & 0.416 & 0.349 \\ 
+%  && 5  & 0.065 & 0.321 & 0.289 & 0.308 & 0.339 & 0.291 &  0.065 & 0.321 & 0.289 & 0.308 & 0.339 & 0.291 \\ 
+%  && 6  & 0.047 & 0.207 & 0.183 & 0.192 & 0.194 & 0.190 &  0.047 & 0.207 & 0.183 & 0.192 & 0.194 & 0.190 \\ 
+%    \hline
+% \end{tabular}
+% }
+% \end{table}
+
+% %\subsection{Case 2 - Group=3}
+% % latex table generated in R 4.1.0 by xtable 1.8-4 package
+% % Sat Dec  4 22:55:57 2021
+% \begin{table}[ht]
+% \caption{Alternative 1,  Group=3, case2 (Common Covariance BF)}
+% \centering
+% \resizebox{\columnwidth}{!}{%
+% \begin{tabular}{|rrr|rrrrrr|rrrllllll|} \hline
+%  & &\multicolumn{7}{c|}{ $R_1$} & \multicolumn{6}{|c}{ $R_2$} \\ \hline
+%  &  & cp &  1 & 0.99 & 0.95 & 0.8 & 0.75 & 0.5 & 1 & 0.99 & 0.95 & 0.8 & 0.75 & 0.5 \\ 
+%   \hline
+%    & \multirow{6}{*}{\rotatebox[origin=c]{90}{$n=50, p=200$}} 
+% & 1 &  0.034 & 0.066 & 0.057 & 0.037 & 0.059 & 0.057 & 0.034 & 0.066 & 0.057 & 0.037 & 0.059 & 0.057 \\ 
+% &  & 2 &  0.031 & 0.061 & 0.069 & 0.049 & 0.068 & 0.058 & 0.031 & 0.061 & 0.069 & 0.049 & 0.068 & 0.058 \\ 
+% & & 3 &  0.038 & 0.041 & 0.043 & 0.033 & 0.046 & 0.041 & 0.038 & 0.041 & 0.043 & 0.033 & 0.046 & 0.041 \\ 
+% && 4 &  0.049 & 0.083 & 0.066 & 0.068 & 0.077 & 0.067 & 0.049 & 0.083 & 0.066 & 0.068 & 0.077 & 0.067 \\ 
+% & & 5 &  0.063 & 0.091 & 0.078 & 0.084 & 0.086 & 0.081 & 0.063 & 0.091 & 0.078 & 0.084 & 0.086 & 0.081 \\ 
+% && 6 & 0.056 & 0.076 & 0.062 & 0.068 & 0.071 & 0.062 & 0.056 & 0.076 & 0.062 & 0.068 & 0.071 & 0.062 \\ 
+%      \cline{3-15} \\
+%   \cline{3-15}
+%    & \multirow{6}{*}{\rotatebox[origin=c]{90}{$n=70,p=1000$}} 
+%   & 1 &  0.024 & 0.041 & 0.030 & 0.031 & 0.032 & 0.035 & 0.024 & 0.041 & 0.030 & 0.031 & 0.032 & 0.035 \\ 
+%  & & 2 &  0.051 & 0.045 & 0.051 & 0.052 & 0.044 & 0.043 & 0.051 & 0.045 & 0.051 & 0.052 & 0.044 & 0.043 \\ 
+% &  &  3 & 0.065 & 0.056 & 0.071 & 0.060 & 0.061 & 0.072 & 0.065 & 0.056 & 0.071 & 0.060 & 0.061 & 0.072 \\ 
+% &  & 4 &  0.043 & 0.048 & 0.053 & 0.044 & 0.032 & 0.049 & 0.043 & 0.048 & 0.053 & 0.044 & 0.032 & 0.049 \\ 
+% &  & 5 &  0.065 & 0.070 & 0.085 & 0.064 & 0.071 & 0.060 & 0.065 & 0.070 & 0.085 & 0.064 & 0.071 & 0.060 \\ 
+%  &  & 6 &  0.049 & 0.061 & 0.060 & 0.062 & 0.066 & 0.055 & 0.049 & 0.061 & 0.060 & 0.062 & 0.066 & 0.055 \\ 
+%    \hline
+% \end{tabular}
+% }
+% \end{table}
+
+
+% \subsection{Alternative 1 (Common Variance)}
+% %\subsection{Case 1 Group = 5}
+% % latex table generated in R 4.1.0 by xtable 1.8-4 package
+% % Sat Dec  4 22:33:34 2021
+% \begin{table}[ht]
+% \centering
+% \caption{Alternative 1 and Group 5, case1 ($BF_I$)}
+% \label{tab:table2}
+% \resizebox{\columnwidth}{!}{%
+% \begin{tabular}{|rrr|rrrrrr|rrrllllll|} \hline
+%  & &\multicolumn{7}{c|}{ $R_1$} & \multicolumn{6}{|c}{ $R_2$} \\ \hline
+%  &  & cp &  1 & 0.99 & 0.95 & 0.8 & 0.75 & 0.5 & 1 & 0.99 & 0.95 & 0.8 & 0.75 & 0.5 \\ 
+%   \hline
+%    & \multirow{6}{*}{\rotatebox[origin=c]{90}{$n=50, p=200$}}
+%   & 1 &  0.029 & 0.852 & 0.706 & 0.675 & 0.680 & 0.643  & 0.029 & 0.852 & 0.706 & 0.675 & 0.680 & 0.643 \\ 
+%  & & 2 &  0.040 & 0.817 & 0.650 & 0.624 & 0.628 & 0.657  & 0.040 & 0.817 & 0.650 & 0.624 & 0.628 & 0.657 \\ 
+%  & & 3 &  0.026 & 0.820 & 0.632 & 0.586 & 0.584 & 0.562  & 0.026 & 0.820 & 0.632 & 0.586 & 0.584 & 0.562 \\ 
+%  & & 4 &  0.049 & 0.491 & 0.366 & 0.393 & 0.377 & 0.385  & 0.049 & 0.491 & 0.366 & 0.393 & 0.377 & 0.385 \\ 
+%  &  & 5 &  0.070 & 0.404 & 0.320 & 0.329 & 0.317 & 0.334  & 0.070 & 0.404 & 0.320 & 0.329 & 0.317 & 0.334 \\ 
+%  &  & 6 &  0.055 & 0.264 & 0.173 & 0.225 & 0.200 & 0.214  & 0.055 & 0.264 & 0.173 & 0.225 & 0.200 & 0.214 \\ 
+%    \cline{3-15} \\
+%   \cline{3-15}
+%     & \multirow{6}{*}{\rotatebox[origin=c]{90}{$n=70,p=1000$}}  
+%   & 1 &  0.021 & 0.266 & 0.235 & 0.239 & 0.227 & 0.234  & 0.021 & 0.266 & 0.235 & 0.239 & 0.227 & 0.234 \\ 
+%  &  & 2 &  0.034 & 0.217 & 0.219 & 0.234 & 0.237 & 0.273  & 0.034 & 0.217 & 0.219 & 0.234 & 0.237 & 0.273 \\ 
+%   & & 3 &  0.061 & 0.225 & 0.201 & 0.217 & 0.210 & 0.167  & 0.061 & 0.225 & 0.201 & 0.217 & 0.210 & 0.167 \\ 
+%  & & 4 &  0.027 & 0.130 & 0.136 & 0.136 & 0.145 & 0.161  & 0.027 & 0.130 & 0.136 & 0.136 & 0.145 & 0.161 \\ 
+%  & & 5 &   0.062 & 0.137 & 0.133 & 0.136 & 0.152 & 0.176  & 0.062 & 0.137 & 0.133 & 0.136 & 0.152 & 0.176 \\ 
+%  &  & 6 &  0.052 & 0.110 & 0.080 & 0.109 & 0.124 & 0.108  & 0.052 & 0.110 & 0.080 & 0.109 & 0.124 & 0.108 \\ 
+%    \hline
+% \end{tabular}
+% }
+% \end{table}
+
+% %\newpage
+% \subsection{Alternative 1, Case 2 Group = 5 ($BF_I$)}
+% % latex table generated in R 4.1.0 by xtable 1.8-4 package
+% % Sat Dec  4 22:35:47 2021
+% \begin{table}[ht]
+% \centering
+% \caption{Alternative 1 and Group 5, case2}
+% \label{tab:table2}
+% \resizebox{\columnwidth}{!}{%
+% \begin{tabular}{|rrr|rrrrrr|rrrllllll||} \hline
+%  & &\multicolumn{7}{c|}{ $R_1$} & \multicolumn{6}{|c}{ $R_2$} \\ \hline
+%  &  & cp &  1 & 0.99 & 0.95 & 0.8 & 0.75 & 0.5 & 1 & 0.99 & 0.95 & 0.8 & 0.75 & 0.5 \\ 
+%   \hline
+%    & \multirow{6}{*}{\rotatebox[origin=c]{90}{$n=50, p=200$}}
+%  & 1 &  0.029 & 1 & 1 & 1 & 0.999 & 0.999  & 0.029 & 1 & 1 & 1 & 0.999 & 0.999 \\ 
+% &  & 2 &  0.040 & 1 & 0.999 & 1 & 0.999 & 1  & 0.040 & 1 & 0.999 & 1 & 0.999 & 1 \\ 
+%  &  & 3 &  0.026 & 1 & 0.999 & 1 & 0.999 & 0.995  & 0.026 & 1 & 0.999 & 1 & 0.999 & 0.995 \\ 
+%  &  & 4 &  0.049 & 0.999 & 0.991 & 0.994 & 0.989 & 0.970  & 0.049 & 0.999 & 0.991 & 0.994 & 0.989 & 0.970 \\ 
+%  &  & 5 &  0.070 & 0.993 & 0.973 & 0.975 & 0.959 & 0.956  & 0.070 & 0.993 & 0.973 & 0.975 & 0.959 & 0.956 \\ 
+% & & 6 & 0.055 & 0.868 & 0.800 & 0.766 & 0.732 & 0.737  & 0.055 & 0.868 & 0.800 & 0.766 & 0.732 & 0.737 \\ 
+%      \cline{3-15} \\
+%   \cline{3-15}
+%     & \multirow{6}{*}{\rotatebox[origin=c]{90}{$n=70,p=1000$}}  
+%    & 1 &  0.021 & 0.997 & 0.988 & 0.979 & 0.971 & 0.944  & 0.021 & 0.997 & 0.988 & 0.979 & 0.971 & 0.944 \\ 
+% & & 2 &  0.034 & 0.978 & 0.965 & 0.950 & 0.958 & 0.962  & 0.034 & 0.978 & 0.965 & 0.950 & 0.958 & 0.962 \\ 
+% & & 3 &  0.061 & 0.917 & 0.881 & 0.828 & 0.826 & 0.751  & 0.061 & 0.917 & 0.881 & 0.828 & 0.826 & 0.751 \\ 
+% & & 4 &  0.027 & 0.772 & 0.733 & 0.702 & 0.717 & 0.696  & 0.027 & 0.772 & 0.733 & 0.702 & 0.717 & 0.696 \\ 
+% & & 5 &  0.062 & 0.575 & 0.562 & 0.555 & 0.531 & 0.555  & 0.062 & 0.575 & 0.562 & 0.555 & 0.531 & 0.555 \\ 
+% & & 6 &  0.052 & 0.335 & 0.329 & 0.341 & 0.327 & 0.332  & 0.052 & 0.335 & 0.329 & 0.341 & 0.327 & 0.332 \\ 
+%    \hline
+% \end{tabular}
+% }
+% \end{table}
+	
+% %------------------------------------------------------------------------
+% %------------------------------------------------------------------------
+% %\subsection{Case 1 - Group=5}
+% % latex table generated in R 4.1.0 by xtable 1.8-4 package
+% % Sat Dec  4 22:57:35 2021
+% \begin{table}[ht]
+% \caption{Alternative 1,  Group=5, case1 (Common Covariance BF)}
+% \centering
+% \resizebox{\columnwidth}{!}{%
+% \begin{tabular}{|rrr|rrrrrr|rrrllllll|} \hline
+%  & &\multicolumn{7}{c|}{ $R_1$} & \multicolumn{6}{|c}{ $R_2$} \\ \hline
+%  &  & cp &  1 & 0.99 & 0.95 & 0.8 & 0.75 & 0.5 & 1 & 0.99 & 0.95 & 0.8 & 0.75 & 0.5 \\ 
+%   \hline
+%    & \multirow{6}{*}{\rotatebox[origin=c]{90}{$n=50, p=200$}} 
+%  & 1 & 0.039 & 0.040 & 0.035 & 0.040 & 0.052 & 0.039 &  0.039 & 0.040 & 0.035 & 0.040 & 0.052 & 0.039 \\ 
+% &   & 2 & 0.046 & 0.056 & 0.047 & 0.052 & 0.058 & 0.050 &  0.046 & 0.056 & 0.047 & 0.052 & 0.058 & 0.050 \\ 
+% &  & 3 & 0.044 & 0.052 & 0.037 & 0.038 & 0.043 & 0.042 &  0.044 & 0.052 & 0.037 & 0.038 & 0.043 & 0.042 \\ 
+% &  & 4 & 0.051 & 0.066 & 0.055 & 0.058 & 0.067 & 0.061 &  0.051 & 0.066 & 0.055 & 0.058 & 0.067 & 0.061 \\ 
+% & & 5 & 0.063 & 0.076 & 0.070 & 0.080 & 0.077 & 0.087 &  0.063 & 0.076 & 0.070 & 0.080 & 0.077 & 0.087 \\ 
+% &   & 6 &  0.064 & 0.075 & 0.051 & 0.063 & 0.076 & 0.065 &  0.064 & 0.075 & 0.051 & 0.063 & 0.076 & 0.065 \\
+%        \cline{3-15} \\
+%   \cline{3-15}
+%    & \multirow{6}{*}{\rotatebox[origin=c]{90}{$n=70,p=1000$}}
+%  & 1   & 0.031 & 0.034 & 0.031 & 0.025 & 0.025 & 0.026 &  0.031 & 0.034 & 0.031 & 0.025 & 0.025 & 0.026 \\ 
+% & & 2   & 0.036 & 0.050 & 0.041 & 0.053 & 0.038 & 0.034 &  0.036 & 0.050 & 0.041 & 0.053 & 0.038 & 0.034 \\ 
+% &  & 3   & 0.066 & 0.059 & 0.054 & 0.051 & 0.058 & 0.060 &  0.066 & 0.059 & 0.054 & 0.051 & 0.058 & 0.060 \\ 
+% & & 4   & 0.041 & 0.046 & 0.044 & 0.045 & 0.053 & 0.027 &  0.041 & 0.046 & 0.044 & 0.045 & 0.053 & 0.027 \\ 
+% &  & 5   & 0.068 & 0.066 & 0.071 & 0.070 & 0.071 & 0.053 &  0.068 & 0.066 & 0.071 & 0.070 & 0.071 & 0.053 \\ 
+% & & 6   & 0.057 & 0.061 & 0.055 & 0.049 & 0.050 & 0.057 &  0.057 & 0.061 & 0.055 & 0.049 & 0.050 & 0.057 \\ 
+%    \hline
+% \end{tabular}
+% }
+% \end{table}
+
+% %\subsection{Case 2 - Group=5}
+% % latex table generated in R 4.1.0 by xtable 1.8-4 package
+% % Sat Dec  4 22:58:49 2021
+% \begin{table}[ht]
+% \caption{Alternative 1,  Group=5, case2 (Common Covariance BF)}
+% \centering
+% \resizebox{\columnwidth}{!}{%
+% \begin{tabular}{|rrr|rrrrrr|rrrllllll|} \hline
+%  & &\multicolumn{7}{c|}{ $R_1$} & \multicolumn{6}{|c}{ $R_2$} \\ \hline
+%  &  & cp &  1 & 0.99 & 0.95 & 0.8 & 0.75 & 0.5 & 1 & 0.99 & 0.95 & 0.8 & 0.75 & 0.5 \\ 
+%   \hline
+%    & \multirow{6}{*}{\rotatebox[origin=c]{90}{$n=50, p=200$}} 
+%  & 1  & 0.039 & 0.087 & 0.100 & 0.071 & 0.069 & 0.080 &  0.039 & 0.087 & 0.100 & 0.071 & 0.069 & 0.080 \\ 
+% & & 2  & 0.046 & 0.090 & 0.101 & 0.080 & 0.074 & 0.078 &  0.046 & 0.090 & 0.101 & 0.080 & 0.074 & 0.078 \\ 
+% & & 3  & 0.044 & 0.056 & 0.047 & 0.036 & 0.044 & 0.051 &  0.044 & 0.056 & 0.047 & 0.036 & 0.044 & 0.051 \\ 
+% & & 4  & 0.051 & 0.114 & 0.121 & 0.087 & 0.099 & 0.091 &  0.051 & 0.114 & 0.121 & 0.087 & 0.099 & 0.091 \\ 
+% & & 5  & 0.063 & 0.125 & 0.139 & 0.101 & 0.105 & 0.106 &  0.063 & 0.125 & 0.139 & 0.101 & 0.105 & 0.106 \\ 
+% & & 6  & 0.064 & 0.081 & 0.074 & 0.072 & 0.079 & 0.062 &  0.064 & 0.081 & 0.074 & 0.072 & 0.079 & 0.062 \\ 
+%   \cline{3-15} \\
+%   \cline{3-15}
+%    & \multirow{6}{*}{\rotatebox[origin=c]{90}{$n=70,p=1000$}}
+%  & 1  & 0.031 & 0.031 & 0.032 & 0.031 & 0.031 & 0.031 &  0.031 & 0.031 & 0.032 & 0.031 & 0.031 & 0.031 \\ 
+% & & 2  & 0.036 & 0.058 & 0.044 & 0.055 & 0.043 & 0.048 &  0.036 & 0.058 & 0.044 & 0.055 & 0.043 & 0.048 \\ 
+% &  & 3  & 0.066 & 0.073 & 0.072 & 0.059 & 0.068 & 0.059 &  0.066 & 0.073 & 0.072 & 0.059 & 0.068 & 0.059 \\ 
+% & & 4  & 0.041 & 0.061 & 0.046 & 0.050 & 0.044 & 0.045 &  0.041 & 0.061 & 0.046 & 0.050 & 0.044 & 0.045 \\ 
+% &  & 5 & 0.068 & 0.074 & 0.073 & 0.077 & 0.062 & 0.068 &  0.068 & 0.074 & 0.073 & 0.077 & 0.062 & 0.068 \\ 
+% & & 6  & 0.057 & 0.059 & 0.044 & 0.047 & 0.056 & 0.051 &  0.057 & 0.059 & 0.044 & 0.047 & 0.056 & 0.051 \\ 
+%    \hline
+% \end{tabular}
+% }
+% \end{table}
+	
+	
+	
+\end{document}

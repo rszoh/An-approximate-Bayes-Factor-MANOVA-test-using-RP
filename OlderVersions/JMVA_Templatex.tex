@@ -1,0 +1,301 @@
+\documentclass[times,sort&compress,3p]{elsarticle}
+\journal{Journal of Multivariate Analysis}
+\usepackage[labelfont=bf]{caption}
+\renewcommand{\figurename}{Fig.}
+
+\usepackage{amsmath,amsfonts,amssymb,amsthm,booktabs,color,epsfig,graphicx,hyperref,url}
+
+\theoremstyle{plain}% Theorem-like structures provided by amsthm.sty
+\newtheorem{theorem}{Theorem}
+\newtheorem{exa}{Example}
+\newtheorem{rem}{Remark}
+\newtheorem{proposition}{Proposition}
+\newtheorem{lemma}{Lemma}
+\newtheorem{corollary}{Corollary}
+
+\theoremstyle{definition}
+\newtheorem{definition}{Definition}
+\newtheorem{remark}{Remark}
+\newtheorem{example}{Example}
+
+\begin{document}
+
+\begin{frontmatter}
+
+\title{Template for an article (no capital letters)}
+
+\author[1]{Author One (First name, then family name)}
+\author[2]{Author Two\corref{mycorrespondingauthor}}
+
+\address[1]{Address of Author One in her country's language and rules}
+\address[2]{Address of Author Two in his country's language and rules}
+
+\cortext[mycorrespondingauthor]{Corresponding author. Email address: \url{}}
+
+\begin{abstract}
+The abstract should be short, informative, and avoid external references as much as possible. Follows a list of a few keywords in alphabetical order, and then Classification Codes, available for free from MathSciNet; see \url{mathscinet.ams.org/mathscinet/freeTools.html?version=2}.
+\end{abstract}
+
+\begin{keyword} %alphabetical order
+A necessary keyword \sep
+My favorite keyword \sep
+Our last keyword.
+\MSC[2020] Primary 62H12 \sep
+Secondary 62F12
+\end{keyword}
+
+\end{frontmatter}
+
+\section{Introduction\label{sec:1}}
+
+Start typing your introduction here. Put the work in relation to previously published results. Clearly state what is new. Include a short plan of the paper at the end, referring to sections. For example, methods are in Section~\ref{sec:2}. In Section~\ref{sec:3} are the results. Our concluding remarks are in Section~\ref{sec:4}.
+
+\section{Methods\label{sec:2}}
+
+Here are our methods. Often it is natural to define notion and notation in this section.
+
+\section{Results\label{sec:3}}
+
+Here are our results. The results should usually be presented as theorems, propositions, together with their proofs.
+
+\begin{theorem} Assume .....
+\end{theorem}
+\begin{proof}[\textbf{\upshape Proof:}] Proofs are important....................
+\end{proof}
+or
+\begin{proof}[\textbf{\upshape Proof of Theorem 1:}] Proofs are important....................
+\end{proof}
+\begin{proposition} Assume .....
+\end{proposition}
+\begin{lemma} Assume .....
+\end{lemma}
+\begin{corollary} Assume .....
+\end{corollary}
+\begin{definition}Assume ..... Note that text is upshaped.
+\end{definition}
+\begin{remark} Assume ..... Note that text is upshaped.
+\end{remark}
+\begin{example} Assume .....  Note that text is upshaped.
+\end{example}
+
+There are no strict rules about tables and figures. In the text figures should be referred as Fig. \ref{fig1}. A general recommendation for tables is to use as few horizontal and vertical lines as possible. However one line under the heading and one line under the table should be used. The journal uses table headings. Table headings and figure texts should be self contained (within reasonable limits) so that readers can follow the presentation without consulting the main body of the text too much.
+
+\begin{figure}[]\label{figX} %choose were to pu the figure, usually on top
+
+\caption{Figure text should usually appear under .....}
+\end{figure}
+\begin{table}[]\label{tabX}
+\caption{This article ....}
+
+\vskip-0.3cm\hrule
+
+\smallskip
+\centering\small
+
+\begin{tabular}{cccccc}
+
+1 & 2 & 3 & 4 & 7\\
+2 & 8 & 9 & 6 & 5
+
+\end{tabular}
+\hrule
+\end{table}
+
+
+\begin{table}[t!]\label{tabXX}
+\caption{This article ....(or for smaller tables)}
+\centering
+\vskip-.3cm
+\rule[0pt]{5.1cm}{0.4pt}
+
+\smallskip
+\small
+\begin{tabular}{cccccc}
+1 & 2 & 3 & 4 & 7\\
+2 & 8 & 9 & 6 & 5\\
+\end{tabular}
+
+\rule[0pt]{5.1cm}{0.4pt}
+\end{table}
+
+\section{Conclusions\label{sec:4}}
+
+Here are our conclusions.
+
+\section*{Acknowledgments}
+
+We thank the Editor, Associate Editor and referees, as well as our financial sponsors.
+
+\section*{Appendix}
+
+Essential details needed to make the paper reasonably self contained can be presented here.
+
+\medskip
+Instead of using the Appendix one can introduce a new section "Technical details" before the Acknowledgments.
+
+\section*{References}
+There are several ways to include references into the article. For example, using Bibtex and the file "trial" has been created so that you can see how one can do. To refer to the content of the file use for instance
+\cite{andersson,anderson1993totally,lauritzen1996graphical,gratzer2002general} or \cite{drton2008iterative}. At the end of this template "trial.bib" is included and below there is also an example of how to include references in an alternative way.
+%\section*{References}
+
+% To ensure accuracy, get them from MathSciNet whenever possible. Typeset them with BibTeX using JMVA's style file, \texttt{myjmva.bst}.
+%\bibliography{}
+\bibliographystyle{myjmva}
+%\begin{thebibliography}
+\bibliography{trial}
+%\end{document}
+
+
+%\bibliographystyle{myjmva}
+\section*{}
+or one can use (see the template for details)
+\begin{thebibliography}{99}
+
+\bibitem[{Agresti(2013)}]{Agresti13}
+\bibinfo{author}{A.~Agresti}, \bibinfo{title}{{Categorical Data Analysis}},
+  \bibinfo{publisher}{Wiley, Hoboken}, \bibinfo{year}{2013}.
+%Type = Article
+\bibitem[{Aitchison and Silvey(1958)}]{aitchison1958maximum}
+\bibinfo{author}{J.~Aitchison}, \bibinfo{author}{S.D.~Silvey},
+  \bibinfo{title}{Maximum-likelihood estimation of parameters subject to
+  restraints}, \bibinfo{journal}{The Annals of Mathematical Statistics}
+  \bibinfo{volume}{29} (\bibinfo{year}{1958}) \bibinfo{pages}{813--828}.
+ \bibitem{Balsu} A. Balsubramani, S. Dasgupta, Y. Freund, \newblock The fast
+convergence of incremental PCA, \newblock Advances in Neural Information
+Processing Systems 26 (2013) 3174--3182.
+
+\end{thebibliography}
+
+\medskip
+
+{\bf Supplementary material which has to be uploaded separately:} The authors can put material in a Supplementary section which will not be reviewed. Computer programs HAVE TO be put in this section if there are no links to existing sources. The idea is that readers should be able to perform the computations used in the article. Moreover, tables, figures, simulations and data analysis can be put into the supplementary section. Besides trivial calculations NO proofs should appear as supplementary material.
+
+\newpage
+\centerline{\Large{\textbf{Stylistic guidelines}}}
+
+\noindent
+\begin{description}
+\item[$\bullet$] The length of an JMVA article is 15-25 pages. There exists a special track for young researchers where somewhat shorter contributions can be accepted (see below).
+\item[$\bullet$]  Number only those equations that are referred to in the text.
+\item[$\bullet$] Enumerations should list the first and last element only, i.e., write $\{1, \ldots, n\}$ (NOT $\{1, 2, \ldots , n\}$). Also do not use $\cdots$ in enumerations. Write $i\in\{1,\ldots, n\}$ instead of $i=1,\ldots, n$.
+\item[$\bullet$] Respect the following priority rules for fences $[\{()\}]$ unless the fences have a special meaning, i.e., write $E{X(t)}$ (some authors use $E[X(t)]$ which is acceptable). If you refer to the set ${1,\ldots, n}$, don't write $(1,\ldots, n)$, because in the latter two contexts, $\{\}$ and $()$ have conventional meanings.
+\item[$\bullet$] Use $^\top$ for transposition (NOT $'$, $^T$, $^\tau$ or $^\dagger$) and $\ln$ for $log$, unless you mean $log_{10}$ .
+\item[$\bullet$] Symbols like $\sup$, $\inf$, $\max$, $\min$, E, Var, Cov, Corr, diag, trace (or tr), etc.~should be in Roman characters (NOT in italics).
+\item[$\bullet$] Use $\Pr$ for probability, so that it prints "Pr" in Roman characters.
+\item[$\bullet$] Avoid the symbol "l", always use $\ell$ if you need an "ell".
+\item[$\bullet$] "i.e." and "e.g." should be preceded and followed by a comma:  see, e.g.,
+\item[$\bullet$] Vectors should usually be interpreted as columns vectors (if it is not a coordinate free presentation).
+\item[$\bullet$] Bold upper and lower cases can be used for matrices and vectors, respectively.
+\item[$\bullet$] "cf." means "compare to", NOT "refer to". If you mean "refer to", write "see".
+\item[$\bullet$] Avoid in-line fractions; if you need one, write them in the form $a/b$ rather than $\frac{a}{b}$.
+\item[$\bullet$] Concerning the references and the bibliography:
+Papers should be referred to by [] or by AUTHOR [number] where appropriate;
+in lists of references, order papers in increasing order, i.e., write [2, 5, 8], not [2, 8, 5], even if 2 did not appear first chronologically (use "cite", e.g., \cite{Agresti13} or \cite{Agresti13,aitchison1958maximum}); "et al." should be in Roman characters, NOT in italic; the bibliography should list the papers in alphabetical order and should be numbered.
+\item[$\bullet$] When referring to the software R, always use \textsf{R}, even in references. Packages should be typeset as \texttt{...}
+\end{description}
+
+\newpage
+\centerline{\Large{\textbf{Young researcher track}}}
+\smallskip
+Journal of Multivariate Analysis understand the challenge for young researchers to get published in a reputable journal.
+
+As a young researcher with a limited network it is often difficult to write a competitive article that contains all the elements as papers by those who have been in the field for many years. In JMVA, often an article consists of three parts: theoretical results, simulations and some kind of illustrative data analysis. This can be quite demanding for young researchers.
+
+The Editor-in-Chief and Executive Editor are now accepting submissions with good theoretical results from young researchers. If these results are complemented with data analysis and simulations, even better, but it is not absolutely necessary.
+
+
+There are some restrictions:
+\begin{description}
+\item[$\bullet$] The young researcher should be the main/corresponding author of the paper.
+·\item[$\bullet$]  There should be a maximum of two authors (so only one other co-author) – this is to help younger researchers become more independent.
+·\item[$\bullet$]  The young researcher should be no older than $40$ years old at the time of submission.
+·\item[$\bullet$]  As with regular submissions, please keep in mind that the length of the paper should be less than 26 pages but can be somewhat shorter than $15$ pages.
+·\item[$\bullet$] If you meet all these criteria, you are welcome to submit your paper via Editorial Manager.
+\end{description}
+At the “Select Article Type” please choose: “Young Researcher Paper”
+
+We hope that by easing the criteria for young researchers, it will lead to new papers from promising young researchers and rising stars in the field of multivariate analysis.
+\end{document}
+
+
+Copy of trial-file
+
+@inbook{andersson,
+address = "Hayward, CA",
+author = "Andersson, Steen A. and Perlman, Michael D.",
+booktitle = "Multivariate analysis and its applications",
+doi = "10.1214/lnms/1215463788",
+pages = "97--110",
+publisher = "Institute of Mathematical Statistics",
+series = "{\rm Lecture Notes--Monograph Series}",
+title = "Normal linear models with lattice conditional independence restrictions",
+url = "http://dx.doi.org/10.1214/lnms/1215463788",
+volume = "24",
+year = "1994"
+}
+
+@article{andersson1997graphical,
+  title={A graphical characterization of lattice conditional independence models},
+  author={Andersson, Steen A and Madigan, David and Perlman, Michael D and Triggs, Christopher M},
+  journal={Annals of Mathematics and Artificial Intelligence},
+  volume={21},
+  number={1},
+  pages={27--50},
+  year={1997},
+  publisher={Springer, New York}
+}
+
+@book{gratzer2002general,
+  title={General Lattice Theory},
+  author={Gr{\"a}tzer, George},
+  year={2003},
+  edition={second},
+  publisher={Birkh{\"a}user Verlag, Basel}
+}
+
+@book{lauritzen1996graphical,
+  title={Graphical Models},
+  author={Lauritzen, Steffen L},
+  series={{\rm Oxford Statistical Science Series}},
+  volume={17},
+  year={1996},
+  publisher={Clarendon Press, Oxford University Press, New York}
+}
+
+@article{anderson1993totally,
+  title={Totally ordered multivariate linear models},
+  author={Anderson, Steen A and Marden, John I and Perlman, Michael D},
+  journal={Sankhy{\=a}: The Indian Journal of Statistics, Series A},
+  pages={370--394},
+  year={1993},
+  publisher={JSTOR}
+}
+
+@article{andersson1993lattice,
+  title={Lattice models for conditional independence in a multivariate normal distribution},
+  author={Andersson, Steen Arne and Perlman, Michael D},
+  journal={The Annals of Statistics},
+  pages={1318--1358},
+  year={1993},
+  publisher={JSTOR}
+}
+
+@article{drton2008iterative,
+  title={Iterative conditional fitting for discrete chain graph models},
+  author={Drton, Mathias},
+  journal={COMPSTAT 2008},
+  pages={93--104},
+  year={2008},
+  publisher={Springer}
+}
+
+@article{andersson1995relation,
+  title={On the relation between conditional independence models determined by finite distributive lattices and by directed acyclic graphs},
+  author={Andersson, Steen A and Madigan, David and Perlman, Michael D and Triggs, Christopher M},
+  journal={Journal of Statistical Planning and Inference},
+  volume={48},
+  number={1},
+  pages={25--46},
+  year={1995},
+  publisher={Elsevier}
+}

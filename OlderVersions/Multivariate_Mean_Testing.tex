@@ -1,0 +1,905 @@
+\documentclass[]{article}
+\usepackage{amsthm}
+%%%%% PLACE YOUR OWN MACROS HERE %%%%%
+\usepackage{verbatim,color,amssymb}
+\usepackage{amsmath}					
+\usepackage{amsthm}					
+\usepackage{algorithm,algorithmic}
+\usepackage{natbib}
+\usepackage{setspace}
+\usepackage[mathscr]{euscript}
+\usepackage{fancyhdr}
+\usepackage{enumitem}
+\usepackage{graphicx}
+\usepackage{geometry}
+\usepackage{lineno}
+\usepackage[compact]{titlesec}
+\usepackage{listings}
+\usepackage{rotating}
+\usepackage{subfig,subfloat}
+%\usepackage{multirow}
+%\usepackage{lineno}
+\usepackage{booktabs}
+\def\rot{\rotatebox}
+\usepackage{mathtools}
+\usepackage{subfig}
+\usepackage{caption}
+\captionsetup[subfigure]{labelformat=parens,
+	labelsep=space,
+	font=small,
+	margin=0em
+}
+\usepackage{float}
+\newsubfloat{figure}% Allow sub-figures
+\usepackage{tikz}
+\usetikzlibrary{arrows,chains,backgrounds,fit}
+\usepackage{multirow}
+\usepackage{lineno}
+
+\def\pdfshellescape{1}
+
+\setlength{\textheight}{9in}
+\setlength{\textwidth}{6in}
+\setlength{\topmargin}{-36pt}
+\setlength{\oddsidemargin}{15pt}
+\setlength{\evensidemargin}{0pt}
+\tolerance=500
+\renewcommand{\baselinestretch}{1.5}
+
+\usepackage[english]{babel}
+\usepackage[utf8]{inputenc}
+\usepackage{algorithm}
+\usepackage[noend]{algpseudocode}
+
+%%%%%%%%%%%%%%%
+% Begin New Definitions  %%
+%%%%%%%%%%%%%%%
+
+
+\newtheorem{Th}{\underline{\bf Theorem}}
+\newtheorem{Assmp}{{\bf Assumption}}
+\newtheorem{Cond}{\underline{\bf Conditions}}
+\newtheorem{Proof}{Proof}
+\newtheorem*{Proof*}{Proof}
+\newtheorem{Mth}{Main Theorem}
+\newtheorem{Def}{Definition}
+\newtheorem{Rem}{\underline{\bf Remark}}
+\newtheorem{Qes}{Question}
+\newtheorem{Prop}{Proposition}
+\newtheorem{Lem}{\underline{\bf Lemma}}
+\newtheorem{Cor}{\underline{\bf Corollary}}
+\newtheorem{Exa}{Example}
+\newtheorem{Eq}{Equation}
+
+\newcommand{\MyProof}{\noindent\textbf{Proof. }}
+\def\bzero{{\mathbf 0}}
+\newcommand{\uzero}            {\mbox{\boldmath$0$}}
+\newcommand{\uone}               {\mbox{\boldmath$1$}}
+\def\etal{\emph{et al.}}
+
+\def\nN{\mathbb{N}}
+\def\rR{\mathbb{R}}
+\def\eE{\mathbb{E}}
+
+\def\L{{\cal L}}
+\def\B{{\cal B}}
+\def\C{{\cal C}}
+\def\D{{\cal D}}
+\def\E{{\cal E}}
+\def\F{{\cal F}}
+\def\G{{\cal G}}
+\def\K{{\cal K}}
+\def\M{{\cal M}}
+\def\N{{\cal N}}
+\def\calP{{\cal P}}
+\def\S{{\cal S}}
+\def\T{{\cal T}}
+\def\U{{\cal U}}
+\def\W{{\cal W}}
+\def\V{{\cal V}}
+\def\X{{\cal X}}
+\def\Z{{\cal Z}}
+\def\Y{{\cal Y}}
+\def\sumi{\sum_{i=1}^n}
+
+\def\scrC{{\mathscr{C}}}
+
+
+\def\diag{\hbox{diag}}
+\def\Ind{\hbox{I}}
+\def\wh{\widehat}
+\def\wt{\widetilde}
+\def\wb{\breve}
+\def\AIC{\hbox{AIC}}
+\def\BIC{\hbox{BIC}}
+\def\diag{\hbox{diag}}
+\def\log{\hbox{log}}
+\def\bias{\hbox{bias}}
+\def\Siuu{\boldSigma_{i,uu}}
+\def\whT{\widehat{\Theta}}
+\def\var{\hbox{var}}
+\def\cov{\hbox{cov}}
+\def\corr{\hbox{corr}}
+\def\sign{\hbox{sign}}
+\def\trace{\hbox{trace}}
+\def\naive{\hbox{naive}}
+\def\vect{\hbox{vec}}
+
+
+\def\Beta{\hbox{Beta}}
+\def\DE{\hbox{DE}}
+\def\Dir{\hbox{Dirch}}
+\def\Exp{\hbox{Exp}}
+\def\gIGs{\hbox{g-Inv-Gs}}
+\def\Ga{\hbox{Ga}}
+\def\IGs{\hbox{Inv-Gs}}
+\def\IG{\hbox{Inv-Ga}}
+\def\IW{\hbox{IW}}
+\def\MVN{\hbox{MVN}}
+\def\MatMVN{\hbox{Mat-MVN}}
+\def\MVL{\hbox{MVL}}
+\def\MVT{\hbox{MVT}}
+\def\Normal{\hbox{Normal}}
+\def\TN{\hbox{TN}}
+\def\Unif{\hbox{Unif}}
+\def\Mult{\hbox{Mult}}
+\def\Wish{\hbox{W}}
+
+
+\def\wt{\widetilde}
+\def\sumi{\sum_{i=1}^n}
+\def\diag{\hbox{diag}}
+\def\wh{\widehat}
+\def\AIC{\hbox{AIC}}
+\def\BIC{\hbox{BIC}}
+\def\diag{\hbox{diag}}
+\def\log{\hbox{log}}
+\def\bias{\hbox{bias}}
+\def\Siuu{\boldSigma_{i,uu}}
+\def\dfrac#1#2{{\displaystyle{#1\over#2}}}
+\def\VS{{\vskip 3mm\noindent}}
+\def\refhg{\hangindent=20pt\hangafter=1}
+\def\refmark{\par\vskip 2mm\noindent\refhg}
+\def\naive{\hbox{naive}}
+\def\itemitem{\par\indent \hangindent2\parindent \textindent}
+\def\var{\hbox{var}}
+\def\cov{\hbox{cov}}
+\def\corr{\hbox{corr}}
+\def\trace{\hbox{trace}}
+\def\refhg{\hangindent=20pt\hangafter=1}
+\def\refmark{\par\vskip 2mm\noindent\refhg}
+\def\Normal{\hbox{Normal}}
+\def\Poisson{\hbox{Poisson}}
+\def\Wishart{\hbox{Wishart}}
+\def\Invwish{\hbox{Inv-Wishart}}
+\def\Beta{\hbox{Beta}}
+\def\NiG{\hbox{NiG}}
+\def\matF{\hbox{Mat-F}}
+
+
+
+\def\ANNALS{{\it Annals of Statistics}}
+\def\ANNALSP{{\it Annals of Probability}}
+\def\ANNALSMS{{\it Annals of Mathematical Statistics}}
+\def\ANNALSAS{{\it Annals of Applied Statistics}}
+\def\ANNALSISM{{\it Annals of the Institute of Statistical Mathematics}}
+\def\AJE{{\it American Journal of Epidemiology}}
+\def\ANIPS{{\it Advances in Neural Information Processing Systems}}
+\def\APLS{{\it Applied Statistics}}
+\def\BA{{\it Bayesian Analysis}}
+\def\BRNL{{\it Bernoulli}}
+\def\BIOK{{\it Biometrika}}
+\def\BIOS{{\it Biostatistics}}
+\def\BMCS{{\it Biometrics}}
+\def\BMCMIDM{{\it BMC Medical Informatics and Decision Making}}
+\def\BIOINF{{\it Bioinformatics}}
+\def\CANADAJS{{\it Canadian Journal of Statistics}}
+\def\CG{{\it Current Genomics}}
+\def\CDA{{\it Computational Statistics \& Data Analysis}}
+\def\COMMS{{\it Communications in Statistics, Series A}}
+\def\COMMS{{\it Communications in Statistics, Theory \& Methods}}
+\def\COMMSS{{\it Communications in Statistics - Simulation}}
+\def\COMMSSC{{\it Communications in Statistics - Simulation and Computation}}
+\def\EJS{{\it Electronic Journal of Statistics}}
+\def\ECMK{{\it Econometrica}}
+\def\ECTH{{\it Econometric Theory}}
+\def\GENEP{{\it Genetic Epidemiology}}
+\def\JASA{{\it Journal of the American Statistical Association}}
+\def\JRSSB{{\it Journal of the Royal Statistical Society, Series B}}
+\def\JRSSC{{\it Journal of the Royal Statistical Society, Series C}}
+\def\JQT{{\it Journal of Quality Technology}}
+\def\JCGS{{\it Journal of Computational and Graphical Statistics}}
+\def\JCB{{\it Journal of Computational Biology}}
+\def\JAMA{{\it Journal of the American Medical Association}}
+\def\JNUTR{{\it Journal of Nutrition}}
+\def\JABES{{\it Journal of Agricultural, Biological and Environmental Statistics}}
+\def\JBES{{\it Journal of Business and Economic Statistics}}
+\def\JSPI{{\it Journal of Statistical Planning \& Inference}}
+\def\JMA{{\it Journal of Multivariate Analysis}}
+\def\JNS{{\it Journal of Nonparametric Statistics}}
+\def\JSS{{\it Journal of Statistical Software}}
+\def\JECM{{\it Journal of Econometrics}}
+\def\IEEE{{\it IEEE}}
+\def\IEEESPL{{\it IEEE Signal Processing Letters}}
+\def\IEEETIT{{\it IEEE Transactions on Information Theory}}
+\def\LETTERS{{\it Letters in Probability and Statistics}}
+\def\ML{{\it Machine Learning}}
+\def\P_25_ICML{{\it Proceedings of the 25th international conference on Machine learning}}
+\def\PLoSCB{{\it PloS Computational Biology}}
+\def\STIM{{\it Statistics in Medicine}}
+\def\SCAN{{\it Scandinavian Journal of Statistics}}
+\def\SMMR{{\it Statistical Methods in Medical Research}}
+\def\SNKH{{\it Sankhy\={a}: The Indian Journal of Statistics}}
+\def\STIM{{\it Statistics in Medicine}}
+\def\STATMED{{\it Statistics in Medicine}}
+\def\STATSCI{{\it Statistical Science}}
+\def\SSNC{{\it Statistica Sinica}}
+\def\SaC{{\it Statistics and Computing}}
+\def\STATSCI{{\it Statistical Science}}
+\def\TECH{{\it Technometrics}}
+
+
+\def\dfrac#1#2{{\displaystyle{#1\over#2}}}
+\def\VS{{\vskip 3mm\noindent}}
+\def\refhg{\hangindent=20pt\hangafter=1}
+\def\refmark{\par\vskip 2mm\noindent\refhg}
+\def\itemitem{\par\indent \hangindent2\parindent \textindent}
+\def\refhg{\hangindent=20pt\hangafter=1}
+\def\refmark{\par\vskip 2mm\noindent\refhg}
+\def\povr{\buildrel p\over\longrightarrow}
+\def\ccdot{{\bullet}}
+\def\bse{\begin{eqnarray*}}
+	\def\ese{\end{eqnarray*}}
+\def\be{\begin{eqnarray}}
+\def\ee{\end{eqnarray}}
+\def\bq{\begin{equation}}
+\def\eq{\end{equation}}
+\def\pr{\hbox{pr}}
+\def\wh{\widehat}
+
+
+\def\boldalpha{{\mbox{\boldmath $\alpha$}}}
+\def\boldAlpha{{\mbox{\boldmath $\Alpha$}}}
+\def\boldbeta{{\mbox{\boldmath $\beta$}}}
+\def\boldBeta{{\mbox{\boldmath $\beta$}}}
+\def\bolddelta{{\mbox{\boldmath $\delta$}}}
+\def\boldDelta{{\mbox{\boldmath $\Delta$}}}
+\def\boldeta{{\mbox{\boldmath $\eta$}}}
+\def\boldEta{{\mbox{\boldmath $\Eta$}}}
+\def\boldgamma{{\mbox{\boldmath $\gamma$}}}
+\def\boldGamma{{\mbox{\boldmath $\Gamma$}}}
+\def\boldlambda{{\mbox{\boldmath $\lambda$}}}
+\def\boldLambda{{\mbox{\boldmath $\Lambda$}}}
+\def\boldmu{{\mbox{\boldmath $\mu$}}}
+\def\boldMu{{\mbox{\boldmath $\Mu$}}}
+\def\boldnu{{\mbox{\boldmath $\nu$}}}
+\def\boldNu{{\mbox{\boldmath $\Nu$}}}
+\def\boldomega{{\mbox{\boldmath $\omega$}}}
+\def\boldOmega{{\mbox{\boldmath $\Omega$}}}
+\def\boldpsi{{\mbox{\boldmath $\psi$}}}
+\def\boldPsi{{\mbox{\boldmath $\Psi$}}}
+\def\boldsigma{{\mbox{\boldmath $\sigma$}}}
+\def\boldSigma{{\mbox{\boldmath $\Sigma$}}}
+\def\boldpi{{\mbox{\boldmath $\pi$}}}
+\def\boldPi{{\mbox{\boldmath $\Pi$}}}
+\def\boldphi{{\mbox{\boldmath $\phi$}}}
+\def\boldepsilon{{\mbox{\boldmath $\epsilon$}}}
+\def\boldtheta{{\mbox{\boldmath $\theta$}}}
+\def\boldTheta{{\mbox{\boldmath $\Theta$}}}
+\def\boldve{{\mbox{\boldmath $\ve$}}}
+\def\boldVe{{\mbox{\boldmath $\Epsilon$}}}
+\def\boldxi{{\mbox{\boldmath $\xi$}}}
+\def\boldXi{{\mbox{\boldmath $\Omega$}}}
+\def\boldzeta{{\mbox{\boldmath $\zeta$}}}
+\def\boldZeta{{\mbox{\boldmath $\Zeta$}}}
+\def\boldvarrho{{\mbox{\boldmath $\varrho$}}}
+\def\boldVarrho{{\mbox{\boldmath $\Varrho$}}}
+\def\boldtau{{\mbox{\boldmath $\tau$}}}
+\def\boldTau{{\mbox{\boldmath $\Tau$}}}
+\def\boldrho{{\mbox{\boldmath $\rho$}}}
+\def\boldRho{{\mbox{\boldmath $\Rho$}}}
+\def\boldvarsigma{{\mbox{\boldmath $\varsigma$}}}
+
+\def\trans{^{\rm T}}
+\def\myalpha{{\cal A}}
+\def\th{^{th}}
+\def\bone{{\mathbf 1}}
+
+\def\b1e{{\mathbf e}}
+\def\bA{{\mathbf A}}
+\def\ba{{\mathbf a}}
+\def\bB{{\mathbf B}}
+\def\bb{{\mathbf b}}
+\def\bc{{\mathbf c}}
+\def\bC{{\mathbf C}}
+\def\bd{{\mathbf d}}
+\def\bD{{\mathbf D}}
+\def\bG{{\mathbf G}}
+\def\bI{{\mathbf I}}
+\def\bk{{\mathbf k}}
+\def\bK{{\mathbf K}}
+\def\bM{{\mathbf M}}
+\def\bp{{\mathbf p}}
+\def\bP{{\mathbf P}}
+\def\bs{{\mathbf s}}
+\def\bS{{\mathbf S}}
+\def\bT{{\mathbf T}}
+\def\bt{{\mathbf t}}
+\def\bu{{\mathbf u}}
+\def\bU{{\mathbf U}}
+\def\bq{{\mathbf q}}
+\def\bQ{{\mathbf Q}}
+\def\bV{{\mathbf V}}
+\def\bw{{\mathbf w}}
+\def\bW{{\mathbf W}}
+\def\bx{{\mathbf x}}
+\def\bX{{\mathbf X}}
+\def\by{{\mathbf y}}
+\def\bY{{\mathbf Y}}
+\def\bz{{\mathbf z}}
+\def\bZ{{\mathbf Z}}
+\def\bS{{\mathbf S}}
+\def\bzero{{\mathbf 0}}
+
+\def\whT{\widehat{\Theta}}
+\def\te{\widetilde{e}}
+\def\te{\widetilde{\epsilon}}
+\def\tp{\widetilde{p}}
+\def\tv{\widetilde{v}}
+\def\tmu{\widetilde{\mu}}
+\def\tsigma{\widetilde{\sigma}}
+
+\newcommand{\etam}{\mbox{\boldmath $\eta$}}
+\newcommand{\bmu}{\mbox{\boldmath $\mu$}}
+\newcommand{\bDelta}{\mbox{\boldmath $\Delta$}}
+\newcommand{\bphi}{\mbox{\boldmath $\phi$}}
+\newcommand{\bpi}{\mbox{\boldmath $\pi$}}
+\newcommand{\bPi}{\mbox{\boldmath $\Pi$}}
+\newcommand{\bxi}{\mbox{\boldmath $\xi$}}
+\newcommand{\bepsilon}{\mbox{\boldmath $\epsilon$}}
+\newcommand{\btheta}{\mbox{\boldmath $\theta$}}
+\newcommand{\bbeta}{\mbox{\boldmath $\beta$}}
+\newcommand{\bgamma}{\mbox{\boldmath $\gamma_{j}$}}
+\newcommand{\bzeta}{\mbox{\boldmath $\zeta$}}
+\newcommand{\bsigma}{\mbox{\boldmath $\sigma$}}
+\newcommand{\bSigma}{\mbox{\boldmath $\Sigma$}}
+\newcommand{\balpha}{\mbox{\boldmath $\alpha$}}
+\newcommand{\bomega}{\mbox{\boldmath $\omega$}}
+\newcommand{\blambda}{\mbox{\boldmath $\lambda$}}
+\newcommand{\bLambda}{\mbox{\boldmath $\Lambda$}}
+\newcommand{\bOmega}{\mbox{\boldmath $\Omega$}}
+\newcommand{\bPsi}{\mbox{\boldmath $\Psi$}}
+\newcommand{\bpsi}{\mbox{\boldmath $\psi$}}
+\newcommand{\bGamma}{\mbox{\boldmath $\Gamma$}}
+\newcommand{\btau}{\mbox{\boldmath $\tau$}}
+
+\newcommand{\abs}[1]{\left\vert#1\right\vert}
+\newcommand{\norm}[1]{\left\Vert#1\right\Vert}
+
+\newcommand{\uA}       {\mbox{\boldmath$A$}}
+\newcommand{\ua}       {\mbox{\boldmath$a$}}
+\newcommand{\uB}       {\mbox{\boldmath$B$}}
+\newcommand{\ub}       {\mbox{\boldmath$b$}}
+\newcommand{\uC}       {\mbox{\boldmath$C$}}
+\newcommand{\uc}       {\mbox{\boldmath$c$}}
+\newcommand{\uD}       {\mbox{\boldmath$D$}}
+\newcommand{\ud}       {\mbox{\boldmath$d$}}
+\newcommand{\uE}       {\mbox{\boldmath$E$}}
+\newcommand{\ue}       {\mbox{\boldmath$e$}}
+\newcommand{\uF}       {\mbox{\boldmath$F$}}
+\newcommand{\uf}       {\mbox{\boldmath$f$}}
+\newcommand{\uG}       {\mbox{\boldmath$G$}}
+\newcommand{\ug}       {\mbox{\boldmath$g$}}
+
+%\newcommand{\uG}       {\mbox{\boldmath$G$}}
+
+%\newcommand{\ug}       {\mbox{\boldmath$g$}}
+\newcommand{\uH}       {\mbox{\boldmath$H$}}
+\newcommand{\uh}       {\mbox{\boldmath$h$}}
+\newcommand{\uI}       {\mbox{\boldmath$I$}}
+\newcommand{\ui}       {\mbox{\boldmath$i$}}
+\newcommand{\uJ}       {\mbox{\boldmath$J$}}
+\newcommand{\uj}       {\mbox{\boldmath$j$}}
+\newcommand{\uK}       {\mbox{\boldmath$K$}}
+\newcommand{\uk}       {\mbox{\boldmath$k$}}
+\newcommand{\uL}       {\mbox{\boldmath$L$}}
+\newcommand{\ul}       {\mbox{\boldmath$l$}}
+\newcommand{\uM}       {\mbox{\boldmath$M$}}
+\newcommand{\um}       {\mbox{\boldmath$m$}}
+\newcommand{\uN}       {\mbox{\boldmath$N$}}
+\newcommand{\un}       {\mbox{\boldmath$n$}}
+\newcommand{\uO}       {\mbox{\boldmath$O$}}
+%\newcommand{\uo}       {\mbox{\boldmath$o$}}
+\newcommand{\uP}       {\mbox{\boldmath$P$}}
+\newcommand{\up}       {\mbox{\boldmath$p$}}
+\newcommand{\uQ}       {\mbox{\boldmath$Q$}}
+\newcommand{\uq}       {\mbox{\boldmath$q$}}
+\newcommand{\uR}       {\mbox{\boldmath$R$}}
+\newcommand{\ur}       {\mbox{\boldmath$r$}}
+\newcommand{\uS}       {\mbox{\boldmath$S$}}
+\newcommand{\us}       {\mbox{\boldmath$s$}}
+\newcommand{\uT}       {\mbox{\boldmath$T$}}
+\newcommand{\ut}       {\mbox{\boldmath$t$}}
+\newcommand{\uU}       {\mbox{\boldmath$U$}}
+\newcommand{\uu}       {\mbox{\boldmath$u$}}
+\newcommand{\uV}       {\mbox{\boldmath$V$}}
+\newcommand{\uv}       {\mbox{\boldmath$v$}}
+\newcommand{\uW}       {\mbox{\boldmath$W$}}
+\newcommand{\uw}       {\mbox{\boldmath$w$}}
+\newcommand{\uX}       {\mbox{\boldmath$X$}}
+\newcommand{\ux}       {\mbox{\boldmath$x$}}
+\newcommand{\uY}       {\mbox{\boldmath$Y$}}
+\newcommand{\uy}       {\mbox{\boldmath$y$}}
+\newcommand{\uZ}       {\mbox{\boldmath$Z$}}
+\newcommand{\uz}       {\mbox{\boldmath$z$}}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\newcommand{\ualpha}            {\mbox{\boldmath$\alpha$}}
+\newcommand{\ubeta}             {\mbox{\boldmath$\beta$}}
+\newcommand{\ugamma}            {\mbox{\boldmath$\gamma$}}
+\newcommand{\udelta}            {\mbox{\boldmath$\delta$}}
+\newcommand{\uepsilon}          {\mbox{\boldmath$\epsilon$}}
+\newcommand{\uvarepsilon}       {\mbox{\boldmath$\varepsilon$}}
+\newcommand{\uzeta}             {\mbox{\boldmath$\zeta$}}
+\newcommand{\ueta}              {\mbox{\boldmath$\eta$}}
+\newcommand{\utheta}            {\mbox{\boldmath$\theta$}}
+\newcommand{\uvartheta}         {\mbox{\boldmath$\vartheta$}}
+\newcommand{\uiota}             {\mbox{\boldmath$\uiota$}}
+\newcommand{\ukappa}            {\mbox{\boldmath$\kappa$}}
+\newcommand{\ulambda}           {\mbox{\boldmath$\lambda$}}
+\newcommand{\umu}               {\mbox{\boldmath$\mu$}}
+\newcommand{\unu}               {\mbox{\boldmath$\nu$}}
+\newcommand{\uxi}               {\mbox{\boldmath$\xi$}}
+\newcommand{\uo}                {\mbox{\boldmath$\o$}}
+\newcommand{\upi}               {\mbox{\boldmath$\pi$}}
+\newcommand{\uvarpi}            {\mbox{\boldmath$\varpi$}}
+\newcommand{\urho}              {\mbox{\boldmath$\rho$}}
+\newcommand{\uvarrho}           {\mbox{\boldmath$\varrho$}}
+\newcommand{\usigma}            {\mbox{\boldmath$\sigma$}}
+\newcommand{\uvarsigma}         {\mbox{\boldmath$\varsigma$}}
+\newcommand{\utau}              {\mbox{\boldmath$\tau$}}
+\newcommand{\uupsilon}          {\mbox{\boldmath$\upsilon$}}
+\newcommand{\uphi}              {\mbox{\boldmath$\phi$}}
+\newcommand{\uvarphi}           {\mbox{\boldmath$\varphi$}}
+\newcommand{\uchi}              {\mbox{\boldmath$\chi$}}
+\newcommand{\upsi}              {\mbox{\boldmath$\psi$}}
+\newcommand{\uomega}            {\mbox{\boldmath$\omega$}}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\newcommand{\uGamma}            {\mbox{\boldmath$\Gamma$}}
+\newcommand{\uDelta}            {\mbox{\boldmath$\Delta$}}
+\newcommand{\uTheta}            {\mbox{\boldmath$\Theta$}}
+\newcommand{\uLambda}           {\mbox{\boldmath$\Lambda$}}
+\newcommand{\uXi}               {\mbox{\boldmath$\Xi$}}
+\newcommand{\uPi}                {\mbox{\boldmath$\Pi$}}
+\newcommand{\uSigma}            {\mbox{\boldmath$\Sigma$}}
+\newcommand{\uUpsilon}          {\mbox{\boldmath$\Upsilon$}}
+\newcommand{\uPhi}              {\mbox{\boldmath$\Phi$}}
+\newcommand{\uPsi}              {\mbox{\boldmath$\Psi$}}
+\newcommand{\uOmega}            {\mbox{\boldmath$\Omega$}}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\def\myx{T}
+\def\curr{_{\rm curr}}
+\def\Dobs{{\bf \cal D}_{\rm obs}}
+\def\Didobs{{\bf \cal D}_{id,\rm obs}}
+\def\Supp{{\bf Supplementary Material}}
+
+\newtheorem{mydef}{Definition}
+% Title Page
+\title{An approximate Bayes factor based high dimensional MANOVA using on Random Projection}
+\author{Roger S. Zoh, Bani mallick,  Raymond J. Carroll}
+
+
+\begin{document}
+	\maketitle
+
+\begin{abstract}
+	High-dimensional mean testing problem remain a very active research area. However most of the focus has been on the case of independent two-group mean. We develop a Bayes factor(BF) based testing procedure for comparing two or more population means in high dimensional settings. In ‘large-p-small-n’ settings, Bayes factors based on proper priors require eliciting a large and complex $p \times p$ covariance matrix, whereas Bayes factors based on Jeffrey’s prior suffer the same impediment as the other classical test statistics as they involve inversion of ill-formed sample covariance matrices. To circumvent this limitation, we propose that the Bayes factor be based on multiple lower dimensional random projections of the high dimensional data vectors. This has the advantage of preserving or only slightly perturbing the dependency between the high-dimensional data vector making the proposed text widely applicable. The final test statistic is based on an ensemble of Bayes factors corresponding to multiple replications of randomly projected data where we identify pairs of groups that significantly different. We show that the test has reasonable properties. We demonstrate the efficacy of the approach through simulated and real data examples. A code written in Julia and adapted in R is available for easy implementation. 
+\end{abstract}
+\section{Introduction}
+Suppose the following data generating model. $\uY_{ik} = \umu_i + \uepsilon_{ik}$, $k = 1, \cdots, K$. We assume that $K \geq 1$ and $\uepsilon_{ik} \sim \MVN(\bzero, \uSigma)$. %A set of sufficient statistics for the data is $\left(\bar{\uX}_1, \bar{\uX}_2, \cdots, \bar{\uX}_G, \uS_{p}\right)$. Note that $\uS_{p}$ is the pooled covariance estimate of $\uSigma$.
+We aim to test the following (compound) hypothesis:
+\be
+H_0:\quad \umu_1 = \umu_2 = \cdots = \umu_G \quad &\mbox{vs}& \quad H_1: \mbox{at least}\quad \umu_j \neq \umu_k\; \forall j \neq k, \label{eq:hyp1}.
+\ee
+which is equivalent to performing multiple $G(G-1)/2$ pairwise comparisons similar to the approach taken in \cite{tony2014two, ahmad2019unified}. This testing problem finds many scientific applications including in genomics (Ref), in transportation (Ref).
+The case of two-group ($G=2$) means comparison continued to be the subject of intense research. Early work on this hypoethesis testing problem primarily focused on the case where the number of features $p$ is smaller than the sample sizes (Ref). Likelihood ratio test or Hotelling $T^2$ tests statistics can be used for this two-groups testing problem. When $p$ is large or much larger than the combined group samples $(n1+n_2)$, the likelihood test and the Hotelling $T^2$ is no longer reliable since they rely on the inversion of a non-positive covariance matrix. 
+The development of novel test procedures for the case of high-dimensional data two-group mean vector testing continue to be the subject of intense research and these approaches fall under two distinct schools. 
+
+The first approach constructs tests that eliminate the need to invert ill-formed covariance matrices. \cite{bai1996effect} replaced the sample covariance matrix by a diagonal covariance matrix, for which the inverse exists.
+\citet{srivastava2007multivariate} substituted the inverse covariance matrix by its Moore-Penrose inverse, under the assumption that the groups have the same covariances. \citet{wu2006multivariate} and \citet{gregory2014two} proposed tests based on the pooled squared univariate t-tests, eliminating the need to invert non-positive definitive matrices.
+
+The latter approach centers around transforming the data, instead of the test statistics, so that existing tests could be applied to the transformed data.
+Random projection (RP) is one such method that works by projecting high dimensional data into lower dimensions while only slightly distorting the distances between the original vectors. See, for example, \citet{dasgupta2003elementary}.
+RP has become a popular tool used extensively in machine learning literature where texts documents, imaging and MRI data are often high dimensional.
+\citet{dasgupta2000experiments}, for example, used RP to uncover the components of high dimensional mixtures of Gaussians.
+\citet{fern2003random} showed the improvement in clustering high dimensional data using RP over other standard approaches.
+Recently, \citet{guhaniyogi2013} proposed a Bayesian compression regression approach in $n << p$ scenarios, where RP is used to reduce the covariate space.
+RP has entered the frequentist hypothesis testing literature where the $T^{2}$ statistics are based on the projected version of the data in `large-p-small-n' setting. See, for example, \cite{lopes2011more} and \cite{srivastava2014raptt}. Recently, \cite{zoh2018powerful} succesfully apply RP to construct a powerful Bayesian test to perform a two-group mean testing. 
+
+Although the research on the two-group testing problems in high-dimensional setting is very pervasive and rapidly growing, the opposite is true for the multi-groups high-dimension mean testing problem. Early reference \cite{Y
+
+
+
+
+
+%Various approaches have been considered to help address this issues. One approach simply replaces the covariance 
+%where the testing problem is often frame as a MANOVA problem. This  
+%In the case of a two-group mean testing problem, the traditional Hotelling $T^2$ (Ref) statistics is often used  
+
+\section{Bayes factor based Test}
+Here, we set up our approach here using the following generative model. Suppose the following data generating model. $\uY_{ig} = \umu_i + \uepsilon_{ig}$, $g = 1, \cdots, G$. Note here that we assume that $G \geq 1$ and $\uepsilon_{ig} \sim \MVN(\bzero, \uSigma)$. %A set of sufficient statistics for the data is $\left(\bar{\uX}_1, \bar{\uX}_2, \cdots, \bar{\uX}_G, \uS_{p}\right)$. Note that $\uS_{p}$ is the pooled covariance estimate of $\uSigma$.
+We aim to test the following (compound) hypothesis:
+\be
+H_0:\quad \umu_1 = \umu_2 = \cdots = \umu_G \quad &\mbox{vs}& \quad H_1: \mbox{at least}\quad \umu_j \neq \umu_k\; \forall j \neq k, \label{eq:hyp1}.
+\ee
+which is equivalent to performing $G(G-1)/2$ pairwise comparisons similar to the approach taken in \cite{tony2014two, ahmad2019unified}. 
+
+\subsection{Bayes factor in Case of small $p$}
+For the case when $G = 2$, \cite{zoh2018powerful} proposed a Bayes Factor test in a two-group mean testing problem in both low and high-dimension. Namely, in a two-group setting, the BF based test is defined as:
+\be
+BF_{10} &=& \left(1 + \eta_{} \right)^{-p/2} \left\{. \frac{  1 + \frac{pf}{(1 + \eta)(N-p-(G-1))}}{ 1 + \frac{p f}{(N-p-(G-1))}  } \right\}^{-(N-1)/2}, \label{eq:BF1}
+\ee
+where $\tau_0$ is the scale parameter for the prior under the alternative; where $\eta_{} = n_{0,12}/\tau_{0}$ and $f_{1,2}  = \frac{N-p-1)}{(N-2)p} n_{0,12} (\overline{\uX}_1 - \overline{\uX}_2)\trans \uS_{p}^{-1}(\overline{\uX}_1 - \overline{\uX}_2)$; $N = \sum^{G}_{g=1}n_g$; $n^{-1}_{0,12} = 1/n_1 + 1/n_2$. To test the (complex) hypothesis in (\ref{eq:hyp1}), we will use the following test statistic:
+\be
+BF^{max}_{10} &=& \left(1 + \eta_{ij} \right)^{-p/2} \left\{ \frac{  1 + \frac{pf^{max}}{(1 + \eta_{ij})(N-p-(G-1))}}{ 1 + \frac{p f^{max}}{(N-p-(G-1))}  } \right\}^{-(N-1)/2}, \label{eq:BFmax}
+\ee
+where $f^{max} = \underset{(i,j)}{\arg\max} f_{ij}$, where the maximum is over all the pairwise $f$ statistics. Equally, $\eta_{ij}$ are based on the pair that yields the highest $f$ statistic; $\uS_p$ is the pooled sample covariance.  Note that (\ref{eq:BFmax}) is a special case of (\ref{eq:BF1}). Additionally, we need to specify the value of $\tau_0$. We will adopt the approach of \cite{zoh2018powerful} to estimate $\tau_0$ or each pairs. 
+Properties of the test proposed in (\ref{eq:BFmax}) are similar to the what was proposed in \cite{zoh2018powerful}
+
+\subsection{Bayes factor in Case of Large "p"}
+When $p >> N = \sum^{G}_{g=1} n_g - G$, then (\ref{eq:BFmax}) is ill-posed and can't be computed since $\uS_p$ is no-longer invertible. We can address that issue redefining the testing problem by looking at the testing in term of specific features similar to the approach taken by (ReF Lopes - MANOVA test and Cai). Instead, we adopt a dimension reduction approach thereby (almost) preserving all the potentially complex dependency among the p features. Our approach proceeds as follows, for a specific choice of a random projection(RP) matrix $\Phi$, the BF in (\ref{eq:BFmax}) becomes 
+\be
+BF^{max}_{10}(\Phi) &=& \left(1 + \eta_{ij} \right)^{-p/2} \left\{ \frac{  1 + \frac{pf^{max}(\Phi)}{(1 + \eta_{ij})(N-p-(G-1))}}{ 1 + \frac{p f^{max}(\Phi)}{(N-p-(G-1))}  } \right\}^{-(N-1)/2}, \label{eq:BFmaxrp}
+\ee
+where $\Phi \in \mathcal{R}^{p \times m}$, with $m << p$ and $\Phi\trans\Phi = \uI_m$. Note that $\uI_m$ is the identity matrix with dimension $m$. With the choice of the RP matrix, we project the data from dimension $p$ into a lower dimension $m$, where $m < \min\{N, p\}$. Note that we use the same projection matrix $\uPhi$ for all the $\uG$ groups hence preserving (slightly) disturbing distance between the sample vectors. We prescribe a way of choosing $m$ below. 
+
+\subsection{Ensemble test}
+Based on the BF statistics in (\ref{eq:BFmaxrp}), we will favor the alternative if the BF exceeds a given evidence threshold $\ugamma$. We provide a default approach to choosing later. However, a  test base on a single RP $\Phi$ can hugely depend on the choice of the RP. It is necessary to based our final decision on multiple RPs which we refer to as an ensemble test. Hence, for a chosen $N$ (sufficiently large), our final test statistic is obtained as
+\be
+\widetilde{\boldpsi}(Data) &=& \frac{1}{N}\sum^{N}_{i=1} \bone\{ BF^{max}_{10}(Data, \uPhi_i) \geq \gamma\} \label{eq:BFensbl}
+\ee
+Given the NULL distribution of $\widetilde{\boldpsi}(Data)$, denoted $\widetilde{\boldpsi}_{0}$, we will reject the NULL hypothesis (at some specify level $\alpha$) if  $\widetilde{\boldpsi}(Data) > \widetilde{\boldpsi}_{0}(\alpha)$, where $\widetilde{\boldpsi}_{0}(\alpha)$ denotes the upper $\alpha$ quantile.  
+
+The NULL distribution of the test statistics (\ref{eq:BFensbl}) is difficult to derive analytically but under our assumed data generating model, we can (cheaply) compute the NULL distribution of the statistics in (\ref{eq:BFensbl}). Additionally, the NULL distribution of the test statistics is invariant of the common mean vector and the true common covariance matrix $\uSigma$. We formalize the result in Theorem ().
+
+\subsection{Choices of $\tau_0$, $m$ and $\ugamma$}
+We first discuss how to select $m$. Note that for each pair $(i, j) \in \left\{ i,j \in (1, \cdots, p): i<j$\}\right, $f_{i,j}  = \frac{N-m-1)}{(N-2)m} n_{0,ij} (\overline{\uX}_i - \overline{\uX}_j)\trans \uS_{p}^{-1}(\overline{\uX}_i - \overline{\uX}_j) \sim \uF_{m, N-m-(G-1)}$. Although the $f_{ij}$ are identically distributed, they are not independent. In fact the distribution of $f_{max}$ is complicated to derive and clearly depends on $m$.
+%but can simply be approximated under the NULL using a Monte Carlo approach assuming an identity covariance matrix and all zero vector means. 
+%The simulation will need to be run for multiple values of $m$ which can be too expensive.
+We consider an approximate approach and obtain $m$ almost as if we were performing a two-sample test and using the definition of restricted most powerful Bayesian test (RMPBT) approach proposed by \cite{GoddardJohnson,Goddard}. Namely, we choose the value of $m$ and $\tau_0$ with $\tau_0 = \tau^{\star}$ so that
+\bse
+P_{\boldtheta}\left\{BF^{max}_{10}(\uX^{\star},\uY^{\star},\tau^{\star}) > \gamma \right\} \geq P_{\boldtheta}\left\{BF^{max}_{10}(\uX^{\star},\uY^{\star},\tau_0) > \gamma \right \},
+\ese
+for a chosen value of the evidence threshold $\gamma$, all possible values of $\tau_{0}$ and all data generating model parameters $\boldtheta=(\udelta,\umu,\uSigma)$.
+That is, we choose $\tau_{0}$ so as to maximize the following probability
+\bse
+P_{\utheta}\left\{\frac{mf^{max} }{mf^{max} +N-m-(G-1)} >  \left(\frac{1 + n_{ij}/\tau_0}{n_{ij}/\tau_0}\right)\left[ 1 - \{\gamma(1 + n_0/\tau_0)^{m/2}\}^{-2/(n-1)}\right] \right\},
+\ese
+which is at its maximum when the quantity on the right-hand side of the inequality is at its minimum.
+Ultimately, for a chosen significance level $\theta$  we choose 
+$$ m = \arg\max_{m} \uF_{m, N-m-(G-1)}(\theta), $$
+where $uF_{\alpha,\beta}(u)$ is the upper $u$ quantile of the $\uF$ distribution with $m$ and $N-m-(G-1)$ degrees-of-freedom. Subsequently, given the value of $m$, we can obtain $\gamma$ as
+$$\log(\gamma) =  -.5m\log(1+\tau^{\star}) - .5(N-1)\log\left(1 - \frac{\tau^{\star}}{1 + \tau^{\star}}C_0 \right),$$
+where $C_0 = \frac{mf^{max}_{\theta}}{m f^{max}_{\theta} + N-m-(G-1)}$; $f^{max}_{\theta}$ is the upper $\theta$ quantile of the null distribution of $f^{max}$; $\tau^{\star} = f^{max}_{\theta} -1$. Note for given values of $n_1, n_2, \cdots, n_{G}$ and $m$, we can simply approximate the NULL distribution of $f^{max}$ using a Monte Carlo approach.
+
+\section{Simulations & Results}
+We divide our simulation exercise in 3 parts. In the first part, we simulate data from the multivariate normal with various covariance matrices similar to the one considered in \citet{tony2014two}. We will consider $G=3$ and $G=5$ groups with $n = 60$ and $n=100$ (equal) sample size for each group and $p = 400, 1000, 2000$. We will assume $\umu_1 = \bzero$ (always), and then $\umu_j = (\mu_{jl})$ for $j \in \{2, \cdots, G}$ and $l \in \{1, \cdots,p\}$ where the entries of $(\mu_{jl})$ are each set to zero under the NULL. Under the alternative, only $m$ entries of each group mean vector is are non-zero. Then, the non-zero entries are uniformly drawn between $[-\sqrt{2\log(p/n)}, \sqrt{2\log(p/n)}]$. We consider the following number of features and non-zero features pairs: \textbf{Extreme Sparse} $(m=2, p=50)$, $(m=2, p=100)$, $(m=5, p=200)$, $(m=5, p=400)$; \textbf{Moderate Sparse} $(m=5, p=50)$, $(m=10, p=100)$, $(m=15, p=200)$, $(m=20, p=400)$; \textbf{Non-sparse} $(m=20, p=50)$, $(m=30, p=100)$, $(m=40, p=200)$, $(m=50, p=400)$.
+
+
+
+
+% . Our simulation exercise follows closely resemble the simulation approach considered in ToyCai(2014).
+
+
+
+% redefine the text we use to test the hypothesis - maybe start individual pairs as we did in our previous paper. 
+
+% Suppose the following data generating model. $\uY_{ig} = \umu_i + \uepsilon_{ig}$, $g = 1, \cdots, G$. 
+% Note here that we assume that $G \geq 1$ and $\uepsilon_{ig} \sim \MVN(\bzero, \uSigma)$. A set of sufficient statistics for the data is $\left(\bar{\uX}_1, \bar{\uX}_2, \cdots, \bar{\uX}_G, \uS_{p}\right)$. Note that $\uS_{p}$ is the pooled covariance estimate of $\uSigma$.
+% The interest lies in testing the following hypothesis:
+% $$H_0:\quad \umu_1 = \umu_2 = \cdots = \umu_G \quad \mbox{vs} \quad H_1: \mbox{at least}\quad \umu_j \neq \umu_k\; \forall j \neq k$$
+% If we denote by $\umu = \left[ \umu_1, \cdots, \umu_G \right]$ a matrix of dimension $G \times p$ obtained by stacking the group means row-wise for each group. We can rewrite the complicated NULL hypothesis in the following form 
+% $$H_0:\quad \uC\umu = \bzero  \quad \mbox{vs} \quad H_1: \mbox{at least}\quad \uC\umu \neq \bzero$$
+% Where $\uC$ is a ${G\choose 2} = \frac{G(G-1)}{2}$ by $G$ matrix of all distinct group pair-wise differences. %Note $\uC$ is a rank deficient matrix which allows us to compute the following differences $\bar{\uX}_g - \bar{\uX}_G$, where $g < G$. Namely, $\uC_g$ is expressed as
+% % $$\uC = \begin{bmatrix} 
+% %     1 & -1 & 0 & \dots & 0 \\
+% %     1 & 0 & -1 &\dots & 0 \\
+% %     \vdots & \vdots & 0 & \vdots & 0 \\
+% %     1 & 0& \dots & 0 & -1 \\
+% %     0 & 1 & -1 & 0 & \dots \\
+% %     \vdots & \vdots & \vdots & \vdots & \vdots \\
+% %     0 & \dots & \dots & -1 & 1 \\
+% %     \end{bmatrix}$$ 
+% For example, if $G = 2$, we only have one difference and we get $\uC_2 \umu = \umu_1 - \umu_2$.
+% Additionally, we define a data dependent quantities $\uA = \sum^G_{g = 1} \omega_g \bar{\uX}_g$ , with $\omega_g = n_i/N$ and $N = \sum^G_{g = 1}n_g$; $\uD = \uC_G\bar{\uX}$, where $\bar{\uX} = \left[\bar{\uX}_1, \cdots, \bar{\uX}_G \right]$ combined the means row-wise. 
+% Under a Normal model as assumed above, we then have that $\uD \sim \MatMVN(\uDelta, \uSigma_0, \uSigma)$, where $\Sigma_0 = \diag(1/n_1, \cdots, 1/n_G)$ and $\uDelta = \uC_G\umu$. Also, $\uA \sim \MVN\left(\widetilde{\umu}, \uC\uSigma_0\uC\trans\uSigma\right)$, where $\uC = (\omega_1, \cdots, \omega_G)\trans$ and $\widetilde{\umu} = \uC\umu$; $(N-G)\uS_p \sim \Wish(N - G, \uSigma)$.
+% Thus the joint distribution of the data is then proportional to (assuming for now  that $\uC$ is full rank) 
+% \be
+% P(Data|\uDelta, \widetilde{\umu}, \uSigma) = \MatMVN(\uD;\uDelta, \uSigma_0, \uSigma) \MVN\left(\uA;\widetilde{\umu}, \uC\uSigma_0\uC\trans, \uSigma\right) \Wish(N - G, \uSigma). 
+% \ee 
+% Recall we are interested in testing the following hypothesis:
+% \be
+% H_0:\quad \uDelta = \bzero  \quad \mbox{vs} \quad H_1: \uDelta \neq \bzero; \label{eq:hypo1}
+% \ee
+% We will consider the following prior form $\pi(\uDelta,\widetilde{\umu},\uSigma |H_i) = \pi(\widetilde{\umu},\uSigma )\pi(\uDelta|\uSigma, H_i)$. As before, we consider the Jeffrey's prior given by:
+% $$\pi(\widetilde{\umu},\uSigma ) \propto |\uSigma|^{-(p+1)/2}.$$
+% Additionally, we consider the following (conditional) prior for $\uDelta|\Sigma, \Sigma_{\delta} \sim \MatMVN(\bzero, \uSigma_{\delta}, \uSigma)$. 
+% After a little bit of algebra, we get the following the Bayes Factor(BF) in favor of the alternative.
+% \be
+% BF_{10}(Data) &=& \left\{\frac{\det(\widetilde{\Sigma}^{-1}_{0}(\bI_{a-1} - \uSigma^{-1}_{\delta,\star}\widetilde{\Sigma}^{-1}_{0}))}{ \det(\widetilde{\Sigma}^{-1}_{0})} \right\}^{p/2} \label{BayF} \\
+% & \times & \left[ \frac{ \det\left\{ (N-a)^{-1}\widetilde{\Sigma}^{-1}_{0}(\bI_{a-1} - \uSigma^{-1}_{\delta,\star}\widetilde{\Sigma}^{-1}_{0})  \uC_0 \bar{X}\uS_{p}^{-1} \bar{X}\trans\uC_0\trans + \bI_{a-1} \right\} }{ \det\left\{ (N-a)^{-1}\widetilde{\Sigma}^{-1}_{0} \uC_0 \bar{X}\uS_{p}^{-1} \bar{X}\trans\uC_0\trans + \bI_{a-1} \right\}   }\right]^{-(N-1)/2}, \nonumber
+% \ee
+% where $\widetilde{\Sigma}_{0} = \uC\left\{\diag(1/n_1, \cdots, 1/n_a) \right\} \uC\trans$; $ \uSigma_{\delta,\star} = \uSigma^{-1}_{\delta} + \widetilde{\Sigma}^{-1}_{0}$; $\widebar{X}$ is the groups sample means stacked row-wise. Finally, $\uS_p$ is the pooled sample covariance. 
+% It turns out that if $a=2$, and $\uSigma^{\star}_{\delta} = 1/\tau_0$ in the case of two-independent groups, the Bayes Factor in favor of the alternative versus the NULL is exactly identical to the one we got before \cite{zoh2018powerful}. The Bayes Factor, however derived, presents some challenges. The prominent of these issue being that the matrices are not fully rand and their dependent are zeros. To address that issue, we propose to modify the Bayes factor above so to get ride of unnecessary dependencies between the pair differences. This will resolve the issue associated with computing determinant of non-full matrices. We then get the following (approximate) Bayes factor
+% \be
+% BF^{max}_{10} &=& \left(1 + \eta_{} \right)^{-p/2} \left\{ \frac{  1 + \frac{pf^{max}}{(1 + \eta)(N-p-(G-1))}}{ 1 + \frac{p f^{max}}{(N-p-(G-1))}  } \right\}^{-(N-1)/2}, \label{eq:BFmax}
+% \ee
+% where $\eta_{ij} = n_{0,ij}/\tau_{0}$ and $f_{ij}  = \frac{N-p-(G-1)}{(N-G)p} n_{0,ij} (\overline{\uX}_i - \overline{\uX}_j)\trans \uS_{p}^{-1}(\overline{\uX}_i - \overline{\uX}_j)$; $N = \sum^{G}_{g=1}n_g$.
+% We obtain $\tau_0$ similar to approach taken in \cite{zoh2018powerful}.
+% We can show a test based on that Bayes factor is a good Bayes factor.
+% \begin{Th}
+% Let $n_{\min} = \min\{n_1, n_2\} \rightarrow \infty$ and $m \rightarrow \infty$ with $\lim_{n_{\min} \to \infty} m/n = \theta \in (0, 1)$.
+% \begin{description}
+%   \item[(a)] If $\tau_0$ is fixed, under $H_{0}$, $\log\left\{BF_{10}(\uX^{\star}, \uY^{\star})\right\} \xrightarrow[]{p} -\infty$, and, under $H_{1}$, $\log\left\{BF_{10}(\uX^{\star}, \uY^{\star})\right\} \xrightarrow[]{p} \infty$.
+%   \item[(b)] If $n_0/\tau_0 \rightarrow 0$ and $m n_0/\tau_0 \rightarrow \infty$, under $H_{0}$, $\log\left\{BF_{10}(\uX^{\star}, \uY^{\star})\right\} = \mathcal{O}_{p}(1)$.
+%   For the corresponding sequence of $H^{n}_1$, $\log\left\{BF_{10}(\uX^{\star}, \uY^{\star})\right\} \xrightarrow[]{p} \infty$, with $f^{\star} \xrightarrow[]{p} \infty$ as $n_{\min} \rightarrow \infty$.
+% \end{description}
+% \end{Th}
+
+% \section*{Current issue to address}
+% \begin{description}
+% \item[issue 1] The size of the test is too large compared to the specified size $\alpha$. Especially for very complex covariance matrices. This makes no sense since the null distribution does not depend on the true covariance matrix.
+
+% \item[issue 2] This issue might be addressed by resolving the first issue by correctly identifying the null distribution of the part of the test involving the data $f^{max}$ since may need to find that distribution and see how it depends on $m$ or p and the other parameters.
+
+% \item[Issue 2] The test relies on the maximum of identical but not necessarily independent $F(m, N-m -(G-1))$ distributions. how to approximate the quantile of that distribution. If they were iids, then we can simply use the quantile this equality $F(x,m, N-m -(G-1))^{k} = p$ and set $x_{p} = F( p^{1/k} ,m, N-m -(G-1))$. But we see that we will need to discount $k$ and use $k^{'} < k$ for better approximation.
+% \item[issue.2] The size of the test is too large compared to the specified size $\alpha$ 
+  
+% \end{description}
+
+
+
+
+
+
+% \begin{algorithm}
+% \caption{Testing algo}\label{alg:euclid}
+% \begin{algorithmic}[1]
+% \Procedure{MANOVA Testing RPs}{$\uX,G$}\Comment{ input data matrix $\uX$}
+% \State $r\gets a\bmod b$
+% \While{$r\not=0$}\Comment{We have the answer if r is 0}
+% \State $a\gets b$
+% \State $b\gets r$
+% \State $r\gets a\bmod b$
+% \EndWhile\label{euclidendwhile}
+% \State \textbf{return} $b$\Comment{The gcd is b}
+% \EndProcedure
+% \end{algorithmic}
+% \end{algorithm}
+
+% \begin{algorithm}
+% 	\caption{PPO} 
+% 	\begin{algorithmic}[1]
+% 		\For {$iteration=1,2,\ldots$}
+% 			\For {$actor=1,2,\ldots,N$}
+% 				\State Run policy $\pi_{\theta_{old}}$ in environment for $T$ time steps
+% 				\State Compute advantage estimates $\hat{A}_{1},\ldots,\hat{A}_{T}$
+% 			\EndFor
+% 			\State Optimize surrogate $L$ wrt. $\theta$, with $K$ epochs and minibatch size $M\leq NT$
+% 			\State $\theta_{old}\leftarrow\theta$
+% 		\EndFor
+% 	\end{algorithmic} 
+% \end{algorithm}
+
+\begin{algorithm}
+	\caption{MANOVA Test when $p < \sum^{G}_{g=1} n_{g} - G $}
+	\begin{algorithmic}[1]
+    	\State Initialize with Data $\uX$ (vector of data group) of length $G$
+    	\State Compute the group means $\widehat{\umu}$ and the pool sample covariance matrix $\widehat{\uSigma}$
+    	\State Compute $\uC_0$ the pair difference matrix with dimension ${n\choose 2}  \times p$. 
+    	\State Note that under a normal model, $f_{i,j} \sim F\{p, N-p-(G-1)\}$ for each pair $(i,j)$, for $i\neq j \in 1, \cdots, G$.
+    	\State Let $f_{max} = \max_{i < j \in 1, \cdots,G} f_{i,j}$ and compute the Bayes factor based on the $f_{max}$ using $n_i$ and $n_j$. 
+    	\State We can find the NULL distribution of $f_{max}$ and hence find the NULL distribution of the Bayes factor $BF_{max}$.
+    	\State We need find or well approximate the NULL distribution for $f_{max}$ for a given $n_i$ with $i=1, \cdots, G$ and $p$.
+    	\State We note $G$ increases the NULL distribution of $f_{max}$ departs from that $f_{max}$ under simple independence. We think it can be approximated by $P(f_{max} < a_0) = \left\{ F_{m, N-n_1-(G-1)} \right\}^{q},$ where $q < {n\choose 2}$. We will need to find $q \approx c {n\choose 2}$ 
+    	\State Reject the NULL when $BF_{10}(Data) > \gamma_{\alpha}$, where under the NULL $P(BF^{max}_{10} > \gamma_{\alpha}) = \alpha$, with $\alpha \in (0, 1)$.
+	\end{algorithmic} 
+\end{algorithm}
+
+\begin{algorithm}
+	\caption{MANOVA Test when $\sum^{G}_{g=1} n_{g} - G << p$}
+	\begin{algorithmic}[1]
+	\State Initialize with Data $\uX$ (vector of data group) of length $G$
+	\State Compute $\uC_0$ the pair difference matrix with dimension ${n\choose 2}  \times p$. 
+	\State Based on the sample size information and the number of groups, compute $m$ (projection space), $\tau_0$ (prior scale parameter), and $\gamma_{n}(\alpha)$(only value one value) for each of the ${n\choose 2}$ pair differences.
+	\For Every Random Projection Matrix $\uR$ (N selected)
+	   \State Obtain randomly projected data 
+	   \State Compute the Bayes factor based on the Randomly projected data
+	   \State compute $\theta_i(\uR_i) = \bone(BF^{max}_{10}(R_i) > \gamma_{\alpha})$
+	\EndFor
+	\State Compute $\widehat{\phi}(Data) = \frac{1}{N}\sum^{N}_{i=1}\theta_i$ as the test statistic
+	\State Compute the NULL distribution of $\widehat{phi}(Data)$ using the same $\uR$ (RP matrices) and assumming $\uSigma = \uI$ (identity matrix) and all zero response vector means using the sample sizes ($n_g$) and $m$ 
+	\end{algorithmic} 
+\end{algorithm}
+
+
+
+
+\subsection{Case of large  ``p"}
+Note that the Bayes factor derived in (\ref{eq:BFmax}) relies in the existence of the inverse sample covariance matrix $\uS_p$ which is no longer true if $N - G < p$. To address that issue, we rely on random projection (RPs), a data reduction technique, which project the data in a lower dimension $m << p$ given a carefully chosen RP matrix. Namely, for a randomly selected projection matrix $\Phi \in \mathcal{R}^{p \times m}$, with $m << p$ and $\Phi\trans\Phi = \uI_m$, the transformed (projected) data matrices are obtained as $\widetilde{\uX}_i = \Phi\bar{X}_i$. Hence the BF based on the projected data is: 
+\be
+BF^{max,\phi}_{10} &=& \max_{i,j=1,\cdots,G; i<j} \left(1 + \eta_{i,j} \right)^{-p/2} \left\{ \frac{  1 + \frac{mf^{\phi}_{ij}}{(1 + \eta_{ij})(N-m-(G-1))}}{ 1 + \frac{m f^{\phi}_{ij}}{(N-m-(G-1))}  } \right\}^{-(N-1)/2}, \label{eq:BFmaxproj}
+\ee
+where $f^{\phi}_{ij}  = \frac{N-m-(G-1)}{(N-G)m} n_{0,ij} (\overline{\uX}_i - \overline{\uX}_j)\trans\Phi(\Phi\trans\uS_{p}\Phi)^{-1}\Phi\trans(\overline{\uX}_i - \overline{\uX}_j)$; $N = \sum^{G}_{g=1}n_g$.
+We have the following Theorem based on our BF based test statistics.
+
+\subsubsection{Single random projection}\label{sec:sc31}
+We derived the Bayes factor in Section~\ref{sec:sc2} after we apply a single random projection $\uR$ to the data (see Equation~\ref{eq:eq3}).
+Given the sample sizes $n_1$ and $n_2$ and a choice of $\alpha$, we choose $m(n)$, $\tau_{\alpha}(n)$, and $\gamma_{\alpha}(n)$ as discussed in Sections~\ref{sec:sc21} and~\ref{sec:sc22}.
+A test based on      the resulting Bayes factor is then obtained as
+\be
+ \phi(\uR) = \left \{
+       \begin{array}{llll}
+       1 & \mbox{if} ~~ BF_{10}(\uX^{\star}, \uY^{\star}) > \gamma_{\alpha}(n),  \\
+       0 & \mbox{Otherwise}, \label{eq:phi1}
+       \end{array}
+       \right.
+\ee
+where $\phi(\uR) = 1$ signifies rejection of $H_{0}$ in favor of $H_{1}$, and $\phi(\uR) = 0$ accept $H_{0}$.
+We make the following observations about the test in (\ref{eq:phi1}).
+
+
+\begin{Th} \label{Thm2}
+For a given significance level $\alpha \in (0, 1)$, we have
+\begin{description}
+  \item[(a)] Under $H_{0}$, for fixed $n_1$, $n_2$, and $m(n)$, $E\{\phi(\uR)\mid  H_{0}\} =  \alpha$.
+ \item[(b)] Under $H_{1}$, for fixed $n_1$, $n_2$, and $m(n)$, $E\{\phi(\uR)\mid  H_{1}\} \geq \alpha.$
+  \item[(c)] Let the assumptions in Theorem 1 part (b) be satisfied such that $n_1$, $n_2$, $p$ $\rightarrow \infty$, with $m(n)$, $\tau_{\alpha}(n)$, $\gamma_{\alpha}(n)$ chosen as described in Section 2.2. Then,
+  $ \lim_{n_{\min} \rightarrow \infty} E\{\phi(\uR) \mid  H^{n}_{1}\} =  1,$
+  where $m(n)/n \rightarrow \theta \in (0, 1)$, $n_0 m(n)/\tau_{\alpha}(n) \rightarrow \infty$.
+\end{description}
+\end{Th}
+We show the proof of Theorem 2 in Appendix C.
+Note that $(a)$ shows that the test described in (\ref{eq:phi1}) has size $\alpha$;
+(b) shows that the test is unbiased;
+finally (c) shows that
+the power converges to 1 with increasing sample size. In part (c) of Theorem 2, we impose that $m(n)/n \rightarrow \theta \in (0, 1)$ and $n_0 m(n)/\tau_{\alpha}(n) \rightarrow \infty$ which are satisfied by our construction suggested in Section~\ref{sec:sc22}.
+
+
+
+
+
+
+\subsubsection{Multiple random projections}\label{sec:sc32}
+A test based on a Bayes factor obtained from a single random projection may lead to different decisions for two different random projection matrices.
+To avoid that, we consider a multitude of Bayes factors computed using many different random projections.
+Subsequently, we define our test statistic based on the ensemble of Bayes factors and study its power.
+
+Let $\uR_{1}, \cdots, \uR_{N}$ be a collection of independently and identically distributed random projection matrices.
+For a choice of $n_1$, $n_2$, and $\alpha$, the values of $m(n)$, $\tau_{\alpha}(n)$, and $\gamma_{\alpha}(n)$ are obtained as discussed in Sections~\ref{sec:sc21} and ~\ref{sec:sc22}.
+We then define $\overline{\phi}(N)$ as
+\be
+\overline{\phi}(N) = \frac{1}{N}\sum^{N}_{i=1} \phi(\uR_i) =  \frac{1}{N}\sum^{N}_{i=1}\uone\{BF_{10}(\uR_i) > \gamma_{\alpha}(n)\},\, \label{eq:eq90}
+ \ee
+where $\uone\{A\} = 1$ if $A$ is true and 0 otherwise. Clearly, $BF_{10}(\uR_i)$ depends on $\tau_{\alpha}(n)$.
+Note that $\overline{\phi}(N)$ represents the proportion of Bayes factors based on projected data
+that yield Bayes factor larger than the specified evidence threshold $\gamma_{\alpha}(n)$, for a choice of $\alpha$ and $m(n)$.
+We then define RMPBT as
+\be
+ \left \{
+       \begin{array}{llll}
+       \mbox{Reject}~ H_{0} & \mbox{if} ~~ \overline{\phi}(N) > \phi^{0}_{\alpha},  \\
+       \mbox{Accept}~ H_{0} & \mbox{Otherwise}, \label{eq:eq9}
+       \end{array}
+       \right.
+\ee
+where $\phi^{0}_{\alpha}$ is the upper $\alpha$ quantile of the distribution of $\overline{\phi}(N)$ under $H_{0}$,
+which depends on $m(n)$, $n_1$, $n_2$, $p$ and $\alpha$.
+
+\begin{Th}
+Suppose the assumptions of Theorems 1 and 2 hold.
+Given a collection $\uR_1, \cdots, \uR_N$ of random projections matrices,
+where $\uR_{i}\trans\uR_{i} = \uI$ for all $i = 1, \cdots, N$, then
+$\lim_{n_{\min} \rightarrow \infty} P\{\overline{\phi}(N) > \phi^{0}_{\alpha}\}  = 1$ under the sequence $H^{n}_{1}$ of alternatives.
+\end{Th}
+We show the proof of Theorem 3 in Appendix D.
+For fixed $m(n)$, $p$, $n_1$, $n_2$ and $\alpha$, RMPBT in (\ref{eq:eq9}) requires that we first compute $\phi^{0}_{\alpha}$.
+Under $H_{0}$, $\udelta=\uzero$, but $\umu_1 = \umu_2 = \umu$ and $\uSigma$ are unknown.
+Fortunately, the asymptotic null distribution of $\overline{\phi}(N)$ is independent of the nuisance parameters $\umu$ and $\uSigma$, providing a simple way of finding $\phi^{0}_{\alpha}$ (see Figure~\ref{fig:sumresult1f} for example).  
+%In Figure~\ref{fig:sumresult1f}, we show the plot of the empirical distribution of the null distribution of our test statistics when $n_1=n_2=50$ and $n_1=n_2=70$
+The result is formalized in the following theorem.
+
+\begin{Th}
+Under $H_{0}$, the distribution of $\overline{\phi}(N)$ as $N \rightarrow \infty$ is independent of $\umu$ and $\uSigma$ for any fixed $n_1$, $n_2$, $m \in (1,  n_1 + n_2 - 2)$ and $p \geq n_1 + n_2 - 2$.
+\end{Th}
+We show the proof of Theorem 4 in Appendix E. Theorem 4 suggests that for large values of $N$ we can approximate the null distribution of $\overline{\phi}(N)$
+by simulating data assuming $\uSigma = \uI$ and $\umu_1 = \umu_2 = \bzero$.
+
+\begin{figure}[htbp]
+\centering
+\subfloat[$n_1=n_2=50$]{\label{fig:subfig2a}\includegraphics[width=0.45\textwidth]{plots/H0_50_R1_fin2.pdf}} \qquad
+\subfloat[$n_1=n_2=50$]{\label{fig:subfig2b}\includegraphics[width=0.45\textwidth]{plots/H0_50_R2_fin2.pdf}} \qquad
+\subfloat[$n_1=n_2=70$]{\label{fig:subfig3a}\includegraphics[width=0.45\textwidth]{plots/H0_70_R1_fin2.pdf}} \qquad
+\subfloat[$n_1=n_2=70$]{\label{fig:subfig3b}\includegraphics[width=0.45\textwidth]{plots/H0_70_R2_fin2.pdf}} \\
+\caption{\baselineskip=10pt
+Empirical distribution function of $\overline\phi(N)$ under the null hypothesis for 5 different covariance matrices based on $N = 50000$ random projections and 1000 data sets. The choice of $m$ and the random projections $\uR_1$ and $\uR_2$ are described in Section~\ref{sec:sc22}.}
+\label{fig:sumresult1f}
+\end{figure}
+
+
+
+\begin{Th}
+	%\newtheorem{Th}
+	Suppose that $N = \sum^{a}_{i=1} = n_i$, the total sample size and $\omega_ i = n_i/N$  with $ m \rightarrow \infty$. 
+	\begin{description}
+		\item[1] For a given fixed positive matrix $\uSigma_{\delta}$ of size $a-1$, $\log(BF_{10}) \xrightarrow{p} -\infty$ under $H_0$. Under $H_1$, $\log(BF_{10}) \xrightarrow{p} \infty$ as $N \rightarrow \infty$, with $\omega_i \rightarrow \lambda_i \in (0,1)$.
+		\item[2] If $\Sigma^{-1}_{0}\Sigma_{\delta} \rightarrow 0$ and $ m \Sigma^{-1}_{0}\Sigma_{\delta} \rightarrow 0$, under $H_0$ $\log(\widetilde{BF}_{10}) = \mathcal{O}_p(1)$ and under $H_1$ $\log(\widetilde{BF}_{10} \xrightarrow{p} \infty$.
+	\end{description}
+%	For a choice of a non-zero and fixed covariance matrix $\uSigma_{\delta}$ of size $a-1$, the Bayes factor in favor of the alternative derived in (\ref{BayF}) is consistent when testing the hypothesis in (\ref{eq:hypo1}).   
+\end{Th}
+We provide the proof in the Appendix.
+Subsequently, we discuss the choices of $\Phi$ and $m$. 
+
+\subsection{Choice of  $\Sigma_{\delta}$, m and $\gamma_0$}
+Note that in our model, $\Sigma_{\delta}$ characterizes the dependency between the group sample means. Since we assume the groups are independent, it  makes sense to assume a diagonal structure, with possibly different diagonal elements. In this paper, we opt for the matrix of the form $\Sigma_{\delta} = \diag(1/\tau_1, \cdots, 1/ \tau_{G-1})$. The choice of the parameter $\tau_0$ is crucial and greatly affect the power of the test. To that end, we use the same approach considered in \cite{Zoh2018} for the two sample problem. Here the two samples considered are the smallest and largest sample sizes.  % uniformily Powerful Bayesian Test (UMPBT) approach proposed by Johnson(203b) 
+%The prior under the alternative is selected so to achieve high probability of exceeding the evidence threshold $\ugamma$. Therefore, we can select $\Sigma_{\delta}$ (subsequently $\tau_0$) so that 
+%$$\Sigma_{\delta} = \arg\max P\left\{\widetilde{BF}_{10}(Data) > \ugamma \right\} $$
+
+%This is a difficult optimization problem to tackle directly and we settle for a sub-optimal choice of $\Sigma_{\delta}$.  We address this problem almost as if it was a two-sample problem then obtain $\Sigma_{\delta}(n)$ and $\gamma(n)$. Namely, we choose the largest and the smallest group and obtained $\Sigma_{\delta}(n)$ and $\gamma(n)$ as described in Zoh et al. (2018).
+
+
+\section{Bayes Factor based Test Statistics}
+\subsection{Test Statistics}
+Here we discuss the choice of the Bayes factor based test statistics. The Bayes factor($BF_{10}$) in favor of the alternative represents the evidence in the data to support the alternative (Ref). We  need a threshold, often denoted $\gamma$, to help determine the evidence threshold beyond which we favor the alternative over the NULL. Similar to (Zoh et al. 2018), we use the argument of restricted most powerful Bayesian test (RMPBT). See (Ref) for detailed description of the methodology.
+Similar to the argument in (Zoh et al. 2018), we select $\Sigma_{\delta}$ and $\gamma$ so that
+
+$$\underset{(\Sigma_{\delta}, \gamma)}{\arg\max} \quad  P\{BF_{10}(Data, \Sigma_{\delta}) > \gamma\}.$$
+
+It is very difficult to directly solve this optimization problem. We solve a simpler problem instead. We assume that $\Sigma_{\delta} = \diag(1/\tau_1, \cdotds, 1/\tau_{a-1})$. 
+
+\underline{Note} first that the Bayes factor provided in (\ref{eq:bfrp}) essentially combined a two group mean difference in a single test. To see this,  for $\uC_0 \bar{X}\Phi\trans(\Phi\uS_{p}\Phi\trans)^{-1}\Phi\bar{X}\trans\uC_0\trans$ is $(a-1) \times (a-1)$ symmetric matrix where the diagonal element have approximately a univariate $\uF$ distribution (more on this later). 
+
+Subsequently, we see that if we assume complete independence of each comparison between each group and the baseline, we can simply rewrite the Bayes factor as a product of $a-1$ BFs based on a two group comparison (each group against the baseline group). Finally, For each of the $G-1$ comparisons, we obtain $(\tau_g, \gamma_g), \mbox{for}\; g = 1, \cdots, G-1$ using similar approach proposed by Zoh et al, 2018 in a two-sample case. 
+
+When $p >> N-G$, we use RPs to circumvent the issue caused by inversion of an ill-formed sample covariance. To reduce the effect of a single RP on the result of the test, we use multiple RPs and obtain the following test statistic.
+\be
+\phi(N) &=& \frac{1}{N}\sum^{N}_{l=1} \mathit{I}\left\{BF_{10}(\Phi_i) > \gamma_{n}\right\},  \label{eq:Bftest} 
+\ee
+where $\mathit{I}(\uA)$ is equal to $\uA$ is true and $0$ otherwise.
+ 
+  
+ 
+
+\begin{enumerate}
+	\item We can approximate the distribution of 
+	$$\diag\left\{ (N-a)^{-1}\widetilde{\Sigma}^{-1}_{0} \uC_0 \bar{X}\Phi\trans(\Phi\uS_{p}\Phi\trans)^{-1}\Phi\bar{X}\trans\uC_0\trans + \bI_{a-1} \right\} \frac{N-m-(a-1)}{(N - (a-1))p} \sim \uF\left\{\bar{n}, \sum n - m -(a-1)\right\}$$, for a given $n$ (vector) and $m$
+	\item We see that the distribution of the diagonal elements is approximately $\uF$ with degrees of freedom $m$ and $N - m -(a-1)$.  
+	\item How does the distribution (quantile) of with $\tau_0$? can we approximate that relation with $\tau_0$?
+	\item if we can then we can approximate $\gamma_0$ for values of $n$ and $m$.
+\end{enumerate}
+
+
+\subsection{Test Statistics}
+
+
+\subsection{Choices of $\Phi$}
+
+We discuss the choice of $\Phi$ and $m$ here. We make no attempt to find an optimal projection matrix but are primarily motivated by practical convenience.
+Intuitively, however, the projection matrix $\Phi$ should be selected so to only slightly perturb all pairwise distances between the sample vectors (Li et al., 2006). One possible way to achieve this is to sample the entries of $\Phi$ from a distribution with mean zero and variance one.
+Since our test statistics involves the inversion of $\Phi\trans\uS\Phi$, which is positive definite if $\Phi\trans\Phi = \uI_m$ (see Lemma 1 of Srivastava et al., 2016), we further restrict our choices to the family of semi-orthogonal matrices. We consider two constructions of the projection matrix. The first one, denoted $\Phi_1$, is similar to the one permutation + one random projection considered in Srivastava et al. (2016) and yields a sparse matrix with only p non-zero elements. Each of their construction is also detailed in Zoh et al. (2018).
+
+The second approach obtains $\Phi_2$ as the $Q$ matrix of the QR decomposition of a p × m matrix with entries simulated independently from a standard normal distribution.
+QR decomposition of a large matrix is computationally intensive.
+Note, however, that any matrix $U \in \mathcal{R}^{p×m]$ admits a QR decomposition $U = \Phi B$, where $\Phi \in \mathcal{R}^{p \times m}$ is an orthonormal matrix, that is, $\Phi\trans\Phi = \uI_m$ and $B \in \mathcal{R}^{m \times m}$ is an upper triangular matrix with positive entries on the diagonal. This implies $\uU(\uU\trans \uS \uU)^{−1} \uU\trans = \uR\uB(\uB\trans \uR\trans \uS \uR \uB)^{−1}\uB\trans \uPhi\trans = \Phi(\Phi\trans \uS \Phi)^{−1} \Phi\trans$.
+This suggests that we could simply replace $\Phi$ by $\uU$ in the equation for the Bayes factor. 
+For the choices of m, we consider the approach discussed in the two-sample case simply using the sample size for the smaller and larger group.  
+
+
+
+
+
+
+%\bibliographystyle{plainnat}
+\bibliography{MultiNomial_variableSelection,Bibliography_lrtnew}
+\end{document} 

@@ -1,0 +1,620 @@
+\documentclass[]{article}
+\usepackage{amsthm}
+%%%%% PLACE YOUR OWN MACROS HERE %%%%%
+\usepackage{verbatim,color,amssymb}
+\usepackage{amsmath}					
+\usepackage{amsthm}					
+\usepackage{algorithm,algorithmic}
+\usepackage{natbib}
+\usepackage{setspace}
+\usepackage[mathscr]{euscript}
+\usepackage{fancyhdr}
+\usepackage{enumitem}
+\usepackage{graphicx}
+\usepackage{geometry}
+\usepackage{lineno}
+\usepackage[compact]{titlesec}
+\usepackage{listings}
+\usepackage{rotating}
+\usepackage{subfig,subfloat}
+%\usepackage{multirow}
+%\usepackage{lineno}
+\usepackage{booktabs}
+\def\rot{\rotatebox}
+\usepackage{mathtools}
+\usepackage{subfig}
+\usepackage{caption}
+\captionsetup[subfigure]{labelformat=parens,
+	labelsep=space,
+	font=small,
+	margin=0em
+}
+\usepackage{float}
+\newsubfloat{figure}% Allow sub-figures
+\usepackage{tikz}
+\usetikzlibrary{arrows,chains,backgrounds,fit}
+\usepackage{multirow}
+\usepackage{lineno}
+
+\def\pdfshellescape{1}
+
+\setlength{\textheight}{9in}
+\setlength{\textwidth}{6in}
+\setlength{\topmargin}{-36pt}
+\setlength{\oddsidemargin}{15pt}
+\setlength{\evensidemargin}{0pt}
+\tolerance=500
+\renewcommand{\baselinestretch}{1.5}
+
+
+
+%%%%%%%%%%%%%%%
+% Begin New Definitions  %%
+%%%%%%%%%%%%%%%
+
+
+\newtheorem{Th}{\underline{\bf Theorem}}
+\newtheorem{Assmp}{{\bf Assumption}}
+\newtheorem{Cond}{\underline{\bf Conditions}}
+\newtheorem{Proof}{Proof}
+\newtheorem*{Proof*}{Proof}
+\newtheorem{Mth}{Main Theorem}
+\newtheorem{Def}{Definition}
+\newtheorem{Rem}{\underline{\bf Remark}}
+\newtheorem{Qes}{Question}
+\newtheorem{Prop}{Proposition}
+\newtheorem{Lem}{\underline{\bf Lemma}}
+\newtheorem{Cor}{\underline{\bf Corollary}}
+\newtheorem{Exa}{Example}
+\newtheorem{Eq}{Equation}
+
+\newcommand{\MyProof}{\noindent\textbf{Proof. }}
+\def\bzero{{\mathbf 0}}
+\newcommand{\uzero}            {\mbox{\boldmath$0$}}
+\newcommand{\uone}               {\mbox{\boldmath$1$}}
+\def\etal{\emph{et al.}}
+
+\def\nN{\mathbb{N}}
+\def\rR{\mathbb{R}}
+\def\eE{\mathbb{E}}
+
+\def\L{{\cal L}}
+\def\B{{\cal B}}
+\def\C{{\cal C}}
+\def\D{{\cal D}}
+\def\E{{\cal E}}
+\def\F{{\cal F}}
+\def\G{{\cal G}}
+\def\K{{\cal K}}
+\def\M{{\cal M}}
+\def\N{{\cal N}}
+\def\calP{{\cal P}}
+\def\S{{\cal S}}
+\def\T{{\cal T}}
+\def\U{{\cal U}}
+\def\W{{\cal W}}
+\def\V{{\cal V}}
+\def\X{{\cal X}}
+\def\Z{{\cal Z}}
+\def\Y{{\cal Y}}
+\def\sumi{\sum_{i=1}^n}
+
+\def\scrC{{\mathscr{C}}}
+
+
+\def\diag{\hbox{diag}}
+\def\Ind{\hbox{I}}
+\def\wh{\widehat}
+\def\wt{\widetilde}
+\def\wb{\breve}
+\def\AIC{\hbox{AIC}}
+\def\BIC{\hbox{BIC}}
+\def\diag{\hbox{diag}}
+\def\log{\hbox{log}}
+\def\bias{\hbox{bias}}
+\def\Siuu{\boldSigma_{i,uu}}
+\def\whT{\widehat{\Theta}}
+\def\var{\hbox{var}}
+\def\cov{\hbox{cov}}
+\def\corr{\hbox{corr}}
+\def\sign{\hbox{sign}}
+\def\trace{\hbox{trace}}
+\def\naive{\hbox{naive}}
+\def\vect{\hbox{vec}}
+
+
+\def\Beta{\hbox{Beta}}
+\def\DE{\hbox{DE}}
+\def\Dir{\hbox{Dirch}}
+\def\Exp{\hbox{Exp}}
+\def\gIGs{\hbox{g-Inv-Gs}}
+\def\Ga{\hbox{Ga}}
+\def\IGs{\hbox{Inv-Gs}}
+\def\IG{\hbox{Inv-Ga}}
+\def\IW{\hbox{IW}}
+\def\MVN{\hbox{MVN}}
+\def\MatMVN{\hbox{Mat-MVN}}
+\def\MVL{\hbox{MVL}}
+\def\MVT{\hbox{MVT}}
+\def\Normal{\hbox{Normal}}
+\def\TN{\hbox{TN}}
+\def\Unif{\hbox{Unif}}
+\def\Mult{\hbox{Mult}}
+\def\Wish{\hbox{W}}
+
+
+\def\wt{\widetilde}
+\def\sumi{\sum_{i=1}^n}
+\def\diag{\hbox{diag}}
+\def\wh{\widehat}
+\def\AIC{\hbox{AIC}}
+\def\BIC{\hbox{BIC}}
+\def\diag{\hbox{diag}}
+\def\log{\hbox{log}}
+\def\bias{\hbox{bias}}
+\def\Siuu{\boldSigma_{i,uu}}
+\def\dfrac#1#2{{\displaystyle{#1\over#2}}}
+\def\VS{{\vskip 3mm\noindent}}
+\def\refhg{\hangindent=20pt\hangafter=1}
+\def\refmark{\par\vskip 2mm\noindent\refhg}
+\def\naive{\hbox{naive}}
+\def\itemitem{\par\indent \hangindent2\parindent \textindent}
+\def\var{\hbox{var}}
+\def\cov{\hbox{cov}}
+\def\corr{\hbox{corr}}
+\def\trace{\hbox{trace}}
+\def\refhg{\hangindent=20pt\hangafter=1}
+\def\refmark{\par\vskip 2mm\noindent\refhg}
+\def\Normal{\hbox{Normal}}
+\def\Poisson{\hbox{Poisson}}
+\def\Wishart{\hbox{Wishart}}
+\def\Invwish{\hbox{Inv-Wishart}}
+\def\Beta{\hbox{Beta}}
+\def\NiG{\hbox{NiG}}
+\def\matF{\hbox{Mat-F}}
+
+
+
+\def\ANNALS{{\it Annals of Statistics}}
+\def\ANNALSP{{\it Annals of Probability}}
+\def\ANNALSMS{{\it Annals of Mathematical Statistics}}
+\def\ANNALSAS{{\it Annals of Applied Statistics}}
+\def\ANNALSISM{{\it Annals of the Institute of Statistical Mathematics}}
+\def\AJE{{\it American Journal of Epidemiology}}
+\def\ANIPS{{\it Advances in Neural Information Processing Systems}}
+\def\APLS{{\it Applied Statistics}}
+\def\BA{{\it Bayesian Analysis}}
+\def\BRNL{{\it Bernoulli}}
+\def\BIOK{{\it Biometrika}}
+\def\BIOS{{\it Biostatistics}}
+\def\BMCS{{\it Biometrics}}
+\def\BMCMIDM{{\it BMC Medical Informatics and Decision Making}}
+\def\BIOINF{{\it Bioinformatics}}
+\def\CANADAJS{{\it Canadian Journal of Statistics}}
+\def\CG{{\it Current Genomics}}
+\def\CDA{{\it Computational Statistics \& Data Analysis}}
+\def\COMMS{{\it Communications in Statistics, Series A}}
+\def\COMMS{{\it Communications in Statistics, Theory \& Methods}}
+\def\COMMSS{{\it Communications in Statistics - Simulation}}
+\def\COMMSSC{{\it Communications in Statistics - Simulation and Computation}}
+\def\EJS{{\it Electronic Journal of Statistics}}
+\def\ECMK{{\it Econometrica}}
+\def\ECTH{{\it Econometric Theory}}
+\def\GENEP{{\it Genetic Epidemiology}}
+\def\JASA{{\it Journal of the American Statistical Association}}
+\def\JRSSB{{\it Journal of the Royal Statistical Society, Series B}}
+\def\JRSSC{{\it Journal of the Royal Statistical Society, Series C}}
+\def\JQT{{\it Journal of Quality Technology}}
+\def\JCGS{{\it Journal of Computational and Graphical Statistics}}
+\def\JCB{{\it Journal of Computational Biology}}
+\def\JAMA{{\it Journal of the American Medical Association}}
+\def\JNUTR{{\it Journal of Nutrition}}
+\def\JABES{{\it Journal of Agricultural, Biological and Environmental Statistics}}
+\def\JBES{{\it Journal of Business and Economic Statistics}}
+\def\JSPI{{\it Journal of Statistical Planning \& Inference}}
+\def\JMA{{\it Journal of Multivariate Analysis}}
+\def\JNS{{\it Journal of Nonparametric Statistics}}
+\def\JSS{{\it Journal of Statistical Software}}
+\def\JECM{{\it Journal of Econometrics}}
+\def\IEEE{{\it IEEE}}
+\def\IEEESPL{{\it IEEE Signal Processing Letters}}
+\def\IEEETIT{{\it IEEE Transactions on Information Theory}}
+\def\LETTERS{{\it Letters in Probability and Statistics}}
+\def\ML{{\it Machine Learning}}
+\def\P_25_ICML{{\it Proceedings of the 25th international conference on Machine learning}}
+\def\PLoSCB{{\it PloS Computational Biology}}
+\def\STIM{{\it Statistics in Medicine}}
+\def\SCAN{{\it Scandinavian Journal of Statistics}}
+\def\SMMR{{\it Statistical Methods in Medical Research}}
+\def\SNKH{{\it Sankhy\={a}: The Indian Journal of Statistics}}
+\def\STIM{{\it Statistics in Medicine}}
+\def\STATMED{{\it Statistics in Medicine}}
+\def\STATSCI{{\it Statistical Science}}
+\def\SSNC{{\it Statistica Sinica}}
+\def\SaC{{\it Statistics and Computing}}
+\def\STATSCI{{\it Statistical Science}}
+\def\TECH{{\it Technometrics}}
+
+
+\def\dfrac#1#2{{\displaystyle{#1\over#2}}}
+\def\VS{{\vskip 3mm\noindent}}
+\def\refhg{\hangindent=20pt\hangafter=1}
+\def\refmark{\par\vskip 2mm\noindent\refhg}
+\def\itemitem{\par\indent \hangindent2\parindent \textindent}
+\def\refhg{\hangindent=20pt\hangafter=1}
+\def\refmark{\par\vskip 2mm\noindent\refhg}
+\def\povr{\buildrel p\over\longrightarrow}
+\def\ccdot{{\bullet}}
+\def\bse{\begin{eqnarray*}}
+	\def\ese{\end{eqnarray*}}
+\def\be{\begin{eqnarray}}
+\def\ee{\end{eqnarray}}
+\def\bq{\begin{equation}}
+\def\eq{\end{equation}}
+\def\pr{\hbox{pr}}
+\def\wh{\widehat}
+
+
+\def\boldalpha{{\mbox{\boldmath $\alpha$}}}
+\def\boldAlpha{{\mbox{\boldmath $\Alpha$}}}
+\def\boldbeta{{\mbox{\boldmath $\beta$}}}
+\def\boldBeta{{\mbox{\boldmath $\beta$}}}
+\def\bolddelta{{\mbox{\boldmath $\delta$}}}
+\def\boldDelta{{\mbox{\boldmath $\Delta$}}}
+\def\boldeta{{\mbox{\boldmath $\eta$}}}
+\def\boldEta{{\mbox{\boldmath $\Eta$}}}
+\def\boldgamma{{\mbox{\boldmath $\gamma$}}}
+\def\boldGamma{{\mbox{\boldmath $\Gamma$}}}
+\def\boldlambda{{\mbox{\boldmath $\lambda$}}}
+\def\boldLambda{{\mbox{\boldmath $\Lambda$}}}
+\def\boldmu{{\mbox{\boldmath $\mu$}}}
+\def\boldMu{{\mbox{\boldmath $\Mu$}}}
+\def\boldnu{{\mbox{\boldmath $\nu$}}}
+\def\boldNu{{\mbox{\boldmath $\Nu$}}}
+\def\boldomega{{\mbox{\boldmath $\omega$}}}
+\def\boldOmega{{\mbox{\boldmath $\Omega$}}}
+\def\boldpsi{{\mbox{\boldmath $\psi$}}}
+\def\boldPsi{{\mbox{\boldmath $\Psi$}}}
+\def\boldsigma{{\mbox{\boldmath $\sigma$}}}
+\def\boldSigma{{\mbox{\boldmath $\Sigma$}}}
+\def\boldpi{{\mbox{\boldmath $\pi$}}}
+\def\boldPi{{\mbox{\boldmath $\Pi$}}}
+\def\boldphi{{\mbox{\boldmath $\phi$}}}
+\def\boldepsilon{{\mbox{\boldmath $\epsilon$}}}
+\def\boldtheta{{\mbox{\boldmath $\theta$}}}
+\def\boldTheta{{\mbox{\boldmath $\Theta$}}}
+\def\boldve{{\mbox{\boldmath $\ve$}}}
+\def\boldVe{{\mbox{\boldmath $\Epsilon$}}}
+\def\boldxi{{\mbox{\boldmath $\xi$}}}
+\def\boldXi{{\mbox{\boldmath $\Omega$}}}
+\def\boldzeta{{\mbox{\boldmath $\zeta$}}}
+\def\boldZeta{{\mbox{\boldmath $\Zeta$}}}
+\def\boldvarrho{{\mbox{\boldmath $\varrho$}}}
+\def\boldVarrho{{\mbox{\boldmath $\Varrho$}}}
+\def\boldtau{{\mbox{\boldmath $\tau$}}}
+\def\boldTau{{\mbox{\boldmath $\Tau$}}}
+\def\boldrho{{\mbox{\boldmath $\rho$}}}
+\def\boldRho{{\mbox{\boldmath $\Rho$}}}
+\def\boldvarsigma{{\mbox{\boldmath $\varsigma$}}}
+
+\def\trans{^{\rm T}}
+\def\myalpha{{\cal A}}
+\def\th{^{th}}
+\def\bone{{\mathbf 1}}
+
+\def\b1e{{\mathbf e}}
+\def\bA{{\mathbf A}}
+\def\ba{{\mathbf a}}
+\def\bB{{\mathbf B}}
+\def\bb{{\mathbf b}}
+\def\bc{{\mathbf c}}
+\def\bC{{\mathbf C}}
+\def\bd{{\mathbf d}}
+\def\bD{{\mathbf D}}
+\def\bG{{\mathbf G}}
+\def\bI{{\mathbf I}}
+\def\bk{{\mathbf k}}
+\def\bK{{\mathbf K}}
+\def\bM{{\mathbf M}}
+\def\bp{{\mathbf p}}
+\def\bP{{\mathbf P}}
+\def\bs{{\mathbf s}}
+\def\bS{{\mathbf S}}
+\def\bT{{\mathbf T}}
+\def\bt{{\mathbf t}}
+\def\bu{{\mathbf u}}
+\def\bU{{\mathbf U}}
+\def\bq{{\mathbf q}}
+\def\bQ{{\mathbf Q}}
+\def\bV{{\mathbf V}}
+\def\bw{{\mathbf w}}
+\def\bW{{\mathbf W}}
+\def\bx{{\mathbf x}}
+\def\bX{{\mathbf X}}
+\def\by{{\mathbf y}}
+\def\bY{{\mathbf Y}}
+\def\bz{{\mathbf z}}
+\def\bZ{{\mathbf Z}}
+\def\bS{{\mathbf S}}
+\def\bzero{{\mathbf 0}}
+
+\def\whT{\widehat{\Theta}}
+\def\te{\widetilde{e}}
+\def\te{\widetilde{\epsilon}}
+\def\tp{\widetilde{p}}
+\def\tv{\widetilde{v}}
+\def\tmu{\widetilde{\mu}}
+\def\tsigma{\widetilde{\sigma}}
+
+\newcommand{\etam}{\mbox{\boldmath $\eta$}}
+\newcommand{\bmu}{\mbox{\boldmath $\mu$}}
+\newcommand{\bDelta}{\mbox{\boldmath $\Delta$}}
+\newcommand{\bphi}{\mbox{\boldmath $\phi$}}
+\newcommand{\bpi}{\mbox{\boldmath $\pi$}}
+\newcommand{\bPi}{\mbox{\boldmath $\Pi$}}
+\newcommand{\bxi}{\mbox{\boldmath $\xi$}}
+\newcommand{\bepsilon}{\mbox{\boldmath $\epsilon$}}
+\newcommand{\btheta}{\mbox{\boldmath $\theta$}}
+\newcommand{\bbeta}{\mbox{\boldmath $\beta$}}
+\newcommand{\bgamma}{\mbox{\boldmath $\gamma_{j}$}}
+\newcommand{\bzeta}{\mbox{\boldmath $\zeta$}}
+\newcommand{\bsigma}{\mbox{\boldmath $\sigma$}}
+\newcommand{\bSigma}{\mbox{\boldmath $\Sigma$}}
+\newcommand{\balpha}{\mbox{\boldmath $\alpha$}}
+\newcommand{\bomega}{\mbox{\boldmath $\omega$}}
+\newcommand{\blambda}{\mbox{\boldmath $\lambda$}}
+\newcommand{\bLambda}{\mbox{\boldmath $\Lambda$}}
+\newcommand{\bOmega}{\mbox{\boldmath $\Omega$}}
+\newcommand{\bPsi}{\mbox{\boldmath $\Psi$}}
+\newcommand{\bpsi}{\mbox{\boldmath $\psi$}}
+\newcommand{\bGamma}{\mbox{\boldmath $\Gamma$}}
+\newcommand{\btau}{\mbox{\boldmath $\tau$}}
+
+\newcommand{\abs}[1]{\left\vert#1\right\vert}
+\newcommand{\norm}[1]{\left\Vert#1\right\Vert}
+
+\newcommand{\uA}       {\mbox{\boldmath$A$}}
+\newcommand{\ua}       {\mbox{\boldmath$a$}}
+\newcommand{\uB}       {\mbox{\boldmath$B$}}
+\newcommand{\ub}       {\mbox{\boldmath$b$}}
+\newcommand{\uC}       {\mbox{\boldmath$C$}}
+\newcommand{\uc}       {\mbox{\boldmath$c$}}
+\newcommand{\uD}       {\mbox{\boldmath$D$}}
+\newcommand{\ud}       {\mbox{\boldmath$d$}}
+\newcommand{\uE}       {\mbox{\boldmath$E$}}
+\newcommand{\ue}       {\mbox{\boldmath$e$}}
+\newcommand{\uF}       {\mbox{\boldmath$F$}}
+\newcommand{\uf}       {\mbox{\boldmath$f$}}
+\newcommand{\uG}       {\mbox{\boldmath$G$}}
+\newcommand{\ug}       {\mbox{\boldmath$g$}}
+
+%\newcommand{\uG}       {\mbox{\boldmath$G$}}
+
+%\newcommand{\ug}       {\mbox{\boldmath$g$}}
+\newcommand{\uH}       {\mbox{\boldmath$H$}}
+\newcommand{\uh}       {\mbox{\boldmath$h$}}
+\newcommand{\uI}       {\mbox{\boldmath$I$}}
+\newcommand{\ui}       {\mbox{\boldmath$i$}}
+\newcommand{\uJ}       {\mbox{\boldmath$J$}}
+\newcommand{\uj}       {\mbox{\boldmath$j$}}
+\newcommand{\uK}       {\mbox{\boldmath$K$}}
+\newcommand{\uk}       {\mbox{\boldmath$k$}}
+\newcommand{\uL}       {\mbox{\boldmath$L$}}
+\newcommand{\ul}       {\mbox{\boldmath$l$}}
+\newcommand{\uM}       {\mbox{\boldmath$M$}}
+\newcommand{\um}       {\mbox{\boldmath$m$}}
+\newcommand{\uN}       {\mbox{\boldmath$N$}}
+\newcommand{\un}       {\mbox{\boldmath$n$}}
+\newcommand{\uO}       {\mbox{\boldmath$O$}}
+%\newcommand{\uo}       {\mbox{\boldmath$o$}}
+\newcommand{\uP}       {\mbox{\boldmath$P$}}
+\newcommand{\up}       {\mbox{\boldmath$p$}}
+\newcommand{\uQ}       {\mbox{\boldmath$Q$}}
+\newcommand{\uq}       {\mbox{\boldmath$q$}}
+\newcommand{\uR}       {\mbox{\boldmath$R$}}
+\newcommand{\ur}       {\mbox{\boldmath$r$}}
+\newcommand{\uS}       {\mbox{\boldmath$S$}}
+\newcommand{\us}       {\mbox{\boldmath$s$}}
+\newcommand{\uT}       {\mbox{\boldmath$T$}}
+\newcommand{\ut}       {\mbox{\boldmath$t$}}
+\newcommand{\uU}       {\mbox{\boldmath$U$}}
+\newcommand{\uu}       {\mbox{\boldmath$u$}}
+\newcommand{\uV}       {\mbox{\boldmath$V$}}
+\newcommand{\uv}       {\mbox{\boldmath$v$}}
+\newcommand{\uW}       {\mbox{\boldmath$W$}}
+\newcommand{\uw}       {\mbox{\boldmath$w$}}
+\newcommand{\uX}       {\mbox{\boldmath$X$}}
+\newcommand{\ux}       {\mbox{\boldmath$x$}}
+\newcommand{\uY}       {\mbox{\boldmath$Y$}}
+\newcommand{\uy}       {\mbox{\boldmath$y$}}
+\newcommand{\uZ}       {\mbox{\boldmath$Z$}}
+\newcommand{\uz}       {\mbox{\boldmath$z$}}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\newcommand{\ualpha}            {\mbox{\boldmath$\alpha$}}
+\newcommand{\ubeta}             {\mbox{\boldmath$\beta$}}
+\newcommand{\ugamma}            {\mbox{\boldmath$\gamma$}}
+\newcommand{\udelta}            {\mbox{\boldmath$\delta$}}
+\newcommand{\uepsilon}          {\mbox{\boldmath$\epsilon$}}
+\newcommand{\uvarepsilon}       {\mbox{\boldmath$\varepsilon$}}
+\newcommand{\uzeta}             {\mbox{\boldmath$\zeta$}}
+\newcommand{\ueta}              {\mbox{\boldmath$\eta$}}
+\newcommand{\utheta}            {\mbox{\boldmath$\theta$}}
+\newcommand{\uvartheta}         {\mbox{\boldmath$\vartheta$}}
+\newcommand{\uiota}             {\mbox{\boldmath$\uiota$}}
+\newcommand{\ukappa}            {\mbox{\boldmath$\kappa$}}
+\newcommand{\ulambda}           {\mbox{\boldmath$\lambda$}}
+\newcommand{\umu}               {\mbox{\boldmath$\mu$}}
+\newcommand{\unu}               {\mbox{\boldmath$\nu$}}
+\newcommand{\uxi}               {\mbox{\boldmath$\xi$}}
+\newcommand{\uo}                {\mbox{\boldmath$\o$}}
+\newcommand{\upi}               {\mbox{\boldmath$\pi$}}
+\newcommand{\uvarpi}            {\mbox{\boldmath$\varpi$}}
+\newcommand{\urho}              {\mbox{\boldmath$\rho$}}
+\newcommand{\uvarrho}           {\mbox{\boldmath$\varrho$}}
+\newcommand{\usigma}            {\mbox{\boldmath$\sigma$}}
+\newcommand{\uvarsigma}         {\mbox{\boldmath$\varsigma$}}
+\newcommand{\utau}              {\mbox{\boldmath$\tau$}}
+\newcommand{\uupsilon}          {\mbox{\boldmath$\upsilon$}}
+\newcommand{\uphi}              {\mbox{\boldmath$\phi$}}
+\newcommand{\uvarphi}           {\mbox{\boldmath$\varphi$}}
+\newcommand{\uchi}              {\mbox{\boldmath$\chi$}}
+\newcommand{\upsi}              {\mbox{\boldmath$\psi$}}
+\newcommand{\uomega}            {\mbox{\boldmath$\omega$}}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\newcommand{\uGamma}            {\mbox{\boldmath$\Gamma$}}
+\newcommand{\uDelta}            {\mbox{\boldmath$\Delta$}}
+\newcommand{\uTheta}            {\mbox{\boldmath$\Theta$}}
+\newcommand{\uLambda}           {\mbox{\boldmath$\Lambda$}}
+\newcommand{\uXi}               {\mbox{\boldmath$\Xi$}}
+\newcommand{\uPi}                {\mbox{\boldmath$\Pi$}}
+\newcommand{\uSigma}            {\mbox{\boldmath$\Sigma$}}
+\newcommand{\uUpsilon}          {\mbox{\boldmath$\Upsilon$}}
+\newcommand{\uPhi}              {\mbox{\boldmath$\Phi$}}
+\newcommand{\uPsi}              {\mbox{\boldmath$\Psi$}}
+\newcommand{\uOmega}            {\mbox{\boldmath$\Omega$}}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\def\myx{T}
+\def\curr{_{\rm curr}}
+\def\Dobs{{\bf \cal D}_{\rm obs}}
+\def\Didobs{{\bf \cal D}_{id,\rm obs}}
+\def\Supp{{\bf Supplementary Material}}
+
+\newtheorem{mydef}{Definition}
+% Title Page
+\title{An approximate Bayes factor based high dimensional Multiple Mean Testing using on Random Projection}
+\author{Roger S. Zoh, Bani mallick,  Raymond J. Carroll}
+
+
+\begin{document}
+	\maketitle
+
+\begin{abstract}
+	High-dimensional mean testing problem remain a very active research area. However most of the focus has been on the case of independent two-group mean. We develop a Bayes factor based testing procedure for comparing two or more population means in high dimensional settings. In ‘large-p-small-n’ settings, Bayes factors based on proper priors require eliciting a large and complex p×p covariance matrix, whereas Bayes factors based on Jeffrey’s prior suffer the same impediment as the other classical test statistics as they involve inversion of ill-formed sample covariance matrices. To circumvent this limitation, we propose that the Bayes factor be based on lower dimensional random projections of the high dimensional data vectors. We investigate various approaches of choosing the prior under the alternative. The final test statistic is based on an ensemble of Bayes factors corresponding to multiple replications of randomly projected data. We show that the test has reasonable properties. We demonstrate the efficacy of the approach through simulated and real data examples.
+\end{abstract}
+\section{Introduction}
+
+
+\section{Bayes factor based Test}
+
+\subsection{When $G = 2$}
+Suppose the following data generating model. $\uY_{ig} = \umu_i + \uepsilon_{ig}$, $g = 1, \cdots, G$. 
+Note here that we assume that $G \geq 1$ and $\uepsilon_{ig} \sim \MVN(\bzero, \uSigma)$. A set of sufficient statistics for the data is $\left(\bar{\uX}_1, \bar{\uX}_2, \cdots, \bar{\uX}_G, \uS_{p}\right)$. Note that $\uS_{p}$ is the pooled covariance estimate of $\uSigma$.
+The interest lies in testing the following hypothesis:
+$$H_0:\quad \umu_1 = \umu_2 = \cdots = \umu_G \quad \mbox{vs} \quad H_1: \mbox{at least}\quad \umu_j \neq \umu_k\; \forall j \neq k$$
+
+If we denote by $\umu = \left[ \umu_1, \cdots, \umu_G \right]$ a matrix of dimension $G \times p$ obtained by stacking the (sample) means row-wise for each group. We can rewrite our NULL hypothesis in this form 
+
+$$H_0:\quad \uC_G\umu = \bzero  \quad \mbox{vs} \quad H_1: \mbox{at least}\quad \umu_j \neq \umu_k\; \forall j \neq k$$
+Where $\uC_a$ is a $(G-1) \times G$ full rank matrix which all us to compute the following differences $\bar{\uX}_g - \bar{\uX}_G$, where $g < G$. Namely, $\uC_g$ is expressed as
+$$\uC_G = \left[ \uI_{G-1} \quad -\bone_{(G-1) \times 1} \right]_{(G-1) \times G} $$ 
+For example, if $G = 2$, $\uC_2 \umu = \umu_1 - \umu_2$.
+Additionally, we define a data dependent quantities $\uA = \sum^G_{g = 1} \omega_g \bar{\uX}_g$ , with $\omega_g = n_i/N$ and $N = \sum^G_{g = 1}n_g$; $\uD = \uC_G\bar{\uX}$, where $\bar{\uX} = \left[\bar{\uX}_1, \cdots, \bar{\uX}_G \right]$ combined the means row-wise. 
+Under a Normal model as assumed above, we then have that $\uD \sim \MatMVN(\uDelta, \uSigma_0, \uSigma)$, where $\Sigma_0 = \diag(1/n_1, \cdots, 1/n_G)$ and $\uDelta = \uC_G\umu$. Also, $\uA \sim \MVN\left(\widetilde{\umu}, \uC_0\uSigma_0\uC_0\trans\uSigma\right)$, where $\uC_0 = (\omega_1, \cdots, \omega_G)\trans$ and $\widetilde{\umu} = \uC_0\umu$; $(N-G)\uS_p \sim \Wish(N - G, \uSigma)$.
+Thus the joint distribution of the data is then proportional to 
+\be
+P(Data|\uDelta, \widetilde{\umu}, \uSigma) = \MatMVN(\uD;\uDelta, \uSigma_0, \uSigma) \MVN\left(\uA;\widetilde{\umu}, \uC_0\uSigma_0\uC_0\trans, \uSigma\right) \Wish(N - G, \uSigma). 
+\ee 
+Recall we are interested in testing the following hypothesis:
+\be
+H_0:\quad \uDelta = \bzero  \quad \mbox{vs} \quad H_1: \uDelta \neq \bzero; \label{eq:hypo1}
+\ee
+We will consider the following prior form $\pi(\uDelta,\widetilde{\umu},\uSigma |H_i) = \pi(\widetilde{\umu},\uSigma )\pi(\uDelta|\uSigma, H_i)$. As before, we consider the Jeffrey's prior given by:
+$$\pi(\widetilde{\umu},\uSigma ) \propto |\uSigma|^{-(p+1)/2}.$$
+Additionally, we consider the following (conditional) prior for $\uDelta|\Sigma, \Sigma_{\delta} \sim \MatMVN(\bzero, \uSigma_{\delta}, \uSigma)$ 
+After a little bit of algebra, we get is the following the Bayes factor
+\be
+BF_{10}(Data) &=& \left\{\frac{\det(\widetilde{\Sigma}^{-1}_{0}(\bI_{a-1} - \uSigma^{-1}_{\delta,\star}\widetilde{\Sigma}^{-1}_{0}))}{ \det(\widetilde{\Sigma}^{-1}_{0})} \right\}^{p/2} \label{BayF} \\
+& \times & \left[ \frac{ \det\left\{ (N-a)^{-1}\widetilde{\Sigma}^{-1}_{0}(\bI_{a-1} - \uSigma^{-1}_{\delta,\star}\widetilde{\Sigma}^{-1}_{0})  \uC_0 \bar{X}\uS_{p}^{-1} \bar{X}\trans\uC_0\trans + \bI_{a-1} \right\} }{ \det\left\{ (N-a)^{-1}\widetilde{\Sigma}^{-1}_{0} \uC_0 \bar{X}\uS_{p}^{-1} \bar{X}\trans\uC_0\trans + \bI_{a-1} \right\}   }\right]^{-(N-1)/2} \nonumber
+\ee
+
+where  $\widetilde{\Sigma}_{0} = \uC_a\left\{\diag(1/n_1, \cdots, 1/n_a) \right\} \uC_a\trans$; $ \uSigma_{\delta,\star} = \uSigma^{-1}_{\delta} + \widetilde{\Sigma}^{-1}_{0}$; $\bar{X}$ is the groups sample means stacked in the rows. Finally $\uS_p$ is the pooled sample covariance. 
+
+It turns out that if $a=2$ , and $ \uSigma^{\star}_{\delta} = 1/\tau_0$ in the case of two-independent groups, the Bayes factor in favor of the alternative versus the NULL is exactly identical to the one we got before.
+
+\subsection{Case of large "p"}
+
+Note that the Bayes factor derived in (\ref{BayF}) relies in the existence of the inverse sample covariance matrix $\uS_p$ which is no longuer true if $N - a < p$. To address that issue, we simply rely on the idea of random projection (RPs). Namely, for a randomly selected projection matrix $\Phi \in \mathcal{R}^{m \time p}$, with $m << p$ and $\Phi\Phi\trans = \uI_m$, the transformed data matrices are obtained as $\tilde{\uX}_i = \Phi\bar{X}_i$. Hence we get the BF based on the projected data is 
+\be
+\widetilde{BF}_{10}(Data) &=& \left\{\frac{\det(\widetilde{\Sigma}^{-1}_{0}(\bI_{a-1} - \uSigma^{-1}_{\delta,\star}\widetilde{\Sigma}^{-1}_{0}))}{ \det(\widetilde{\Sigma}^{-1}_{0})} \right\}^{p/2} \label{BayF} \label{eq:bfrp}\\
+& \times & \left[ \frac{ \det\left\{ (N-a)^{-1}\widetilde{\Sigma}^{-1}_{0}(\bI_{a-1} - \uSigma^{-1}_{\delta,\star}\widetilde{\Sigma}^{-1}_{0})  \uC_0 \bar{X}\Phi\trans(\Phi\uS_{p}\Phi\trans)^{-1} \Phi\bar{X}\trans\uC_0\trans + \bI_{a-1} \right\} }{ \det\left\{ (N-a)^{-1}\widetilde{\Sigma}^{-1}_{0} \uC_0 \bar{X}\Phi\trans(\Phi\uS_{p}\Phi\trans)^{-1}\Phi\bar{X}\trans\uC_0\trans + \bI_{a-1} \right\}   }\right]^{-(N-1)/2}. \nonumber
+\ee
+
+We have the following Theorem based on our Bayes Factors based test statistics. 
+
+\begin{Th}
+	%\newtheorem{Th}
+	Suppose that $N = \sum^{a}_{i=1} = n_i$, the total sample size and $\omega_ i = n_i/N$  with $ m \rightarrow \infty$. 
+	\begin{description}
+		\item[1] For a given fixed positive matrix $\uSigma_{\delta}$ of size $a-1$, $\log(BF_{10}) \xrightarrow{p} -\infty$ under $H_0$. Under $H_1$, $\log(BF_{10}) \xrightarrow{p} \infty$ as $N \rightarrow \infty$, with $\omega_i \rightarrow \lambda_i \in (0,1)$.
+		\item[2] If $\Sigma^{-1}_{0}\Sigma_{\delta} \rightarrow 0$ and $ m \Sigma^{-1}_{0}\Sigma_{\delta} \rightarrow 0$, under $H_0$ $\log(\widetilde{BF}_{10}) = \mathcal{O}_p(1)$ and under $H_1$ $\log(\widetilde{BF}_{10} \xrightarrow{p} \infty$.
+	\end{description}
+%	For a choice of a non-zero and fixed covariance matrix $\uSigma_{\delta}$ of size $a-1$, the Bayes factor in favor of the alternative derived in (\ref{BayF}) is consistent when testing the hypothesis in (\ref{eq:hypo1}).   
+\end{Th}
+We provide the proof in the Appendix.
+
+Subsequently, we discuss the choices of $\Phi$ and $m$. 
+
+\subsection{Choice of  $\Sigma_{\delta}$, m and $\gamma_0$}
+Note that in our model, $\Sigma_{\delta}$ characterizes the dependency between the group sample means. Since we assume the groups are independent, it  makes sense to assume a diagonal structure, with possibly different diagonal elements. In this paper, we opt for the matrix of the form $\Sigma_{\delta} = \diag(1/\tau_1, \cdots, 1/ \tau_{G-1})$. The choice of the parameter $\tau_0$ is crucial and greatly affect the power of the test. To that end, we use the same approach considered in \cite{Zoh2018} for the two sample problem. Here the two samples considered are the smallest and largest sample sizes.  % uniformily Powerful Bayesian Test (UMPBT) approach proposed by Johnson(203b) 
+%The prior under the alternative is selected so to achieve high probability of exceeding the evidence threshold $\ugamma$. Therefore, we can select $\Sigma_{\delta}$ (subsequently $\tau_0$) so that 
+%$$\Sigma_{\delta} = \arg\max P\left\{\widetilde{BF}_{10}(Data) > \ugamma \right\} $$
+
+%This is a difficult optimization problem to tackle directly and we settle for a sub-optimal choice of $\Sigma_{\delta}$.  We address this problem almost as if it was a two-sample problem then obtain $\Sigma_{\delta}(n)$ and $\gamma(n)$. Namely, we choose the largest and the smallest group and obtained $\Sigma_{\delta}(n)$ and $\gamma(n)$ as described in Zoh et al. (2018).
+
+
+\section{Bayes Factor based Test Statistics}
+\subsection{Test Statistics}
+Here we discuss the choice of the Bayes factor based test statistics. The Bayes factor($BF_{10}$) in favor of the alternative represents the evidence in the data to support the alternative (Ref). We  need a threshold, often denoted $\gamma$, to help determine the evidence threshold beyond which we favor the alternative over the NULL. Similar to (Zoh et al. 2018), we use the argument of restricted most powerful Bayesian test (RMPBT). See (Ref) for detailed description of the methodology.
+Similar to the argument in (Zoh et al. 2018), we select $\Sigma_{\delta}$ and $\gamma$ so that
+
+$$\underset{(\Sigma_{\delta}, \gamma)}{\arg\max} \quad  P\{BF_{10}(Data, \Sigma_{\delta}) > \gamma\}.$$
+
+It is very difficult to directly solve this optimization problem. We solve a simpler problem instead. We assume that $\Sigma_{\delta} = \diag(1/\tau_1, \cdotds, 1/\tau_{a-1})$. 
+
+\underline{Note} first that the Bayes factor provided in (\ref{eq:bfrp}) essentially combined a two group mean difference in a single test. To see this,  for $\uC_0 \bar{X}\Phi\trans(\Phi\uS_{p}\Phi\trans)^{-1}\Phi\bar{X}\trans\uC_0\trans$ is $(a-1) \times (a-1)$ symmetric matrix where the diagonal element have approximately a univariate $\uF$ distribution (more on this later). 
+
+Subsequently, we see that if we assume complete independence of each comparison between each group and the baseline, we can simply rewrite the Bayes factor as a product of $a-1$ BFs based on a two group comparison (each group against the baseline group). Finally, For each of the $G-1$ comparisons, we obtain $(\tau_g, \gamma_g), \mbox{for}\; g = 1, \cdots, G-1$ using similar approach proposed by Zoh et al, 2018 in a two-sample case. 
+
+When $p >> N-G$, we use RPs to circumvent the issue caused by inversion of an ill-formed sample covariance. To reduce the effect of a single RP on the result of the test, we use multiple RPs and obtain the following test statistic.
+\be
+\phi(N) &=& \frac{1}{N}\sum^{N}_{l=1} \mathit{I}\left\{BF_{10}(\Phi_i) > \gamma_{n}\right\},  \label{eq:Bftest} 
+\ee
+where $\mathit{I}(\uA)$ is equal to $\uA$ is true and $0$ otherwise.
+ 
+  
+ 
+
+\begin{enumerate}
+	\item We can approximate the distribution of 
+	$$\diag\left\{ (N-a)^{-1}\widetilde{\Sigma}^{-1}_{0} \uC_0 \bar{X}\Phi\trans(\Phi\uS_{p}\Phi\trans)^{-1}\Phi\bar{X}\trans\uC_0\trans + \bI_{a-1} \right\} \frac{N-m-(a-1)}{(N - (a-1))p} \sim \uF\left\{\bar{n}, \sum n - m -(a-1)\right\}$$, for a given $n$ (vector) and $m$
+	\item We see that the distribution of the diagonal elements is approximately $\uF$ with degrees of freedom $m$ and $N - m -(a-1)$.  
+	\item How does the distribution (quantile) of with $\tau_0$? can we approximate that relation with $\tau_0$?
+	\item if we can then we can approximate $\gamma_0$ for values of $n$ and $m$.
+\end{enumerate}
+
+
+\subsection{Test Statistics}
+
+
+\subsection{Choices of $\Phi$}
+
+We discuss the choice of $\Phi$ and $m$ here. We make no attempt to find an optimal projection matrix but are primarily motivated by practical convenience.
+Intuitively, however, the projection matrix $\Phi$ should be selected so to only slightly perturb all pairwise distances between the sample vectors (Li et al., 2006). One possible way to achieve this is to sample the entries of $\Phi$ from a distribution with mean zero and variance one.
+Since our test statistics involves the inversion of $\Phi\trans\uS\Phi$, which is positive definite if $\Phi\trans\Phi = \uI_m$ (see Lemma 1 of Srivastava et al., 2016), we further restrict our choices to the family of semi-orthogonal matrices. We consider two constructions of the projection matrix. The first one, denoted $\Phi_1$, is similar to the one permutation + one random projection considered in Srivastava et al. (2016) and yields a sparse matrix with only p non-zero elements. Each of their construction is also detailed in Zoh et al. (2018).
+
+The second approach obtains $\Phi_2$ as the $Q$ matrix of the QR decomposition of a p × m matrix with entries simulated independently from a standard normal distribution.
+QR decomposition of a large matrix is computationally intensive.
+Note, however, that any matrix $U \in \mathcal{R}^{p×m]$ admits a QR decomposition $U = \Phi B$, where $\Phi \in \mathcal{R}^{p \times m}$ is an orthonormal matrix, that is, $\Phi\trans\Phi = \uI_m$ and $B \in \mathcal{R}^{m \times m}$ is an upper triangular matrix with positive entries on the diagonal. This implies $\uU(\uU\trans \uS \uU)^{−1} \uU\trans = \uR\uB(\uB\trans \uR\trans \uS \uR \uB)^{−1}\uB\trans \uPhi\trans = \Phi(\Phi\trans \uS \Phi)^{−1} \Phi\trans$.
+This suggests that we could simply replace $\Phi$ by $\uU$ in the equation for the Bayes factor. 
+For the choices of m, we consider the approach discussed in the two-sample case simply using the sample size for the smaller and larger group.  
+
+
+
+
+
+
+%\bibliographystyle{plainnat}
+\bibliography{MultiNomial_variableSelection}
+\end{document} 
