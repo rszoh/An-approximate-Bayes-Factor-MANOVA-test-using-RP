@@ -1,0 +1,650 @@
+%Version 2.1 April 2023
+% See section 11 of the User Manual for version history
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%                                                                 %%
+%% Please do not use \input{...} to include other tex files.       %%
+%% Submit your LaTeX manuscript as one .tex document.              %%
+%%                                                                 %%
+%% All additional figures and files should be attached             %%
+%% separately and not embedded in the \TeX\ document itself.       %%
+%%                                                                 %%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%\documentclass[referee,sn-basic]{sn-jnl}% referee option is meant for double line spacing
+
+%%=======================================================%%
+%% to print line numbers in the margin use lineno option %%
+%%=======================================================%%
+
+%%\documentclass[lineno,sn-basic]{sn-jnl}% Basic Springer Nature Reference Style/Chemistry Reference Style
+
+%%======================================================%%
+%% to compile with pdflatex/xelatex use pdflatex option %%
+%%======================================================%%
+
+%%\documentclass[pdflatex,sn-basic]{sn-jnl}% Basic Springer Nature Reference Style/Chemistry Reference Style
+
+
+%%Note: the following reference styles support Namedate and Numbered referencing. By default the style follows the most common style. To switch between the options you can add or remove Numbered in the optional parenthesis. 
+%%The option is available for: sn-basic.bst, sn-vancouver.bst, sn-chicago.bst, sn-mathphys.bst. %  
+ 
+%\documentclass[sn-nature]{sn-jnl}% Style for submissions to Nature Portfolio journals
+\documentclass[pdflatex,sn-basic]{sn-jnl}% Basic Springer Nature Reference Style/Chemistry Reference Style
+%\documentclass[sn-mathphys,Numbered]{sn-jnl}% Math and Physical Sciences Reference Style
+%%\documentclass[sn-aps]{sn-jnl}% American Physical Society (APS) Reference Style
+%%\documentclass[sn-vancouver,Numbered]{sn-jnl}% Vancouver Reference Style
+%%\documentclass[sn-apa]{sn-jnl}% APA Reference Style 
+%%\documentclass[sn-chicago]{sn-jnl}% Chicago-based Humanities Reference Style
+%%\documentclass[default]{sn-jnl}% Default
+%%\documentclass[default,iicol]{sn-jnl}% Default with double column layout
+
+%%%% Standard Packages
+%%<additional latex packages if required can be included here>
+
+%\usepackage{graphicx}%
+\usepackage{multirow}%
+\usepackage{amsmath,amssymb,amsfonts}%
+\usepackage{amsthm}%
+\usepackage{mathrsfs}%
+\usepackage[title]{appendix}%
+\usepackage{xcolor}%
+\usepackage{textcomp}%
+\usepackage{manyfoot}%
+\usepackage{booktabs}%
+\usepackage{algorithm}%
+\usepackage{algorithmicx}%
+\usepackage{algpseudocode}%
+\usepackage{listings}%
+
+%---- Added packages
+ \usepackage{float}
+ \usepackage{subfloat}
+ \usepackage{booktabs}
+ \usepackage{multirow}
+ \usepackage{color}
+ \usepackage{ulem}
+ \usepackage[labelfont=bf]{caption}
+ \usepackage{amsmath,amsfonts,amssymb,amsthm,booktabs,color,epsfig,graphicx,hyperref,url,comment}
+\usepackage{graphicx}
+\usepackage{amsthm}
+% %\usepackage[demo]{graphicx}
+ \usepackage{subcaption}
+% %%%%% PLACE YOUR OWN MACROS HERE %%%%%
+% \usepackage{verbatim,color,amssymb}
+% \usepackage{amsmath}					
+% \usepackage{amsthm}	
+ \usepackage{natbib}
+% %\usepackage{algorithm,algorithmic}
+%\usepackage[round]{natbib} %numbers,numbers,
+%\usepackage{cite}
+% \usepackage{setspace}
+% \usepackage[mathscr]{euscript}
+% \usepackage{fancyhdr}
+% \usepackage{enumitem}
+% \usepackage{graphicx}
+ \usepackage{geometry}
+% \usepackage{lineno}
+% %\usepackage[compact]{titlesec}
+\usepackage{listings}
+\usepackage{rotating}
+% %
+% %\usepackage{multirow}
+% %\usepackage{lineno}
+% 
+% \def\rot{\rotatebox}
+% \usepackage{mathtools}
+% %\usepackage{subfig}
+% \usepackage{caption}
+% \usepackage{xr}
+% \usepackage{xurl}
+%\usepackage{kbordermatrix}% http://www.hss.caltech.edu/~kcb/TeX/kbordermatrix.sty
+%\renewcommand{\kbldelim}{(}% Left delimiter
+%\renewcommand{\kbrdelim}{)}% Right delimiter
+%\captionsetup[subfigure]{labelformat=parens,
+%	labelsep=space,
+%	font=small,
+%	margin=0em
+%}
+
+% %\newsubfloat{figure}% Allow sub-figures
+% \usepackage{tikz}
+% \usetikzlibrary{arrows,chains,backgrounds,fit}
+% \usepackage{multirow}
+% \usepackage{lineno}
+
+%%%%
+
+%%%%%=============================================================================%%%%
+%%%%  Remarks: This template is provided to aid authors with the preparation
+%%%%  of original research articles intended for submission to journals published 
+%%%%  by Springer Nature. The guidance has been prepared in partnership with 
+%%%%  production teams to conform to Springer Nature technical requirements. 
+%%%%  Editorial and presentation requirements differ among journal portfolios and 
+%%%%  research disciplines. You may find sections in this template are irrelevant 
+%%%%  to your work and are empowered to omit any such section if allowed by the 
+%%%%  journal you intend to submit to. The submission guidelines and policies 
+%%%%  of the journal take precedence. A detailed User Manual is available in the 
+%%%%  template package for technical guidance.
+%%%%%=============================================================================%%%%
+%------------------------------------------------------------------------
+%------------------------------------------------------------------------
+\def\bzero{{\mathbf 0}}
+\newcommand{\uzero}            {\mbox{\boldmath$0$}}
+\newcommand{\uone}               {\mbox{\boldmath$1$}}
+\def\etal{\emph{et al.}}
+
+\def\nN{\mathbb{N}}
+\def\rR{\mathbb{R}}
+\def\eE{\mathbb{E}}
+
+\def\L{{\cal L}}
+\def\B{{\cal B}}
+\def\C{{\cal C}}
+\def\D{{\cal D}}
+\def\E{{\cal E}}
+\def\F{{\cal F}}
+\def\G{{\cal G}}
+\def\K{{\cal K}}
+\def\M{{\cal M}}
+\def\N{{\cal N}}
+\def\calP{{\cal P}}
+\def\S{{\cal S}}
+\def\T{{\cal T}}
+\def\U{{\cal U}}
+\def\W{{\cal W}}
+\def\V{{\cal V}}
+\def\X{{\cal X}}
+\def\Z{{\cal Z}}
+\def\Y{{\cal Y}}
+\def\sumi{\sum_{i=1}^n}
+
+\def\scrC{{\mathscr{C}}}
+
+
+\def\diag{\hbox{diag}}
+\def\Ind{\hbox{I}}
+\def\wh{\widehat}
+\def\wt{\widetilde}
+%\def\wb{\breve}
+\def\AIC{\hbox{AIC}}
+\def\BIC{\hbox{BIC}}
+\def\diag{\hbox{diag}}
+\def\log{\hbox{log}}
+\def\bias{\hbox{bias}}
+\def\Siuu{\boldSigma_{i,uu}}
+\def\whT{\widehat{\Theta}}
+\def\var{\hbox{var}}
+\def\cov{\hbox{cov}}
+\def\corr{\hbox{corr}}
+\def\sign{\hbox{sign}}
+\def\trace{\hbox{trace}}
+\def\naive{\hbox{naive}}
+\def\vect{\hbox{vec}}
+
+
+\def\Beta{\hbox{Beta}}
+\def\DE{\hbox{DE}}
+\def\Dir{\hbox{Dirch}}
+\def\Exp{\hbox{Exp}}
+\def\gIGs{\hbox{g-Inv-Gs}}
+\def\Ga{\hbox{Ga}}
+\def\IGs{\hbox{Inv-Gs}}
+\def\IG{\hbox{Inv-Ga}}
+\def\IW{\hbox{IW}}
+\def\MVN{\hbox{MVN}}
+\def\MatMVN{\hbox{Mat-MVN}}
+\def\MVL{\hbox{MVL}}
+\def\MVT{\hbox{MVT}}
+\def\Normal{\hbox{Normal}}
+\def\TN{\hbox{TN}}
+\def\Unif{\hbox{Unif}}
+\def\Mult{\hbox{Mult}}
+\def\Wish{\hbox{W}}
+
+
+\def\wt{\widetilde}
+\def\sumi{\sum_{i=1}^n}
+\def\diag{\hbox{diag}}
+\def\wh{\widehat}
+\def\AIC{\hbox{AIC}}
+\def\BIC{\hbox{BIC}}
+\def\diag{\hbox{diag}}
+\def\log{\hbox{log}}
+\def\bias{\hbox{bias}}
+\def\Siuu{\boldSigma_{i,uu}}
+\def\dfrac#1#2{{\displaystyle{#1\over#2}}}
+\def\VS{{\vskip 3mm\noindent}}
+\def\refhg{\hangindent=20pt\hangafter=1}
+\def\refmark{\par\vskip 2mm\noindent\refhg}
+\def\naive{\hbox{naive}}
+\def\itemitem{\par\indent \hangindent2\parindent \textindent}
+\def\var{\hbox{var}}
+\def\cov{\hbox{cov}}
+\def\corr{\hbox{corr}}
+\def\trace{\hbox{trace}}
+\def\refhg{\hangindent=20pt\hangafter=1}
+\def\refmark{\par\vskip 2mm\noindent\refhg}
+\def\Normal{\hbox{Normal}}
+\def\Poisson{\hbox{Poisson}}
+\def\Wishart{\hbox{Wishart}}
+\def\Invwish{\hbox{Inv-Wishart}}
+\def\Beta{\hbox{Beta}}
+\def\NiG{\hbox{NiG}}
+\def\matF{\hbox{Mat-F}}
+
+\def\ANNALS{{\it Annals of Statistics}}
+\def\ANNALSP{{\it Annals of Probability}}
+\def\ANNALSMS{{\it Annals of Mathematical Statistics}}
+\def\ANNALSAS{{\it Annals of Applied Statistics}}
+\def\ANNALSISM{{\it Annals of the Institute of Statistical Mathematics}}
+\def\AJE{{\it American Journal of Epidemiology}}
+\def\ANIPS{{\it Advances in Neural Information Processing Systems}}
+\def\APLS{{\it Applied Statistics}}
+\def\BA{{\it Bayesian Analysis}}
+\def\BRNL{{\it Bernoulli}}
+\def\BIOK{{\it Biometrika}}
+\def\BIOS{{\it Biostatistics}}
+\def\BMCS{{\it Biometrics}}
+\def\BMCMIDM{{\it BMC Medical Informatics and Decision Making}}
+\def\BIOINF{{\it Bioinformatics}}
+\def\CANADAJS{{\it Canadian Journal of Statistics}}
+\def\CG{{\it Current Genomics}}
+\def\CDA{{\it Computational Statistics \& Data Analysis}}
+\def\COMMS{{\it Communications in Statistics, Series A}}
+\def\COMMS{{\it Communications in Statistics, Theory \& Methods}}
+\def\COMMSS{{\it Communications in Statistics - Simulation}}
+\def\COMMSSC{{\it Communications in Statistics - Simulation and Computation}}
+\def\EJS{{\it Electronic Journal of Statistics}}
+\def\ECMK{{\it Econometrica}}
+\def\ECTH{{\it Econometric Theory}}
+\def\GENEP{{\it Genetic Epidemiology}}
+\def\JASA{{\it Journal of the American Statistical Association}}
+\def\JRSSB{{\it Journal of the Royal Statistical Society, Series B}}
+\def\JRSSC{{\it Journal of the Royal Statistical Society, Series C}}
+\def\JQT{{\it Journal of Quality Technology}}
+\def\JCGS{{\it Journal of Computational and Graphical Statistics}}
+\def\JCB{{\it Journal of Computational Biology}}
+\def\JAMA{{\it Journal of the American Medical Association}}
+\def\JNUTR{{\it Journal of Nutrition}}
+\def\JABES{{\it Journal of Agricultural, Biological and Environmental Statistics}}
+\def\JBES{{\it Journal of Business and Economic Statistics}}
+\def\JSPI{{\it Journal of Statistical Planning \& Inference}}
+\def\JMA{{\it Journal of Multivariate Analysis}}
+\def\JNS{{\it Journal of Nonparametric Statistics}}
+\def\JSS{{\it Journal of Statistical Software}}
+\def\JECM{{\it Journal of Econometrics}}
+\def\IEEE{{\it IEEE}}
+\def\IEEESPL{{\it IEEE Signal Processing Letters}}
+\def\IEEETIT{{\it IEEE Transactions on Information Theory}}
+\def\LETTERS{{\it Letters in Probability and Statistics}}
+\def\ML{{\it Machine Learning}}
+\def\P_25_ICML{{\it Proceedings of the 25th international conference on Machine learning}}
+\def\PLoSCB{{\it PloS Computational Biology}}
+\def\STIM{{\it Statistics in Medicine}}
+\def\SCAN{{\it Scandinavian Journal of Statistics}}
+\def\SMMR{{\it Statistical Methods in Medical Research}}
+\def\SNKH{{\it Sankhy\={a}: The Indian Journal of Statistics}}
+\def\STIM{{\it Statistics in Medicine}}
+\def\STATMED{{\it Statistics in Medicine}}
+\def\STATSCI{{\it Statistical Science}}
+\def\SSNC{{\it Statistica Sinica}}
+\def\SaC{{\it Statistics and Computing}}
+\def\STATSCI{{\it Statistical Science}}
+\def\TECH{{\it Technometrics}}
+
+
+\def\dfrac#1#2{{\displaystyle{#1\over#2}}}
+\def\VS{{\vskip 3mm\noindent}}
+\def\refhg{\hangindent=20pt\hangafter=1}
+\def\refmark{\par\vskip 2mm\noindent\refhg}
+\def\itemitem{\par\indent \hangindent2\parindent \textindent}
+\def\refhg{\hangindent=20pt\hangafter=1}
+\def\refmark{\par\vskip 2mm\noindent\refhg}
+\def\povr{\buildrel p\over\longrightarrow}
+\def\ccdot{{\bullet}}
+\def\bse{\begin{eqnarray*}}
+	\def\ese{\end{eqnarray*}}
+\def\be{\begin{eqnarray}}
+\def\ee{\end{eqnarray}}
+\def\bq{\begin{equation}}
+\def\eq{\end{equation}}
+\def\pr{\hbox{pr}}
+\def\wh{\widehat}
+
+
+\def\boldalpha{{\mbox{\boldmath $\alpha$}}}
+\def\boldAlpha{{\mbox{\boldmath $\Alpha$}}}
+\def\boldbeta{{\mbox{\boldmath $\beta$}}}
+\def\boldBeta{{\mbox{\boldmath $\beta$}}}
+\def\bolddelta{{\mbox{\boldmath $\delta$}}}
+\def\boldDelta{{\mbox{\boldmath $\Delta$}}}
+\def\boldeta{{\mbox{\boldmath $\eta$}}}
+\def\boldEta{{\mbox{\boldmath $\Eta$}}}
+\def\boldgamma{{\mbox{\boldmath $\gamma$}}}
+\def\boldGamma{{\mbox{\boldmath $\Gamma$}}}
+\def\boldlambda{{\mbox{\boldmath $\lambda$}}}
+\def\boldLambda{{\mbox{\boldmath $\Lambda$}}}
+\def\boldmu{{\mbox{\boldmath $\mu$}}}
+\def\boldMu{{\mbox{\boldmath $\Mu$}}}
+\def\boldnu{{\mbox{\boldmath $\nu$}}}
+\def\boldNu{{\mbox{\boldmath $\Nu$}}}
+\def\boldomega{{\mbox{\boldmath $\omega$}}}
+\def\boldOmega{{\mbox{\boldmath $\Omega$}}}
+\def\boldpsi{{\mbox{\boldmath $\psi$}}}
+\def\boldPsi{{\mbox{\boldmath $\Psi$}}}
+\def\boldsigma{{\mbox{\boldmath $\sigma$}}}
+\def\boldSigma{{\mbox{\boldmath $\Sigma$}}}
+\def\boldpi{{\mbox{\boldmath $\pi$}}}
+\def\boldPi{{\mbox{\boldmath $\Pi$}}}
+\def\boldphi{{\mbox{\boldmath $\phi$}}}
+\def\boldepsilon{{\mbox{\boldmath $\epsilon$}}}
+\def\boldtheta{{\mbox{\boldmath $\theta$}}}
+\def\boldTheta{{\mbox{\boldmath $\Theta$}}}
+\def\boldve{{\mbox{\boldmath $\ve$}}}
+\def\boldVe{{\mbox{\boldmath $\Epsilon$}}}
+\def\boldxi{{\mbox{\boldmath $\xi$}}}
+\def\boldXi{{\mbox{\boldmath $\Omega$}}}
+\def\boldzeta{{\mbox{\boldmath $\zeta$}}}
+\def\boldZeta{{\mbox{\boldmath $\Zeta$}}}
+\def\boldvarrho{{\mbox{\boldmath $\varrho$}}}
+\def\boldVarrho{{\mbox{\boldmath $\Varrho$}}}
+\def\boldtau{{\mbox{\boldmath $\tau$}}}
+\def\boldTau{{\mbox{\boldmath $\Tau$}}}
+\def\boldrho{{\mbox{\boldmath $\rho$}}}
+\def\boldRho{{\mbox{\boldmath $\Rho$}}}
+\def\boldvarsigma{{\mbox{\boldmath $\varsigma$}}}
+
+\def\trans{^{\rm T}}
+\def\myalpha{{\cal A}}
+\def\th{^{th}}
+\def\bone{{\mathbf 1}}
+
+\def\b1e{{\mathbf e}}
+\def\bA{{\mathbf A}}
+\def\ba{{\mathbf a}}
+\def\bB{{\mathbf B}}
+\def\bb{{\mathbf b}}
+\def\bc{{\mathbf c}}
+\def\bC{{\mathbf C}}
+\def\bd{{\mathbf d}}
+\def\bD{{\mathbf D}}
+\def\bG{{\mathbf G}}
+\def\bI{{\mathbf I}}
+\def\bk{{\mathbf k}}
+\def\bK{{\mathbf K}}
+\def\bM{{\mathbf M}}
+\def\bp{{\mathbf p}}
+\def\bP{{\mathbf P}}
+\def\bs{{\mathbf s}}
+\def\bS{{\mathbf S}}
+\def\bT{{\mathbf T}}
+\def\bt{{\mathbf t}}
+\def\bu{{\mathbf u}}
+\def\bU{{\mathbf U}}
+\def\bq{{\mathbf q}}
+\def\bQ{{\mathbf Q}}
+\def\bV{{\mathbf V}}
+\def\bw{{\mathbf w}}
+\def\bW{{\mathbf W}}
+\def\bx{{\mathbf x}}
+\def\bX{{\mathbf X}}
+\def\by{{\mathbf y}}
+\def\bY{{\mathbf Y}}
+\def\bz{{\mathbf z}}
+\def\bZ{{\mathbf Z}}
+\def\bS{{\mathbf S}}
+\def\bzero{{\mathbf 0}}
+
+\def\whT{\widehat{\Theta}}
+\def\te{\widetilde{e}}
+\def\te{\widetilde{\epsilon}}
+\def\tp{\widetilde{p}}
+\def\tv{\widetilde{v}}
+\def\tmu{\widetilde{\mu}}
+\def\tsigma{\widetilde{\sigma}}
+
+\newcommand{\etam}{\mbox{\boldmath $\eta$}}
+\newcommand{\bmu}{\mbox{\boldmath $\mu$}}
+\newcommand{\bDelta}{\mbox{\boldmath $\Delta$}}
+\newcommand{\bphi}{\mbox{\boldmath $\phi$}}
+\newcommand{\bpi}{\mbox{\boldmath $\pi$}}
+\newcommand{\bPi}{\mbox{\boldmath $\Pi$}}
+\newcommand{\bxi}{\mbox{\boldmath $\xi$}}
+\newcommand{\bepsilon}{\mbox{\boldmath $\epsilon$}}
+\newcommand{\btheta}{\mbox{\boldmath $\theta$}}
+\newcommand{\bbeta}{\mbox{\boldmath $\beta$}}
+\newcommand{\bgamma}{\mbox{\boldmath $\gamma_{j}$}}
+\newcommand{\bzeta}{\mbox{\boldmath $\zeta$}}
+\newcommand{\bsigma}{\mbox{\boldmath $\sigma$}}
+\newcommand{\bSigma}{\mbox{\boldmath $\Sigma$}}
+\newcommand{\balpha}{\mbox{\boldmath $\alpha$}}
+\newcommand{\bomega}{\mbox{\boldmath $\omega$}}
+\newcommand{\blambda}{\mbox{\boldmath $\lambda$}}
+\newcommand{\bLambda}{\mbox{\boldmath $\Lambda$}}
+\newcommand{\bOmega}{\mbox{\boldmath $\Omega$}}
+\newcommand{\bPsi}{\mbox{\boldmath $\Psi$}}
+\newcommand{\bpsi}{\mbox{\boldmath $\psi$}}
+\newcommand{\bGamma}{\mbox{\boldmath $\Gamma$}}
+\newcommand{\btau}{\mbox{\boldmath $\tau$}}
+
+\newcommand{\abs}[1]{\left\vert#1\right\vert}
+\newcommand{\norm}[1]{\left\Vert#1\right\Vert}
+
+\newcommand{\uA}       {\mbox{\boldmath$A$}}
+\newcommand{\ua}       {\mbox{\boldmath$a$}}
+\newcommand{\uB}       {\mbox{\boldmath$B$}}
+\newcommand{\ub}       {\mbox{\boldmath$b$}}
+\newcommand{\uC}       {\mbox{\boldmath$C$}}
+\newcommand{\uc}       {\mbox{\boldmath$c$}}
+\newcommand{\uD}       {\mbox{\boldmath$D$}}
+\newcommand{\ud}       {\mbox{\boldmath$d$}}
+\newcommand{\uE}       {\mbox{\boldmath$E$}}
+\newcommand{\ue}       {\mbox{\boldmath$e$}}
+\newcommand{\uF}       {\mbox{\boldmath$F$}}
+\newcommand{\uf}       {\mbox{\boldmath$f$}}
+\newcommand{\uG}       {\mbox{\boldmath$G$}}
+\newcommand{\ug}       {\mbox{\boldmath$g$}}
+
+%\newcommand{\uG}       {\mbox{\boldmath$G$}}
+
+%\newcommand{\ug}       {\mbox{\boldmath$g$}}
+\newcommand{\uH}       {\mbox{\boldmath$H$}}
+\newcommand{\uh}       {\mbox{\boldmath$h$}}
+\newcommand{\uI}       {\mbox{\boldmath$I$}}
+\newcommand{\ui}       {\mbox{\boldmath$i$}}
+\newcommand{\uJ}       {\mbox{\boldmath$J$}}
+\newcommand{\uj}       {\mbox{\boldmath$j$}}
+\newcommand{\uK}       {\mbox{\boldmath$K$}}
+\newcommand{\uk}       {\mbox{\boldmath$k$}}
+\newcommand{\uL}       {\mbox{\boldmath$L$}}
+%\newcommand{\ul}       {\mbox{\boldmath$l$}}
+\newcommand{\uM}       {\mbox{\boldmath$M$}}
+\newcommand{\um}       {\mbox{\boldmath$m$}}
+\newcommand{\uN}       {\mbox{\boldmath$N$}}
+\newcommand{\un}       {\mbox{\boldmath$n$}}
+\newcommand{\uO}       {\mbox{\boldmath$O$}}
+%\newcommand{\uo}       {\mbox{\boldmath$o$}}
+\newcommand{\uP}       {\mbox{\boldmath$P$}}
+\newcommand{\up}       {\mbox{\boldmath$p$}}
+\newcommand{\uQ}       {\mbox{\boldmath$Q$}}
+\newcommand{\uq}       {\mbox{\boldmath$q$}}
+\newcommand{\uR}       {\mbox{\boldmath$R$}}
+\newcommand{\ur}       {\mbox{\boldmath$r$}}
+\newcommand{\uS}       {\mbox{\boldmath$S$}}
+\newcommand{\us}       {\mbox{\boldmath$s$}}
+\newcommand{\uT}       {\mbox{\boldmath$T$}}
+\newcommand{\ut}       {\mbox{\boldmath$t$}}
+\newcommand{\uU}       {\mbox{\boldmath$U$}}
+\newcommand{\uu}       {\mbox{\boldmath$u$}}
+\newcommand{\uV}       {\mbox{\boldmath$V$}}
+\newcommand{\uv}       {\mbox{\boldmath$v$}}
+\newcommand{\uW}       {\mbox{\boldmath$W$}}
+\newcommand{\uw}       {\mbox{\boldmath$w$}}
+\newcommand{\uX}       {\mbox{\boldmath$X$}}
+\newcommand{\ux}       {\mbox{\boldmath$x$}}
+\newcommand{\uY}       {\mbox{\boldmath$Y$}}
+\newcommand{\uy}       {\mbox{\boldmath$y$}}
+\newcommand{\uZ}       {\mbox{\boldmath$Z$}}
+\newcommand{\uz}       {\mbox{\boldmath$z$}}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\newcommand{\ualpha}            {\mbox{\boldmath$\alpha$}}
+\newcommand{\ubeta}             {\mbox{\boldmath$\beta$}}
+\newcommand{\ugamma}            {\mbox{\boldmath$\gamma$}}
+\newcommand{\udelta}            {\mbox{\boldmath$\delta$}}
+\newcommand{\uepsilon}          {\mbox{\boldmath$\epsilon$}}
+\newcommand{\uvarepsilon}       {\mbox{\boldmath$\varepsilon$}}
+\newcommand{\uzeta}             {\mbox{\boldmath$\zeta$}}
+\newcommand{\ueta}              {\mbox{\boldmath$\eta$}}
+\newcommand{\utheta}            {\mbox{\boldmath$\theta$}}
+\newcommand{\uvartheta}         {\mbox{\boldmath$\vartheta$}}
+\newcommand{\uiota}             {\mbox{\boldmath$\uiota$}}
+\newcommand{\ukappa}            {\mbox{\boldmath$\kappa$}}
+\newcommand{\ulambda}           {\mbox{\boldmath$\lambda$}}
+\newcommand{\umu}               {\mbox{\boldmath$\mu$}}
+\newcommand{\unu}               {\mbox{\boldmath$\nu$}}
+\newcommand{\uxi}               {\mbox{\boldmath$\xi$}}
+\newcommand{\uo}                {\mbox{\boldmath$\o$}}
+\newcommand{\upi}               {\mbox{\boldmath$\pi$}}
+\newcommand{\uvarpi}            {\mbox{\boldmath$\varpi$}}
+\newcommand{\urho}              {\mbox{\boldmath$\rho$}}
+\newcommand{\uvarrho}           {\mbox{\boldmath$\varrho$}}
+\newcommand{\usigma}            {\mbox{\boldmath$\sigma$}}
+\newcommand{\uvarsigma}         {\mbox{\boldmath$\varsigma$}}
+\newcommand{\utau}              {\mbox{\boldmath$\tau$}}
+\newcommand{\uupsilon}          {\mbox{\boldmath$\upsilon$}}
+\newcommand{\uphi}              {\mbox{\boldmath$\phi$}}
+\newcommand{\uvarphi}           {\mbox{\boldmath$\varphi$}}
+\newcommand{\uchi}              {\mbox{\boldmath$\chi$}}
+\newcommand{\upsi}              {\mbox{\boldmath$\psi$}}
+\newcommand{\uomega}            {\mbox{\boldmath$\omega$}}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\newcommand{\uGamma}            {\mbox{\boldmath$\Gamma$}}
+\newcommand{\uDelta}            {\mbox{\boldmath$\Delta$}}
+\newcommand{\uTheta}            {\mbox{\boldmath$\Theta$}}
+\newcommand{\uLambda}           {\mbox{\boldmath$\Lambda$}}
+\newcommand{\uXi}               {\mbox{\boldmath$\Xi$}}
+\newcommand{\uPi}                {\mbox{\boldmath$\Pi$}}
+\newcommand{\uSigma}            {\mbox{\boldmath$\Sigma$}}
+\newcommand{\uUpsilon}          {\mbox{\boldmath$\Upsilon$}}
+\newcommand{\uPhi}              {\mbox{\boldmath$\Phi$}}
+\newcommand{\uPsi}              {\mbox{\boldmath$\Psi$}}
+\newcommand{\uOmega}            {\mbox{\boldmath$\Omega$}}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%==============================================================================%%%%
+%\jyear{2021}%
+%% as per the requirement new theorem styles can be included as shown below
+\theoremstyle{thmstyleone}%
+\newtheorem{theorem}{Theorem}%  meant for continuous numbers
+%%\newtheorem{theorem}{Theorem}[section]% meant for sectionwise numbers
+%% optional argument [theorem] produces theorem numbering sequence instead of independent numbers for Proposition
+\newtheorem{proposition}[theorem]{Proposition}% 
+%%\newtheorem{proposition}{Proposition}% to get separate numbers for theorem and proposition etc.
+
+\theoremstyle{thmstyletwo}%
+\newtheorem{example}{Example}%
+\newtheorem{remark}{Remark}%
+
+\theoremstyle{thmstylethree}%
+\newtheorem{definition}{Definition}%
+
+\raggedbottom
+%%\unnumbered% uncomment this for unnumbered level heads
+
+\begin{document}
+
+\title[Article Title]{An approximate Bayes factor-based high dimensional MANOVA using random projections}
+
+%%=============================================================%%
+%% Prefix	-> \pfx{Dr}
+%% GivenName	-> \fnm{Joergen W.}
+%% Particle	-> \spfx{van der} -> surname prefix
+%% FamilyName	-> \sur{Ploeg}
+%% Suffix	-> \sfx{IV}
+%% NatureName	-> \tanm{Poet Laureate} -> Title after name
+%% Degrees	-> \dgr{MSc, PhD}
+%% \author*[1,2]{\pfx{Dr} \fnm{Joergen W.} \spfx{van der} \sur{Ploeg} \sfx{IV} \tanm{Poet Laureate} 
+%%                 \dgr{MSc, PhD}}\email{iauthor@gmail.com}
+%%=============================================================%%
+
+\author*[1]{\fnm{Roger S.} \sur{Zoh}}\email{rszoh@iu.edu}
+
+\author[2]{\fnm{Fangzheng } \sur{Xie}}\email{fxie@iu.edu}
+%\equalcont{These authors contributed equally to this work.}
+
+% \author[1,2]{\fnm{Third} \sur{Author}}\email{iiiauthor@gmail.com}
+% \equalcont{These authors contributed equally to this work.}
+
+\affil*[1]{\orgdiv{Department of Epidemiology and Biostatistics}, \orgname{Indiana University}, \orgaddress{\street{1025 E 7th S}, \city{Bloomington}, \postcode{47405}, \state{IN}, \country{USA}}}
+
+\affil[2]{\orgdiv{Department of Statistics}, \orgname{Indiana University}, \orgaddress{\street{901 E. 10th Street}, \city{Bloomington}, \postcode{47408}, \state{IN}, \country{USA}}}
+
+% \affil[3]{\orgdiv{Department}, \orgname{Organization}, \orgaddress{\street{Street}, \city{City}, \postcode{610101}, \state{State}, \country{Country}}}
+
+\abstract{High-dimensional mean vector testing problems for two independent groups remain an active research area. When the length of the mean vector exceeds the groups’ combined sample sizes, tests based on the Mahalanobis distance are not applicable since they involve the inversion of rank-deficient sample covariance matrices. Most approaches in the literature overcome this limitation by imposing a structure on the covariance matrices. Unfortunately, these assumptions are often unrealistic and difficult to justify in practice. We develop a Bayes factor (BF)-based testing procedure for comparing two or more population means in (very) high dimensional settings while making no a priori assumptions about the structure of the large unknown covariance matrices. Our test is based on random projections (RPs), a popular data perturbation technique. RPs are appealing because they are easy to implement and
+are virtually applicable to any dependent structure between features in the data. Two versions of Bayes factor-based test statistics are considered. Our final test statistic is based on an ensemble of Bayes factors corresponding to multiple replications of randomly projected data. We applied our tests to the analysis of a publicly available single-cell RNA-seq (scRNA-seq) dataset to compare gene expression between cell types.}
+
+%%================================%%
+%% Sample for structured abstract %%
+%%================================%%
+
+% \abstract{\textbf{Purpose:} The abstract serves both as a general introduction to the topic and as a brief, non-technical summary of the main results and their implications. The abstract must not include subheadings (unless expressly permitted in the journal's Instructions to Authors), equations or citations. As a guide the abstract should not exceed 200 words. Most journals do not set a hard limit however authors are advised to check the author instructions for the journal they are submitting to.
+% 
+% \textbf{Methods:} The abstract serves both as a general introduction to the topic and as a brief, non-technical summary of the main results and their implications. The abstract must not include subheadings (unless expressly permitted in the journal's Instructions to Authors), equations or citations. As a guide the abstract should not exceed 200 words. Most journals do not set a hard limit however authors are advised to check the author instructions for the journal they are submitting to.
+% 
+% \textbf{Results:} The abstract serves both as a general introduction to the topic and as a brief, non-technical summary of the main results and their implications. The abstract must not include subheadings (unless expressly permitted in the journal's Instructions to Authors), equations or citations. As a guide the abstract should not exceed 200 words. Most journals do not set a hard limit however authors are advised to check the author instructions for the journal they are submitting to.
+% 
+% \textbf{Conclusion:} The abstract serves both as a general introduction to the topic and as a brief, non-technical summary of the main results and their implications. The abstract must not include subheadings (unless expressly permitted in the journal's Instructions to Authors), equations or citations. As a guide the abstract should not exceed 200 words. Most journals do not set a hard limit however authors are advised to check the author instructions for the journal they are submitting to.}
+
+\keywords{Bayes factor, Bayesian, High dimension, Mean testing, Random projections}
+
+%%\pacs[JEL Classification]{D8, H51}
+
+%%\pacs[MSC Classification]{35A01, 65L10, 65L12, 65L20, 65L70}
+
+\maketitle
+
+\section{Introduction}\label{sec:intro}
+
+This paper deals with the problem of testing the equality of mean vectors of two or more groups. Suppose that we have data related to $G \geq 2$ independent groups. Let vector $\uX_{gi} \in \mathbf{R}^{p}$ of length $p$ denote the observed data for individual $i$ from the $g^{th}$ group with $n_{g}$ individuals. We further assume $E(\uX_{gi}) = \umu_g$.  
+Combining the individual vector data in a single matrix, we have $\uX_{g} = (\uX_{g1}, \ldots, \uX_{gn_g})\trans \in \mathcal{R}^{n_g \times p}$. When $G=2$, we formulate the test problem as follows:
+$$ H_{0}: \umu_1 = \umu_2\;\;\;\mbox{against}\;\;\;  \umu_1 \neq \umu_2.  $$
+Hypothesis testing for equality of mean vector between two groups continues to receive considerable attention in the literature \citep{zhang2019more,chen2019two}. A significant number of tests proposed in the literature centers on a version of Hotelling's $T^2$ statistic defined as
+\be
+T^{2} = \frac{n_1n_2}{n_1 + n_2}(\overline{\uX}_2 - \overline{\uX}_1)\trans\uS^{-1}_{12} (\overline{\uX}_2 - \overline{\uX}_1), \label{eq:eqT2}
+\ee
+where $\uS_{12} = \sum^{2}_{g=1}\sum^{n_g}_{i=1}(\uX_{gi} - \overline{\uX}_g)(\uX_{gi} - \overline{\uX}_g)\trans /(n_1+n_2 - 2)$ is the (pooled) sample covariance, and $\overline{\uX}_g = \sum^{n_g}_{i=1}\uX_{gi}/n_g$ ($g = 1,2$) are the sample mean vectors.
+Unfortunately, in its original form \eqref{eq:eqT2}, the statistic $T^2$ can quickly become ill-formed since it involves the inversion of a sample covariance matrix that is rank-deficient when the dimension of the vector is close or exceeds the combined sample size (that is, $n_1+n_2-2 < p$). Various approaches exist in the literature to help circumvent these limitations, and they can be framed as regularization approaches. Among these, some approaches ignore dependency between the features or groups of features \textcolor{black}{and assume a diagonal or very sparse covariance matrices} \citep{bai1996effect,chen2010two,ahmad2014u,feng2017composite}, and some other approaches can be viewed as \textcolor{black}{not fully sparse} regularization schemes in an attempt to make the sample covariance invertible \textcolor{black}{while retaining some dependency between features}. Two types of regularization schemes \textcolor{black}{not resulting in diagonal covariance matrices} are often applied \citep{hu2020pairwise}. One regularization scheme adopts a ridge or $L1$-type estimator for the sample covariance matrix \citep{chen2011regularized,li2020adaptable}, whereas the other scheme is based on the random projection (RP) scheme, which resembles a data perturbation approach. Random projection approaches work by projecting high-dimensional data to a low-dimensional subspace while minimally distorting the distances between the data vectors. This eliminates the need to invert a rank-deficient sample covariance matrix and, almost entirely, preserves the pairwise distance between the data vectors \citep{johnson84extensionslipschitz}. 
+
+Recently, random matrix approaches in general and random projections, in particular, have emerged as effective (linear or non-linear) data reduction approaches for various statistical tasks, including clustering \citep{vrahatis2020ensemble,wan2020sharp} prediction \citep{Mukhopadhyay2020targeted}, and hypothesis testing \citep{lopes2011more,srivastava2014raptt,zoh2018powerful}. RPs have been proven to be successful for two-group mean tests \citep{lopes2011more,srivastava2014raptt,zoh2018powerful}. However, to the best of our knowledge, RPs have not been used or evaluated for testing means of more than two groups. Given their wide range of applicability and often their marked computation speed advantages induced by leveraging sparse matrices, there is an interest in studying their use in a MANOVA testing problem. The two-sample mean testing problem in high-dimensional settings is a special case of the more general Multivariate Analysis of Variance (MANOVA) problem. However, extending two-group mean testing procedures to testing the means of more than two groups is not trivial because of the multiplicity of pairwise distances to be simultaneously considered \citep{cai2014high}. In addition, a MANOVA test based on the Bayes factor, for example, will require the practitioner to select many parameters a priori. 
+
+More practically,  if we consider $G$ populations of dimension $p$, with mean vectors $\umu_1, \ldots, \umu_{G}$, respectively, the test problem is formulated as
+\be
+H_{0}:\; \umu_1 = \umu_2 = \ldots =\umu_G\;   \; \mbox{versus} \; \; H_{1}:\;
+% \exists \; 
+% (l,k) \in \mathcal{P}\; \mbox{s.t} \;  \; 
+\umu_l \neq \umu_k\; \mbox{for some }(l, k) \in \mathcal{P},
+\label{eq:test1}
+\ee
+where $\mathcal{P} = \{(l,k): 1 \leq l < k \leq G  \}$.
+Work on the more general MANOVA approaches when $p$ exceeds the sample sizes began more than 60 years ago \citep{dempster1958high,dempster1960significance}. In general, the approaches in the literature differ based on the different assumptions made on the covariance matrix. One approach derives the test under the assumption of common covariances across groups \citep{fujikoshi2004asymptotic}. Another approach removes the assumption of common covariances \citep{srivastava2007multivariate}. We note that most MANOVA tests proposed in the literature are frequentist approaches. However, recently, \cite{zoh2018powerful} shows that a Bayes factor-based restricted most powerful Bayesian test has superior power compared to its frequentist counterpart. Bayesian tests differ from their frequentist counterpart in that the decision to reject the null or accept the null is based on the Bayes factor (BF) and a chosen evidence threshold. Briefly, the Bayes factor in favor of the alternative hypothesis $H_1$ against the null hypothesis $H_0$, denoted by $BF_{10}$, is defined as 
+$$BF_{10} = \frac{P(\mbox{Data} \mid H_{1})}{P(\mbox{Data} \mid H_{0})} = \frac{\int f_1(\mbox{Data} \mid \boldTheta_1)\pi(\boldTheta_1 \mid H_{1})d\boldTheta_1}{\int f_0(\mbox{Data} \mid \boldTheta_0)\pi(\boldTheta_0 \mid H_{0})d\boldTheta_0}, \label{eq:test1a}$$
+where $P(\mbox{Data} \mid H_{i})$ denotes the marginal distribution of the data under $H_i$, $\pi(\boldTheta_i \mid H_{i})$ denotes the prior distribution of the unknown parameter $\boldTheta_i$ specific to $H_i$, and $f_i(\cdot)$ denotes the data likelihood specific to $H_i$, $i = 0,1$. Note that both the parameters and the data likelihood could potentially depend on the hypotheses. Equation~\eqref{eq:test1a} can involve high-dimensional integrals, and the choice of the prior distribution focuses on distribution forms that lead to closed-formed expressions of the Bayes factor.
+ 
+%RP based approaches include versions for both frequentist \cite{lopes2011more,srivastava2014raptt,thulin2014high} and Bayesian \cite{zoh2018powerful} settings. %Recently, there has been a growing effort towards combining these two approaches in the two-group mean testing problem \cite{hu2020pairwise}.
+
+%As seen before the two group mean testing problem continue to be an active research area.
+This paper aims to develop a high-dimensional MANOVA test that relies on RPs to achieve dimension reduction and leverages the framework of restricted most powerful Bayesian tests proposed by \cite{GoddardJohnson} to obtain the parameters of the test statistic. Our proposed test offers a unique advantage compared to current methods as it eliminates the need for any apriori assumptions about the high-dimensional unknown population covariance matrices. Additionally, it expands the existing literature on high-dimensional hypothesis tests using Bayes Factors. %{\color{blue}[Most importantly, I think we should elaborate more on the contributions of our work compared to the existing literature, including our novelty and the advantage of our approach over the other competitors (if there's any).]}
+The rest of the paper is structured as follows. In Section~\ref{sec:test}, we derive the Bayes factor-based tests. Section~\ref{sec:theori} provides the theoretical results of these tests and the simulation results. In Section~\ref{sec:Application}, we apply the proposed method to the analysis of an actual data set from single-cell sequencing (scRNA-Seq). We end with some concluding remarks in Section~\ref{sec:conclusion}. 
+
+
+
+
+%\bibliography{sn-bibliography}% common bib file
+\bibliography{Bibliography_lrtnew,Bibliography_lrtnew2,Corrected_Bib2}
+%% if required, the content of .bbl file can be included here once bbl is generated
+%%\input sn-article.bbl
+
+
+\end{document}
